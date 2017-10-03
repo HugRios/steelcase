@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1686px" height="1711px" viewBox="0 0 1686 1711" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>gray circle</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0.160284932,29.0903729 C0.160284932,44.9826993 12.7961971,57.8624281 28.381632,57.8624281 C43.9572678,57.8624281 56.59318,44.9826993 56.59318,29.0903729 C56.59318,13.2030425 43.9572678,0.323313597 28.381632,0.323313597 C12.7961971,0.323313597 0.160284932,13.2030425 0.160284932,29.0903729 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="gray-circle">
+            <g id="yellow_circle">
+                <g id="physical_circle_yellow">
+                    <g id="yellow-circle">
+                        <ellipse id="Oval-Copy" fill="#A6A6A6" cx="843" cy="855.5" rx="843" ry="855.5"></ellipse>
+                        <ellipse id="Oval-Copy-2" fill="#FFFFFF" cx="843" cy="855.5" rx="701.175489" ry="711.572516"></ellipse>
+                        <ellipse id="Oval-Copy-2" stroke="#767676" stroke-width="10" cx="843" cy="855.5" rx="677.781745" ry="687.831889"></ellipse>
+                    </g>
+                    <g id="Group-194-Copy-2" transform="translate(856.473123, 386.263234) rotate(-270.000000) translate(-856.473123, -386.263234) translate(827.973123, 357.263234)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Clip-193"></g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

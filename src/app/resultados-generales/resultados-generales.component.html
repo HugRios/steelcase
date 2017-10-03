@@ -1,3 +1,366 @@
-<p>
-  resultados-generales works!
-</p>
+
+<div class="contenido">
+  <div class="row">
+
+      <div class="col-md col-md-3" >
+        <div id="opcionesWell">
+
+  <!--Filtro por industria-->
+          <a  id="industrias" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
+          " >
+              <div class="btn66" >
+                  <p style="width: 100%;" id="industriaP" (click)="mostrarIndustriasRes()">INDUSTRIA</p>
+                  <div id="triangle_right" style="margin: -12% 4% 0 0;" (click)="mostrarIndustriasRes()" ></div>
+                  <div class="dropdown-content" id="industriaR" >
+                    <ul  style="list-style:none;color:#404041" id="industriasWell" >
+                      <button type="button" (click)="muestraRes()"name="button">Res</button>
+                    </ul>
+                  </div>
+              </div>
+          </a>
+
+  <!--Filtro por empresa-->
+          <a id="empresas" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
+          " >
+              <div class="btn66" >
+                  <p style="width: 100%;" id="empresaP" (click)="mostrarEmpresasRes()">EMPRESA</p>
+                  <div id="triangle_right" style="margin: -12% 4% 0 0;" (click)="mostrarEmpresasRes()" ></div>
+                  <div class="dropdown-content" id="empresaR" >
+                    <ul   style="list-style:none;color:#404041" id="empresasWell" >
+                      <li *ngFor="let item of arregloClientes">{{item}}</li>
+                    </ul>
+                  </div>
+              </div>
+          </a>
+
+          <!--Filtro por empresa-->
+                  <a id="areas" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
+                  " >
+                      <div class="btn66" >
+                          <p style="width: 100%;" id="areaP" (click)="mostrarAreasRes()">ÁREA</p>
+                          <div id="triangle_right" style="margin: -12% 4% 0 0;" (click)="mostrarAreasRes()" ></div>
+                          <div class="dropdown-content" id="areaR" >
+                            <ul  style="list-style:none;color:#404041" id="areaWell" >
+                              <li *ngFor = "let area of arregloAreas">{{area}}</li>
+                            </ul>
+
+                          </div>
+                      </div>
+                  </a>
+
+
+                  <!--Filtro por empresa-->
+                          <a id="atiguedades" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
+                          " >
+                              <div class="btn66" >
+                                  <p style="width: 100%;" id="antiguedadP" (click)="mostrarAntiguedadRes()">ANTIGüEDAD</p>
+                                  <div id="triangle_right" style="margin: -12% 4% 0 0;"(click)="mostrarAntiguedadRes()" ></div>
+                                  <div class="dropdown-content" id="antiguedadR" >
+                                    <ul  style="list-style:none;color:#404041" id="antigWell" >
+                                      <li *ngFor = "let antiguedad of arregloAntiguedad">{{antiguedad}}</li>
+                                    </ul>
+
+                                  </div>
+                              </div>
+                          </a>
+
+                          <a id="generaciones" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
+                          " >
+                              <div class="btn66" >
+                                  <p style="width: 100%;" id="generacionP" (click)="mostrarGeneracionesRes()">GENERACIÓN</p>
+                                  <div id="triangle_right" style="margin: -12% 4% 0 0;"(click)="mostrarGeneracionesRes()" ></div>
+                                  <div class="dropdown-content" id="generacionR" >
+                                    <ul  style="list-style:none;color:#404041" id="genWell" >
+                                      <li *ngFor = "let generacion of arregloGeneracion">{{generacion}}</li>
+                                    </ul>
+
+                                  </div>
+                              </div>
+                          </a>
+
+
+
+
+          <a  style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;float: left;line-height: 1.8em;text-decoration: none;font-weight: 700;
+          " href="#">
+            <div class="btn67">
+              <p style="width: 100%;" onclick="mostrarOpciones();" >NUEVO</p>
+              <div id="triangle_right" onclick="mostrarOpciones();"  ></div>
+              <div class="dropdown-content" id="options">
+                <li style="list-style:none;color: #404041;" onclick="OcultarPopUp('wellbeing');">WELLBEING TEST</li>
+                  </div>
+            </div>
+          </a>
+
+
+
+
+          <a  style="display:none; margin-bottom:5%;color: #FFFFFF;width: 85%;height: 27px;float: left;line-height: 1.8em;text-decoration: none;font-weight: 700;
+          " href="#" id="cDD">
+            <div class="btn66">
+              <p style="width: 100%;" onclick="mostrarClienteDD();">CLIENTE</p>
+              <div id="triangle_right" onclick="mostrarClienteDD();"></div>
+              <div class="dropdown-content" id="clienteDD">
+
+
+                  </div>
+            </div>
+          </a>
+
+          <a  style="display:none; margin-bottom:5%;color: #FFFFFF;width: 85%;height: 27px;float: left;line-height: 1.8em;text-decoration: none;font-weight: 700;
+          " href="#" id="pDD">
+            <div class="btn66" >
+              <p style="width: 100%;" onclick="mostrarPeriodoDD();">PERIODO</p>
+              <div id="triangle_right" onclick="mostrarPeriodoDD();"></div>
+              <div class="dropdown-content" id="periodoDD">
+
+
+                  </div>
+            </div>
+          </a>
+
+          <a style="display:none; margin-bottom:5%;color: #FFFFFF;width: 85%;height: 27px;float: left;line-height: 1.8em;text-decoration: none;font-weight: 700;
+          " href="#" id="aDD">
+            <div class="btn66" >
+              <p style="width: 100%;" onclick="mostrarAreaDD();">ÁREA</p>
+              <div id="triangle_right" onclick="mostrarAreaDD();"></div>
+              <div class="dropdown-content" id="areaDD">
+
+
+                  </div>
+            </div>
+          </a>
+          <a style="display:none; margin-bottom:5%;color: #FFFFFF;width: 85%;height: 27px;float: left;line-height: 1.8em;text-decoration: none;font-weight: 700;
+          " href="#" id="gDD">
+            <div class="btn66" >
+
+              <p style="width: 200px; font-size: 10px; padding-top: 4px;" onclick="mostrarGeneracionDD();">GENERACIÓN</p>
+              <div id="triangle_right" onclick="mostrarGeneracionDD();"></div>
+              <div class="dropdown-content" id="generacionDD">
+
+
+                  </div>
+            </div>
+          </a>
+
+        </div>
+    <img  src="assets/img/logo-steelcase.png" style="width: 42%;"  />
+      </div>
+      <div class="col-md col-md-9">
+
+        <div class="row" style="display: flex">
+          <div class="col-md col-md-6" style="display: flex;justify-content: center;">
+  <a id="regresa" hidden href="adminWell.html"><img src="assets/img/regresa.png" alt="" title="Regresa a resultados generales" style="margin-left: 8%;"></a>
+              <div class="resGeneral">
+                <div class="row promGeneral">
+                  <div  id="totalGlobal">
+                    <p>ÍNDICE DE</p>
+                    <p>BIENESTAR GLOBAL</p>
+                  </div>
+                  <div *ngIf="industria"  id="totalIndustria">
+                    <p id="pasa">ÍNDICE DE BIENESTAR</p>
+                    <p id="sector"> </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <p id="pgeneral" style="color:#767676"></p>
+                </div>
+                <div class="" style="padding-top: 10em;">
+                  <p id="encuestas"></p>
+                </div>
+            </div>
+
+          </div>
+          <div class="col-md col-md-4" style="float: right;display: grid;width: 50%;margin-top: 3%;">
+            <div class="row" style="margin-top: -8%;">
+              <div class="content">
+                <div class="col-md col-md-6">
+                      <img class="yellowCir" src="assets/img/yellow_circle.svg" alt="">
+                      <div class="divYellow">
+                            <canvas id="myChartYellow" width="300" height="300"></canvas>
+                      </div>
+                </div>
+
+                <div class="col-md col-md-6">
+                    <div class="totales" style="color: #FBC100;">
+                      <p>Físico</p>
+                      <p id="promedioTotal" style="margin-top: -15%;">0</p>
+                    </div>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="row azul">
+        <div class="content">
+          <div class="col-md col-md-6" id="blue">
+            <img class="blueCir" src="assets/img/blue_circle.svg" alt="">
+            <div class="divBlue" >
+
+                  <canvas id="myChart" width="300" height="300"></canvas>
+            </div>
+
+          </div>
+
+          <div class="col-md col-md-6">
+            <div class="totales" style="margin-top: -4%;color:#31AEF2;">
+              <p>Cognitivo</p>
+              <p id="promedioTotalAzul" style="margin-top: -13%;">0</p>
+            </div>
+
+          </div>
+
+        </div>
+
+                    <!--........................................star div end........................................-->
+
+
+
+
+            </div>
+
+            <div class="row verde" style="height: 100%;">
+
+        <div class="content">
+          <div class="col-md col-md-6" id ="green">
+            <img class="greenCir" src="assets/img/green_circle.svg" alt="">
+            <div class="divGreen">
+                  <canvas id="myChartGreen" width="300" height="300"></canvas>
+            </div>
+          </div>
+          <div class="col-md col-md-6">
+            <div class="totales" style="color:#98CE3D">
+              <p>Emocional</p>
+              <p id="promedioTotalVerde" style="margin-top: -12%"></p>
+            </div>
+
+          </div>
+
+        </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+<div id="popup" class="popup col-lg-8 col-lg-offset-2" style="background-color: #AAAAAA; position:absolute; top:25%; display:none;">
+			<div  style="position:absolute; right:1em; top:-.5em;" ><h2 class="buttonTache" onclick="OcultarPopUp();">X</h2></div>
+			<h1 id="cuestionario" style="width:100%; float:left; position:relative; left:-1.6em;">NUEVO CUESTIONARIO</h1>
+			<h1 id="encWell" style="width:100%; float:left; position:relative; left:-1.6em;">NUEVA ENCUESTA WELLBEING</h1>
+			<div class="col-lg-12 row">
+				<div class="col-lg-5" id="indPop">
+					Industria:
+					<select id="industriasWellNew" onchange="verificarInd();">
+<option value="">Elija una industria</option>
+					</select>
+					<div>
+					<input hidden style="float:none;margin-left: 5em;" type="text" id="newIndustria"  placeholder="Nueva Industria" />
+					</div>
+				</div>
+
+				<div class="col-lg-5" id="clPop" style="margin-left: 6em;">
+					<div>
+						Cliente:<input style="float:none; margin-left:0;" type="text" id="newCliente"  placeholder="Nuevo..." />
+					</div>
+					<div>
+						No. Empleados:<input style="float:none;margin-left:0;width: 8.5em;"  onkeyup="verificaEmpleados();" type="text" id="noEmpleados"  placeholder="# Empleados" />
+					</div>
+
+				</div>
+				<!--<div class="col-lg-5" style="margin-top:1em;">
+					Periodo:
+					<input style="float:none; margin-left:0;" type="text" id="Periodo"  placeholder="Enero 2017" disabled/>
+
+				</div>-->
+
+			</div>
+
+<div class="row">
+	<div class="col-lg-5 container-fluid">
+		<div style="margin-left: 1em;margin-top: 1em;">
+			<label for="">Fecha de Expiracion:</label><br>
+			<input type="text" id="datepicker" style="float: right;margin-right: 9em;">
+		</div>
+	</div>
+
+
+
+
+	<div class="col-lg-6 container-fluid" id="areasPop">
+		<h4>Áreas:</h4>
+		<div class="col-lg-4">
+			<input value="RH" name="user_group[]" type="checkbox" aria-label="123" >
+			<div>RH</div>
+		</div>
+		<div class="col-lg-4">
+			<input value="Administración y finanzas" name="user_group[]" type="checkbox" aria-label="123" >
+			<div>Administración y finanzas</div>
+		</div>
+		<div class="col-lg-4">
+			<input value="Operaciones" name="user_group[]" type="checkbox" aria-label="123" >
+			<div>Operaciones</div>
+		</div>
+		<div class="col-lg-4">
+			<input value="Logística" name="user_group[]" type="checkbox" aria-label="123" >
+			<div>Logística</div>
+		</div>
+	<div class="col-lg-4">
+			<input value="Ventas" name="user_group[]" type="checkbox" aria-label="123" >
+			<div>Ventas</div>
+		</div>
+		<div class="col-lg-4">
+			<input value="Marketing" name="user_group[]" type="checkbox" aria-label="123" >
+			<div>Marketing</div>
+		</div>
+		<div class="col-lg-4">
+			<input value="Dirección general" name="user_group[]" type="checkbox" aria-label="123" >
+			<div>Dirección general</div>
+		</div>
+
+		<div class="col-lg-4">
+			<input value="Otra" name="user_group[]" type="checkbox" aria-label="123" >
+			<div>Otra</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="">
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<span style="cursor:pointer" onclick="addArea();">+Agregar área</span>
+		</div>
+
+	</div>
+</div>
+
+
+			<div class="col-lg-12" style="
+			    display: flex;
+			    justify-content: center;
+			    margin-left: 12.5em;">
+				<div class="" id="agregaArea">
+					<input type="text" name="" value="" id="nuevaArea"  placeholder="Nueva área" style="margin-right: 3em;">
+				</div>
+			</div>
+			<div class="col-lg-12" style="margin-top:20px;">
+				<div  class="col-lg-offset-3 col-lg-1">
+					<input type="button" name="button" id="crearLink" value="Generar link" onclick="generarWell();">
+
+			</div>
+
+				<div class="col-lg-5"><input type="text" id="link" class="col-lg-12"></div>
+			</div>
+		</div>

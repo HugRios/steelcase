@@ -4,22 +4,30 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ResultadosGeneralesComponent } from '../app/resultados-generales/resultados-generales.component';
+import { ComparaResultadosComponent } from './compara-resultados/compara-resultados.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ResultadosGeneralesComponent
+    ResultadosGeneralesComponent,
+    ComparaResultadosComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
+      { path: '', redirectTo: 'home', pathMatch: 'full'},
       {
-        path: 'ResultadosGenerales',
+        path: 'home',
         component: ResultadosGeneralesComponent
+      },
+      {
+        path: 'resultados/:id',
+        component: ComparaResultadosComponent
       }
     ])
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
