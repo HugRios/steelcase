@@ -82,12 +82,12 @@
 
 
           <a  style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;float: left;line-height: 1.8em;text-decoration: none;font-weight: 700;
-          " href="#">
+          " >
             <div class="btn67">
-              <p style="width: 100%;" onclick="mostrarOpciones();" >NUEVO</p>
-              <div id="triangle_right" onclick="mostrarOpciones();"  ></div>
+              <p style="width: 100%;" (click)="mostrarOpciones()" >NUEVO</p>
+              <div id="triangle_right" (click)="mostrarOpciones()"  ></div>
               <div class="dropdown-content" id="options">
-                <li style="list-style:none;color: #404041;" onclick="OcultarPopUp('wellbeing');">WELLBEING TEST</li>
+                <li style="list-style:none;color: #404041;" (click)="OcultarPopUp('wellbeing');">WELLBEING TEST</li>
                   </div>
             </div>
           </a>
@@ -96,7 +96,7 @@
 
 
           <a  style="display:none; margin-bottom:5%;color: #FFFFFF;width: 85%;height: 27px;float: left;line-height: 1.8em;text-decoration: none;font-weight: 700;
-          " href="#" id="cDD">
+          "id="cDD">
             <div class="btn66">
               <p style="width: 100%;" onclick="mostrarClienteDD();">CLIENTE</p>
               <div id="triangle_right" onclick="mostrarClienteDD();"></div>
@@ -258,13 +258,13 @@
 
 
 <div id="popup" class="popup col-lg-8 col-lg-offset-2" style="background-color: #AAAAAA; position:absolute; top:25%; display:none;">
-			<div  style="position:absolute; right:1em; top:-.5em;" ><h2 class="buttonTache" onclick="OcultarPopUp();">X</h2></div>
+			<div  style="position:absolute; right:1em; top:-.5em;" ><h2 class="buttonTache" (click)="OcultarPopUp();">X</h2></div>
 			<h1 id="cuestionario" style="width:100%; float:left; position:relative; left:-1.6em;">NUEVO CUESTIONARIO</h1>
 			<h1 id="encWell" style="width:100%; float:left; position:relative; left:-1.6em;">NUEVA ENCUESTA WELLBEING</h1>
 			<div class="col-lg-12 row">
 				<div class="col-lg-5" id="indPop">
 					Industria:
-					<select id="industriasWellNew" onchange="verificarInd();">
+					<select id="industriasWellNew" (change)="verificarInd()">
 <option value="">Elija una industria</option>
 					</select>
 					<div>
@@ -277,7 +277,7 @@
 						Cliente:<input style="float:none; margin-left:0;" type="text" id="newCliente"  placeholder="Nuevo..." />
 					</div>
 					<div>
-						No. Empleados:<input style="float:none;margin-left:0;width: 8.5em;"  onkeyup="verificaEmpleados();" type="text" id="noEmpleados"  placeholder="# Empleados" />
+						No. Empleados:<input style="float:none;margin-left:0;width: 8.5em;"  (keyup) ="verificaEmpleados();" type="text" id="noEmpleados"  placeholder="# Empleados" />
 					</div>
 
 				</div>
@@ -291,9 +291,9 @@
 
 <div class="row">
 	<div class="col-lg-5 container-fluid">
-		<div style="margin-left: 1em;margin-top: 1em;">
+		<div style="margin-left: 1em;margin-top: 1em;width: 11em;">
 			<label for="">Fecha de Expiracion:</label><br>
-			<input type="text" id="datepicker" style="float: right;margin-right: 9em;">
+<my-date-picker id="ingresoDate" name="mydate" [options]="myDatePickerOptions" [(ngModel)]="modelIngreso" (dateChanged)="obtenIngreso($event)"></my-date-picker>
 		</div>
 	</div>
 
@@ -340,7 +340,7 @@
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<span style="cursor:pointer" onclick="addArea();">+Agregar área</span>
+			<span style="cursor:pointer" (click)="addArea();">+Agregar área</span>
 		</div>
 
 	</div>
@@ -357,7 +357,7 @@
 			</div>
 			<div class="col-lg-12" style="margin-top:20px;">
 				<div  class="col-lg-offset-3 col-lg-1">
-					<input type="button" name="button" id="crearLink" value="Generar link" onclick="generarWell();">
+					<input type="button" name="button" id="crearLink" value="Generar link" (click)="generarWell()">
 
 			</div>
 
