@@ -1,0 +1,182 @@
+<content>
+<h2 style="width: 86%;border-top: 1px solid lightgrey;margin-left: 6%;padding-top: 2%;font-weight:bold;font-size: 35px;"> Bienestar Fisico</h2>
+
+<div id="opciones">
+	<p>Da click sobre cada atributo para obtener más información de cada categoría. Indica tu grado de satisfacción para cada una de las afirmaciones de acuerdo al siguiente criterio:</p>
+	<ol>
+		<li>Totalmente en desacuerdo</li>
+		<li>En desacuerdo</li>
+		<li>Ni de acuerdo ni en desacuerdo</li>
+		<li>De acuerdo</li>
+		<li>Totalmente de acuerdo</li>
+</ol>
+<p>Recuerda que debes evaluar todos los atributos de los 3 círculos de bienestar.</p>
+
+
+<a onClick="enviarWell();" style="margin-bottom:5%;color: #FFFFFF;width: 85%;height: 27px;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
+" >
+<div class="btn67"  >
+    <p style="width: 100%;" >SIGUIENTE</p>
+		<img src="img/siguiente.png" alt="" style="margin-left: 87%;/* margin-bottom: 5px; */margin-top: -4px;">
+    </div>
+    </a>
+
+
+
+
+</div>
+
+
+
+<div id ="container" >
+
+
+
+	<div id="star">
+
+
+		<div id="testeo" class="globo">
+			<h3></h3>
+			<p></p>
+		</div>
+
+		<div id="testeo2" class="globo">
+			<h3></h3>
+			<p></p>
+		</div>
+
+		<div id="testeo3" class="globo">
+			<h3></h3>
+			<p></p>
+		</div>
+
+		<div id="testeo4" class="globo">
+			<h3></h3>
+			<p></p>
+		</div>
+
+		<div id="testeo5" class="globo">
+			<h3></h3>
+			<p></p>
+		</div>
+
+		<div id="testeo6" class="globo">
+			<h3></h3>
+			<p></p>
+		</div>
+
+		<div id="testeo7" class="globo">
+			<h3></h3>
+			<p></p>
+		</div>
+
+		<div id="testeo8" class="globo">
+			<h3></h3>
+			<p></p>
+		</div>
+
+		<div id="testeo9" class="globo">
+			<h3></h3>
+			<p></p>
+		</div>
+
+        <canvas id="myCanvas" width="713px" height="713px"></canvas>
+
+		<div id="circles">
+
+
+					<!--Los de arriba-->
+					<div onclick="seleccionarFactor(this.id);" class="section" id="t" style="position:absolute; bottom:33.5em; left:33.5em;"><img src="/assets/img/invisible.png"/></div>
+
+					<h4 onClick="asignarCalificacion(this.id,event);" id="t1" style="position: absolute; bottom: 22.5em; left: 590px; top: 208px; height: 26px;"><span class="button">1</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="t2" style="position: absolute; bottom: 24.5em; left: 586px; top: 176px; height: 21px;"><span class="button">2</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="t3" style="position: absolute; bottom: 26.5em; left: 583px; top: 145px; height: 23px;"><span class="button">3</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="t4" style="position: absolute; bottom: 28.5em; left: 580px; top: 116px; height: 23px; width: 18px;"><span class="button">4</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="t5" style="position: absolute; bottom: 8.5em; left: 577px; top: 86px; height: 23px;"><span class="button">5</span></h4>
+					<!--Los de abajo-->
+					<div onclick="seleccionarFactor(this.id);" class="section"  id="b" style="position: absolute; bottom: 7.5em; left: 599px; top: 483px;transform: rotate(348deg);"><img src="/assets/img/invisible.png"/></div>
+
+					<h4 onClick="asignarCalificacion(this.id,event);" id="b1" style="position: absolute; bottom: 18.5em; left: 603px; top: 295px; height: 21px;"><span class="button">1</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="b2" style="position: absolute; bottom: 16.5eposition: absolute; bottom: 20.5em; left: 441px; top: 340px; height: 20px;m; left: 613px; top: 327px; height: 21px;"><span class="button">2</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="b3" style="position: absolute; bottom: 14.5em; left: 622px; top: 357px; height: 22px;"><span class="button">3</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="b4" style="position: absolute; bottom: 12.5em; left: 631px; top: 388px; height: 22px;"><span class="button">4</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="b5" style="position: absolute; bottom: 10.5em; left: 639px; top: 417px;"><span class="button">5</span></h4>
+					<!--Izquierda-->
+
+					<div onclick="seleccionarFactor(this.id);" class="section"  id="ll" style=" transform:rotate(90deg); position:absolute; bottom:20.5em; left:16.5em;"><img src="/assets/img/invisible.png"/></div>
+
+					<div onclick="seleccionarFactor(this.id);" class="section"  id="l" style="transform: rotate(56deg); position: absolute; bottom: 20.5em; left: 364px; top: 367px;"><img src="/assets/img/invisible.png"/></div>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="l1" style="position: absolute; bottom: 20.5em; left: 553px; top: 274px;"><span class="button">1</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="l2" style="position: absolute; bottom: 20.5em; left: 526px; top: 289px; height: 23px;"><span class="button">2</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="l3" style="position: absolute; bottom: 20.5em; left: 498px; top: 307px; height: 24px;"><span class="button">3</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="l4" style="position: absolute; bottom: 20.5em; left: 468px; top: 324px; height: 23px;"><span class="button">4</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="l5" style="position: absolute; bottom: 20.5em; left: 441px; top: 340px; height: 20px;"><span class="button">5</span></h4>
+					<!--Derecha-->
+
+					<div onmouseover="seleccionarFactor(this.id);" class="section"  id="rr" style="transform:rotate(90deg); position:absolute; bottom:20.5em; left:51.5em;"><img src="/assets/img/invisible.png"/></div>
+
+					<div onclick="seleccionarFactor(this.id);" class="section"  id="r" style="transform:rotate(90deg); position:absolute; bottom:20.5em; left:46.5em;"><img src="/assets/img/invisible.png"/></div>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="r1" style="position: absolute; bottom: 5.5em; left: 637px; top: 244px; height: 27px;"><span class="button">1</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="r2" style="position: absolute; bottom: 20.5em; left: 670px; top: 244px; height: 27px;"><span class="button">2</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="r3" style="position: absolute; bottom: 20.5em; left: 702px; top: 243px; height: 24px;"><span class="button">3</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="r4" style="position: absolute; bottom: 20.5em; left: 732px; top: 243px; height: 21px;"><span class="button">4</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="r5" style="position: absolute; bottom: 20.5em; left: 763px; top: 243px; height: 25px;"><span class="button">5</span></h4>
+					<!--Derecha-Arriba-->
+
+					<div onclick="seleccionarFactor(this.id);" class="section"  id="rt" style="transform:rotate(45deg);position:absolute;bottom: 29.9em;left: 43.0em;"><img src="/assets/img/invisible.png"/></div>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="rt1" style="position: absolute; bottom: 21.91em; left: 619px; top: 216px; height: 22px;"><span class="button">1</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="rt2" style="position: absolute; bottom: 23.33em; left: 637px; top: 191px; height: 23px;"><span class="button">2</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="rt3" style="position: absolute; bottom: 24.73em; left: 656px; top: 168px; height: 25px;"><span class="button">3</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="rt4" style="position: absolute; bottom: 26.14em; left: 674px; top: 144px; height: 24px;"><span class="button">4</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="rt5" style="position: absolute; bottom: 27.55em; left: 694px; top: 118px; height: 18px;"><span class="button">5</span></h4>
+					<!--Izquierda-Arriba-->
+
+					<div onclick="seleccionarFactor(this.id);" class="section"  id="lt" style="transform: rotate(276deg); position: absolute; bottom: 32.55em; left: 302px; top: 248px;"><img src="/assets/img/invisible.png"/></div>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="lt1" style="position: absolute; bottom: 21.91em; left: 549px; top: 242px; height: 29px;"><span class="button">1</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="lt2" style="position: absolute; bottom: 23.33em; left: 520px; top: 243px; height: 19px;"><span class="button">2</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="lt3" style="position: absolute; bottom: 24.73em; left: 489px; top: 243px; width: 17px; height: 20px;"><span class="button">3</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="lt4" style="position: absolute; bottom: 26.14em; left: 456px; top: 243px; height: 23px;"><span class="button">4</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="lt5" style="position: absolute; bottom: 27.55em; left: 423px; top: 243px; height: 22px; width: 21px;"><span class="button">5</span></h4>
+					<!--Izquierda-Abajo-->
+
+					<div onclick="seleccionarFactor(this.id);" class="section"  id="lb" style="transform:rotate(29deg); position:absolute; bottom:7.45em; left:27.45em;"><img src="/assets/img/invisible.png"/></div>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="lb1" style="position: absolute; bottom: 19.09em; left: 575px; top: 293px; height: 16px;"><span class="button">1</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="lb2" style="position: absolute; bottom: 17.68em; left: 561px; top: 322px; height: 23px;"><span class="button">2</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="lb3" style="position: absolute; bottom: 16.27em; left: 546px; top: 351px; height: 23px;"><span class="button">3</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="lb4" style="position: absolute; bottom: 14.86em; left: 531px; top: 381px; height: 21px;"><span class="button">4</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="lb5" style="position: absolute; bottom: 10.45em; left: 517px; top: 411px; height: 18px;"><span class="button">5</span></h4>
+					<!--Derecha-Abajo-->
+
+					<div onclick="seleccionarFactor(this.id);" class="section"  id="rb" style="transform: rotate(315deg); position: absolute; bottom: 12.45em; left: 708px; top: 398px;"><img src="/assets/img/invisible.png"/></div>
+
+					<h4 onClick="asignarCalificacion(this.id,event);" id="rb1" style="position: absolute; bottom: 19.09em; left: 629px; top: 278px; height: 21px;"><span class="button">1</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="rb2" style="position: absolute; bottom: 17.68em; left: 657px; top: 298px; height: 19px;"><span class="button">2</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="rb3" style="position: absolute; bottom: 16.27em; left: 684px; top: 317px; height: 18px;"><span class="button">3</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="rb4" style="position: absolute; bottom: 14.86em; left: 708px; top: 335px; height: 21px;"><span class="button">4</span></h4>
+					<h4 onClick="asignarCalificacion(this.id,event);" id="rb5" style="position: absolute; bottom: 13.45em; left: 733px; top: 353px; height: 24px; width: 17px;"><span class="button">5</span></h4>
+
+					<div onclick="seleccionarFactor(this.id);" class="section"  id="eb" style="transform: rotate(140deg);position:absolute;bottom: 30.15em;le;left: 25.45em;"><img src="/assets/img/invisible.png"/></div>
+
+						<h4 onClick="asignarCalificacion(this.id,event);" id="eb1" style="position: absolute; bottom: 22.4em; left: 565px; top: 215px;"><span class="button">1</span></h4>
+						<h4 onClick="asignarCalificacion(this.id,event);" id="eb2" style="position: absolute; bottom: 24.33em; left: 542px; top: 193px;"><span class="button">2</span></h4>
+						<h4 onClick="asignarCalificacion(this.id,event);" id="eb3" style="position: absolute; bottom: 16.27em; left: 518px; top: 173px; height: 23px;"><span class="button">3</span></h4>
+						<h4 onClick="asignarCalificacion(this.id,event);" id="eb4" style="position: absolute; bottom: 14.86em; left: 495px; top: 153px; height: 21px;"><span class="button">4</span></h4>
+						<h4 onClick="asignarCalificacion(this.id,event);" id="eb5" style="position: absolute; bottom: 13.45em; left: 469px; top: 134px; height: 26px; width: 17px;"><span class="button">5</span></h4>
+
+
+
+
+
+
+		</div>
+</div>
+		<!--........................................star div end........................................-->
+
+
+
+
+
+
+					</div><!--Acaba div container-->
+
+</content>

@@ -2,9 +2,8 @@
 <div class="contenido">
   <div class="row">
 
-      <div class="col-md col-md-3" >
-        <div id="opcionesWell">
-
+      <div class="col-md col-md-2" style="display: grid;">
+        <div id="opcionesWell" *ngIf="!filtros">
   <!--Filtro por industria-->
           <a  id="industrias" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
           " >
@@ -13,8 +12,9 @@
                   <div id="triangle_right" style="margin: -12% 4% 0 0;" (click)="mostrarIndustriasRes()" ></div>
                   <div class="dropdown-content" id="industriaR" >
                     <ul  style="list-style:none;color:#404041" id="industriasWell" >
-                      <button type="button" (click)="muestraRes()"name="button">Res</button>
+
                     </ul>
+                    <button type="button" style="width: 9.5em;margin-left: 1em;margin-bottom: 0.5em;background: #404041;border: none;" (click)="muestraRes()"name="button">Resultados</button>
                   </div>
               </div>
           </a>
@@ -144,13 +144,24 @@
           </a>
 
         </div>
-    <img  src="assets/img/logo-steelcase.png" style="width: 42%;"  />
+            <label *ngIf="filtros" for="">Resultados por:</label>
+            <input hidden type="text" id="elVal" name="" value="" class="filtros" >
+            <input hidden type="text" id = "areaName" name="" value="" class="filtros">
+            <input Hidden type="text" id = "antigName" name="" value="" class="filtros">
+            <input Hidden type="text" id = "genName" name="" value="" class="filtros">
+
+
+    <img  *ngIf="!filtros" src="assets/img/scLogo.jpg" style="width: 11em;margin-top: 23em;margin-left: .5em;"  />
+
+
+
+
       </div>
       <div class="col-md col-md-9">
 
         <div class="row" style="display: flex">
           <div class="col-md col-md-6" style="display: flex;justify-content: center;">
-  <a id="regresa" hidden href="adminWell.html"><img src="assets/img/regresa.png" alt="" title="Regresa a resultados generales" style="margin-left: 8%;"></a>
+  <a id="regresa" *ngIf="filtros" (click)="regresaResultados()"><img src="assets/img/regresa.png" alt="" title="Regresa a resultados por industria" style="margin-left: 8%;"></a>
               <div class="resGeneral">
                 <div class="row promGeneral">
                   <div  id="totalGlobal">

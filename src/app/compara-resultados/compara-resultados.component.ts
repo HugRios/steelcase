@@ -16,6 +16,7 @@ tres : boolean = false;
 
   cuentaResultados(){
     var url  = window.location.pathname;
+    console.log(url)
     var aux  = url.substring(url.lastIndexOf('/')+2, url.length-1)
     var id = aux.substring(0, aux.indexOf('-'))
     var next  = aux.replace(/,/g, " ");
@@ -28,7 +29,6 @@ tres : boolean = false;
 
   muestraComponentes(){
     var noComponentes = this.cuentaResultados();
-    debugger
     if(noComponentes.length == 1){
       this.uno=true
     }else if(noComponentes.length == 2){

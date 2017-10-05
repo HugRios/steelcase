@@ -1,18 +1,22 @@
 @font-face {
-  font-family: 'Avenir Next Bold';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Avenir Next LT Pro Bold'), url('/assets/fonts/AvenirNextLTPro-Bold.woff') format('woff');
+font-family: 'Helvetica Neue LT Std 45 Light';
+font-style: normal;
+font-weight: normal;
+src: local('Helvetica Neue LT Std 45 Light'), url('/assets/fonts/HelveticaNeueLTStd Lt.woff') format('woff');
 }
 
 *{
-font-family:Avenir Next Bold;
+font-family:'Helvetica Neue LT Std 45 Light';
+
+font-weight:normal;
+color: #404041;
 }
 body
 {
 
 width: 100%;
 margin: 0 auto;
+font-family: helvetica;
 background-color: white;
 }
 
@@ -35,7 +39,6 @@ float: left;
 position: relative;
 width: 100%;
 line-height: 28%;
-
 }
 h1
 {
@@ -72,9 +75,8 @@ div#inputs
 
 content
 {
-  width: 28%;
-  float: left;
-
+width: 100%;
+float: left;
 }
 
 content h2
@@ -155,6 +157,7 @@ margin: 0 0 0 13px;
 }
 .btn67 p
 {
+height: 10%;
 margin: 0 0 0 9%;
 line-height: 1.8em;
 color: #FFF;
@@ -178,14 +181,17 @@ padding: 2px 0 0 0;
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 10;
 }
 
 /* Links inside the dropdown */
-.dropdown-content a {
+.dropdown-content a, .dropdown-content button{
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    cursor: pointer;
+
 }
 
 /* Change color of dropdown links on hover */
@@ -209,7 +215,6 @@ padding: 2px 0 0 0;
 
 #cuadro .btn66 p
 {
-height: 10%;
 width: 80%;
 margin: 0 0 0 13px;
 }
@@ -231,7 +236,7 @@ float: right;
 border-top: 5px solid transparent;
 border-left: 10px solid white;
 border-bottom: 5px solid transparent;
-margin: -9% 4% 0 0;
+margin: 4% 4% 0 0;
 transition: all 0.2s ease-in-out 0s;
 }
 #triangle_right:hover
@@ -295,14 +300,13 @@ z-index: 1;
 }
 #container
 {
-  margin: 0 auto;
-  float: right;
-  position: relative;
-  z-index: 0;
-  height: 100%;
-
-
-
+margin: 0 auto;
+float: left;
+width: 60%;
+height: 675px;
+position: relative;
+z-index: 0;
+margin-left: 4%;
 }
 
 div .fila
@@ -429,7 +433,7 @@ float: left;
 position: relative;
 z-index: 9999;
 left: 49%;
-top: 54%;
+top: 45%;
 }
 .asterisco .mapita p
 {
@@ -445,7 +449,7 @@ float: left;
 -webkit-transform: rotate(47deg);
 /* Chrome, Safari, Opera */
 transform: rotate(47deg);
-top: 50%;
+top: 43%;
 left: 35%;
 }
 .asterisco:nth-child(2) .mapita p
@@ -462,7 +466,7 @@ transform: rotate(-47deg);
 /* Chrome, Safari, Opera */
 transform: rotate(315deg);
 left: 53%;
-top: 50%;
+top: 43%;
 }
 .asterisco:nth-child(3) .mapita p
 {
@@ -478,7 +482,7 @@ transform: rotate(-315deg);
 /* Chrome, Safari, Opera */
 transform: rotate(180deg);
 left: 40.5%;
-top: 29%;
+top: 23%;
 }
 .asterisco:nth-child(4) .mapita p
 {
@@ -495,7 +499,7 @@ position: relative;
 /* Chrome, Safari, Opera */
 transform: rotate(90deg);
 left: 24%;
-top: 42%;
+top: 35%;
 }
 .asterisco:nth-child(5) .mapita p
 {
@@ -512,7 +516,7 @@ transform: rotate(-90deg);
 transform: rotate(135deg);
 position: relative;
 left: 24%;
-top: 33.5%;
+top: 26.5%;
 }
 .asterisco:nth-child(6) .mapita p
 {
@@ -529,7 +533,7 @@ position: relative;
 /* Chrome, Safari, Opera */
 transform: rotate(225deg);
 left: 41%;
-top: 33.5%;
+top: 26.5%;
 }
 .asterisco:nth-child(7) .mapita p
 {
@@ -546,7 +550,7 @@ position: relative;
 /* Chrome, Safari, Opera */
 transform: rotate(270deg);
 left: 41.5%;
-top: 42%;
+top: 35%;
 }
 .asterisco:nth-child(8) .mapita p
 {
@@ -557,14 +561,10 @@ transform: rotate(-270deg);
 .mapita
 {
 border-radius: 100%;
-border-radius: .4em;
 background-color: lightgrey;
 margin: 20% auto !important;
 width: 137%;
-width: .75em;
 height: 22%;
-
-height: .75em;
 cursor: pointer;
 }
 .mapita p
@@ -600,6 +600,8 @@ background-color: violet !important;
 
 
 
+
+
 div #conti
 {
 margin: 0 0 0 5%;
@@ -613,20 +615,10 @@ background-color: violet !important;
 background-color: lightgrey;
 border-radius: 159%;
 float: left;
-margin: 48% 0 0 24%;
+margin: 49% 0 0 24%;
 cursor: pointer;
 width: 13px;
 height: 13px;
-
-
-border-radius: 100%;
-border-radius: .4em;
-width: 137%;
-width: .75em;
-height: 22%;
-height: .75em;
-
-
 }
 #zerito p
 {
@@ -674,15 +666,11 @@ background-color: violet;
 a #zero
 {
 border-radius: 100%;
-border-radius: .75;
 float: left;
 text-align: center;
 line-height: 0em;
 width: 30px;
-width: .75em;
 height: 30px;
-height: .75em;
-top:-3%;
 background-color: lightgrey;
 cursor: pointer;
 }
@@ -694,15 +682,16 @@ margin-left: 24.7%;
 #info
 {
 float: right;
-width: 380px;
-height: 150px;
 border: 2px solid black;
 border-radius: 42px;
+padding-right: 20px;
 }
 #info p
 {
 width: 90%;
 margin-left: 10%;
+margin-right: 10%;
+margin-bottom: 10%;
 font-size: 12px;
 text-align: justify;
 }
@@ -714,8 +703,8 @@ margin-bottom: 19%;
 
 #opciones ol li
 {
-margin-top: 8%;
-margin-bottom: 8%;
+
+margin-bottom: -7%;
 }
 #opciones ol
 {
@@ -724,8 +713,9 @@ margin-bottom: 20%;
 footer
 {
 margin-left: 10%;
+float: left;
 font-size: 0.8em;
-text-decoration: none;
+text-decoration: none;;
  color: #404041;
 }
 
@@ -861,21 +851,9 @@ text-decoration: none;
 }
 
 #myCanvas{
-    width: 511px;
-    height: 320px;
+    width: 713px;
+    height: 713px;
 
-}
-
-.descarga{
-    color: #FFFFFF;
-    width: 30%;
-    height: 37px;
-    float: right;
-    line-height: 2em;
-    text-decoration: none;
-    font-weight: 700;
-    position: relative;
-    z-index:1;
 }
 
 
@@ -910,24 +888,23 @@ margin: 0;
 @media screen and (min-width: 750px){
     div#circles
     {
-      height: 640px;
-      width: 132%;
-      position: absolute;
-      right: 117%;
-      top: -13%;
-
-
+        height:640px;
+        width:100%;
+        position:absolute;
+        right:46%;
+        top:3%;
+        z-index: 0;
     }
     div #star
     {
     float: left;
-    width: 100%;
-    height: 613px;
-    background: url(//assets/img/yellow_circle.svg) 0 0 / 100% no-repeat;
+    width: 101%;
+    height: 713px;
+    background: url(/assets/img/yellow_circle.svg) 0 0 / 100% no-repeat;
     position: relative;
     margin: 0 8%;
     top: 0%;
-    left: 0%;
+    left: 13%;
     z-index: 1100;
     }
     .btn66, .btn67
@@ -936,23 +913,71 @@ margin: 0;
 
     }
 }
-@media screen and (min-width: 1000px){
-  .divYellow{
-    width: 135px;
-    height: 136px;
-  }
 
+
+@media screen and (min-width: 768px){
+    div#circles
+    {
+        height:640px;
+        width:100%;
+        position:absolute;
+        right:50%;
+        top:1%;
+        z-index: 0;
+    }
+    div #star
+    {
+    float: left;
+    width: 101%;
+    height: 713px;
+    background: url(/assets/img/yellow_circle.svg) 0 0 / 100% no-repeat;
+    position: relative;
+    margin: 0 8%;
+    top: 0%;
+    left: 13%;
+    z-index: 1100;
+    }
+    .btn66, .btn67
+    {
+    width: 70%;
+
+    }
 }
 
 
+@media screen and (min-width: 1000px){
+    div #star
+    {
+    width: 98%;
+
+    }
+    .btn66, .btn67
+    {
+    width: 60%;
+
+    }
+}
+
+
+@media screen and (min-width: 1024px){
+    div #star
+    {
+    width: 96.5%;
+
+    }
+    .btn66, .btn67
+    {
+    width: 60%;
+
+    }
+}
 
 @media screen and (min-width: 1037px){
 
-  .divYellow{
-    width: 135px;
-    height: 136px;
-  }
-
+    div #star
+    {
+    width: 95.5%;
+    }
 }
 
 @media screen and (min-width: 1050px){
@@ -1060,8 +1085,10 @@ margin: 0;
 
 
 @media screen and (min-width: 1212px){
-
-
+    div #star
+    {
+    width: 82%;
+    }
 }
 
 @media screen and (min-width: 1225px){
@@ -1083,98 +1110,61 @@ margin: 0;
     {
     width: 80%;
     }
-
-
 }
 
 @media screen and (min-width: 1262px){
-  .divYellow{
-    width: 135px;
-    height: 136px;
-  }
-
+    div #star
+    {
+    width: 79%;
+    }
 }
 
 @media screen and (min-width: 1275px){
-  .divYellow{
-    width: 135px;
-    height: 136px;
-  }
-
+    div #star
+    {
+    width: 78%;
+    }
 }
 
 @media screen and (min-width: 1282px){
-  .divYellow{
-    width: 135px;
-    height: 136px;
-  }
-
+    div #star
+    {
+    width: 77.5%;
+    }
 }
 
 
 @media screen and (min-width: 1300px){
-  .divYellow{
-    width: 135px;
-    height: 136px;
-  }
+    div #star
+    {
+    width: 76.5%;
 
+    }
 }
 
 @media screen and (min-width: 1312px){
-  .divYellow{
-    width: 135px;
-    height: 136px;
-  }
-  .yellowCir {
-    width: 14em;
-}
+    div #star
+    {
+    width: 75.5%;
 
+    }
 }
 
 
 @media screen and (min-width: 1325px){
-  .divYellow{
-    width: 135px;
-    height: 136px;
-  }
+    div #star
+    {
+    width: 75%;
 
+    }
 }
 
-@media screen and (min-width: 1330px){
-  .divYellow{
-    width: 135px;
-    height: 136px;
-  }
-}
+@media screen and (min-width: 1332px){
+    div #star
+    {
+    width: 74.5%;
 
-
-@media screen and (min-width: 1334px){
-  .divYellow{
-width: 7em;
-  }
-  #myChartYellow{
-    margin-left: 3em;
-  }
-}
-
-@media screen and (min-width: 1335px){
-  .divYellow{
-    width: 9em;
-  }
-  .divBlue{
-    width: 9em;
-  }
-
-  .divGreen{
-    width: 9em;
-  }
-  #myChartYellow{
-    margin-left: 4em;
-    margin-top: -11.1em;
-    margin-bottom: 3.6em;
-
-
-  }
+    }
 }
 
 @media screen and (min-width: 1350px){
@@ -1318,7 +1308,7 @@ width: 7em;
 @media screen and (min-width: 1700px){
     div #star
     {
-    width: 48.5%;
+    width: 58.5%;
 
     }
 }
@@ -1606,480 +1596,51 @@ width: 7em;
     }
 }
 
-
-.resGeneral{
-
-  background: url(/assets/img/gray_circle.svg) 0 0 / 100% no-repeat;
-width: 80%;
-margin-top: 14%;
-margin-left: 12%;
-
-
-}
-
-.resultados{
-      background-color: blue;
-      background: url(/assets/img/yellow_circle.svg) 0 0 / 100% no-repeat;
-      width: 27%;
-      height: 256px;
-
-}
-
-.content{
+#testeo
+{
+  position: absolute;
+  display: none;
+  font-family: Arial;
+  font-size: 0.8em;
+  width: 220px;
+  border: 1px solid #808080;
+  background-color: #f1f1f1;
+  padding: 5px;
+  border-radius: 10px;
   text-align: center;
-justify-content: center;
-display: flex;
-
 }
 
-@media screen and (min-width: 768px){
-  .resultados{
-        background-color: blue;
-        background: url(/assets/img/yellow_circle.svg) 0 0 / 100% no-repeat;
-        width: 74%;
-        height: 210px;
-        position: relative;
-        margin: 0 8%;
-        top: 0%;
-        left: 5%;
-        z-index: 1100;
-
-  }
-
-  .content{
-    text-align: center;
-  justify-content: center;
-  display: flex;
-
-  margin-top: 3%;
-
-  }
-
-
-  .resultadosblue{
-        background-color: blue;
-        background: url(/assets/img/blue_circle.svg) 0 0 / 100% no-repeat;
-        width: 79%;
-        height: 210px;
-        position: relative;
-        margin: 0 8%;
-        top: 0%;
-        left: 9%;
-        z-index: 1100;
-
-  }
-
-  .resultadosgreen{
-        background-color: blue;
-        background: url(/assets/img/green_circle.svg) 0 0 / 100% no-repeat;
-        width: 81%;
-        height: 210px;
-        position: relative;
-        margin: 0 8%;
-        top: 0%;
-        left: 8%;
-        z-index: 1100;
-
-  }
-
-  #blue{
-    width: 60%;
-  }
-
-  #green{
-    width: 60%;
-  }
-
-
-  .resGeneral {
-    background: url(/assets/img/gray_circle.svg) 0 0 / 100% no-repeat;
-    width: 80%;
-    margin-top: 34%;
-    margin-left: 15%;
-}
-  .promGeneral{
-    text-align: center;
-     margin-top: -34%;
-     font-size: 27px;
-     color: #767676;
-
-  }
-
+#testeo p{
+  width: 90%;
+margin-left: 5%;
+margin-right: 10%;
+margin-bottom: 10%;
+font-size: 12px;
+text-align: justify;
 }
 
-
-
-
-@media screen and (min-width: 1024px){
-  .resultados{
-        background-color: blue;
-        background: url(/assets/img/yellow_circle.svg) 0 0 / 100% no-repeat;
-        width: 56%;
-        height: 210px;
-        position: relative;
-        margin: 0 8%;
-        top: 0%;
-        left: -10%;
-        z-index: 1100;
-
-  }
-
-  .content{
-    text-align: center;
-  justify-content: center;
-  display: flex;
-
-  }
-
-  .resultadosblue{
-        background-color: blue;
-        background: url(/assets/img/blue_circle.svg) 0 0 / 100% no-repeat;
-        width: 79%;
-        height: 210px;
-        position: relative;
-        margin: 0 8%;
-        top: 0%;
-        left: 9%;
-        z-index: 1100;
-        margin-top: 25%;
-
-  }
-
-  .resultadosgreen{
-        background-color: blue;
-        background: url(/assets/img/green_circle.svg) 0 0 / 100% no-repeat;
-        width: 80%;
-        height: 210px;
-        position: relative;
-        margin: 0 8%;
-        top: 0%;
-        left: 8%;
-        z-index: 1100;
-        margin-top: 33%;
-
-  }
-  #blue{
-    width: 50%;
-  }
-  #green{
-    width: 50%;
-  }
-
-  .resGeneral {
-    background: url(/assets/img/gray_circle.svg) 0 0 / 100% no-repeat;
-    width: 80%;
-    margin-top: 40%;
-    margin-left: 15%;
+#areasWell li{
+  margin-left: -2%;
 }
 
-.promGeneral{
+.globo {
+  position: absolute;
+  display: none;
+  font-family: Arial;
+  font-size: 0.8em;
+  width: 220px;
+  border: 1px solid #808080;
+  background-color: #f1f1f1;
+  padding: 5px;
+  border-radius: 10px;
   text-align: center;
-   margin-top: -45%;
-   font-size: 27px;
-   color: #767676;
-
 }
 
-#pgeneral{
-  text-align: center;
-  margin-top: 0.7em;
-  font-size: 9em;
-
-}
-
-.azul{
-  margin-top: -18%;
-}
-
-.verde{
-  margin-top: -22%;
-}
-
-#totalIndustria{
-  margin-top: 7%;
-}
-
-.totales{
-  text-align: center;
-  font-size: 45px;
-  margin-right: 17%;
-  font-family: Avenir Next Bold;
-
-}
-
-
-.divYellow{
-width: 9em;
-}
-
-.divBlue{
-  width: 9em;
-}
-
-.divGreen{
-  width: 9em;
-}
-
-#myChartYellow{
-  margin-left: 2.9em;
-  margin-top: -11.1em;
-  margin-bottom: 3.6em;
-
-}
-#myChartGreen{
-  margin-left: 3em;
-  margin-top: -11.1em;
-  margin-bottom: 3.6em;
-}
-
-#myChart{
-  margin-left: 2.8em;
-  margin-top: -11.5em;
-  margin-bottom: 3.6em;
-}
-
-
-
-
-
-.blueCir{
-    width: 13.5em;
-}
-
-.yellowCir{
-      width: 13em;
-}
-
-.greenCir{
-  width: 13.5em;
-}
-
-
-.azul {
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 6.5em;
-}
-
-}
-
-
-@media screen and (min-width: 1200px){
-  .resultados{
-        background-color: blue;
-        background: url(/assets/img/yellow_circle.svg) 0 0 / 100% no-repeat;
-        width: 56%;
-        height: 210px;
-        position: relative;
-        margin: 0 8%;
-        top: 0%;
-        left: 0%;
-        z-index: 1100;
-
-  }
-
-  .content{
-    text-align: center;
-    justify-content: center;
-    display: flex;
-
-  }
-
-  .resultadosblue{
-        background-color: blue;
-        background: url(/assets/img/blue_circle.svg) 0 0 / 100% no-repeat;
-        width: 63%;
-        height: 210px;
-        position: relative;
-        margin: 0 8%;
-        top: 0%;
-        left: 15%;
-        z-index: 1100;
-
-  }
-
-  .resultadosgreen{
-        background-color: blue;
-        background: url(/assets/img/green_circle.svg) 0 0 / 100% no-repeat;
-        width: 66%;
-        height: 210px;
-        position: relative;
-        margin: 0 8%;
-        top: 0%;
-        left: 12%;
-        z-index: 1100;
-
-  }
-
-  .resGeneral {
-      background: url(/assets/img/gray_circle.svg) 0 0 / 100% no-repeat;
-      width: 73%;
-      margin-top: 27%;
-      margin-left: 20%;
-  }
-
-  #pgeneral{
-    text-align: center;
-    margin-top: 21%;
-    font-size: 164px;
-
-  }
-
-  .blueCir{
-    width: 8em;
-  }
-
-  .yellowCir{
-        width:8em;
-  }
-
-  .greenCir{
-    width: 8em;
-  }
-
-}
-
-
-@media screen and (min-width: 1300px){
-  .resultados{
-        background-color: blue;
-        background: url(/assets/img/yellow_circle.svg) 0 0 / 100% no-repeat;
-        width: 66%;
-        height: 210px;
-        position: relative;
-        margin: 0 8%;
-        top: 0%;
-        left: 3%;
-        z-index: 1100;
-
-  }
-
-  .content{
-    text-align: center;
-  justify-content: center;
-  display: flex;
-
-  }
-
-  .resultadosblue{
-        background-color: blue;
-        background: url(/assets/img/blue_circle.svg) 0 0 / 100% no-repeat;
-        width: 73%;
-        height: 210px;
-        position: relative;
-        margin: 0 8%;
-        top: 0%;
-        left: 18%;
-        z-index: 1100;
-
-  }
-
-  .resultadosgreen{
-        background-color: blue;
-        background: url(/assets/img/green_circle.svg) 0 0 / 100% no-repeat;
-        width: 76%;
-        height: 210px;
-        position: relative;
-        margin: 0 8%;
-        top: 0%;
-        left: 19%;
-        z-index: 1100;
-
-  }
-
-  .resGeneral {
-    background: url(/assets/img/gray_circle.svg) 0 0 / 100% no-repeat;
-    width: 73%;
-    margin-top: 23%;
-    margin-left: 20%;
-  }
-
-  .promGeneral{
-    text-align: center;margin-top: -37%;font-size: 27px;color:#767676
-  }
-
-  .azul{
-    margin-top: 7%;
-  }
-
-  .verde{
-    margin-top: 5%;
-  }
-  #pgeneral{
-    text-align: center;
-    margin-top: 1em;
-    font-size: 9em;
-  }
-
-  .divYellow{
-  width: 9em;
-  }
-
-  .divBlue{
-    width: 9em;
-  }
-
-  .divGreen{
-    width: 9em;
-  }
-
-  #myChartYellow{
-    margin-left: 3.7em;
-    margin-top: -10.5em;
-    margin-bottom: 2.6em;
-
-  }
-  #myChartGreen{
-    margin-left: 3.5em;
-    margin-top: -10.5em;
-    margin-bottom: 2.6em;
-
-  }
-
-  #myChart{
-    margin-left: 3.7em;
-    margin-top: -10.8em;
-    margin-bottom: 2.9em;
-  }
-
-
-
-
-
-  .blueCir{
-      width: 12.5em;
-  }
-
-  .yellowCir{
-        width: 12em;
-  }
-
-  .greenCir{
-    width: 12.5em;
-  }
-  .azul{
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: -2.5em;
-  }
-
-}
-
-.contenido{
-  width: 100%;
-  height: 100%;
-  padding-top: 43px;
-
-}
-
-
-div.ui-datepicker{
- font-size:10px;
-}
-
-.filtros{
-  margin-left: 5%;
-color: #FFF;
-background: #404041;
-border: none;
-text-align: center;
-margin-bottom: 1em;
+.globo p{
+  width: 90%;
+margin-left: 5%;
+margin-right: 10%;
+margin-bottom: 10%;
+font-size: 12px;
+text-align: justify;
 }

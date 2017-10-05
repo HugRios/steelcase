@@ -23,6 +23,7 @@ var arrayCheckAreas = [];
 export class ResultadosGeneralesComponent implements OnInit {
 
   industria : boolean = false;
+  filtros : boolean;
   arregloClientes: any;
   arregloAreas = ['RH', 'Administración y finanzas', 'Operaciones', 'Logística', 'Ventas', 'Marketing', 'Dirección general', 'Otra'];
   arregloAntiguedad: any;
@@ -47,6 +48,8 @@ public modelIngreso = { year: 2018, month: 10, day: 9 };
     this.arregloAreas;
     this.arregloAntiguedad = arrayAnt;
     this.arregloGeneracion = arrayGeneracion;
+    totalEncuestas = 0;
+    this.filtros = false
   }
 
   enviaResultados(){
@@ -84,7 +87,6 @@ this.router.navigate(['/resultados/:'+industrias]);
         for (var i = 0; i < res.length; i++) {
           $("#industriasWell").append('<input type = "checkbox" name ="indGrupo" id="' + res[i].id + '" value="' + res[i].id + '"><label for="' + res[i].get("Nombre") + '">' + res[i].get("Nombre") + '</label><br>');
         }
-        $("#industriasWell").append('<button (click)="enviaResultados()">' + "Mostrar" + "</button>")
       }
     })
 
@@ -347,6 +349,8 @@ return arrayCheckbox;
 }
 
 }
+
+
 
 
 
