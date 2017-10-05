@@ -6,12 +6,12 @@ import { MyDatePickerModule } from 'mydatepicker';
 
 import { AppComponent } from './app.component';
 import { ResultadosGeneralesComponent } from '../app/resultados-generales/resultados-generales.component';
-import { ResultadosFiltroComponent } from '../app/resultados-generales/resultados-filtro.component';
 import { ComparaResultadosComponent } from './compara-resultados/compara-resultados.component';
 import { ResultadoUnoComponent } from '../app/compara-resultados/resultado-uno/resultado-uno.component';
 import { ResultadoDosComponent } from '../app/compara-resultados/resultado-dos/resultado-dos.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { CircleYellowComponent } from './circle-yellow/circle-yellow.component';
+import { ResultadosFiltrosComponent } from './resultados-generales/resultados-filtros/resultados-filtros.component';
 
 
 
@@ -19,12 +19,12 @@ import { CircleYellowComponent } from './circle-yellow/circle-yellow.component';
   declarations: [
     AppComponent,
     ResultadosGeneralesComponent,
-    ResultadosFiltroComponent,
     ComparaResultadosComponent,
     ResultadoUnoComponent,
     ResultadoDosComponent,
     InicioComponent,
     CircleYellowComponent,
+    ResultadosFiltrosComponent,
 
   ],
   imports: [
@@ -52,7 +52,7 @@ import { CircleYellowComponent } from './circle-yellow/circle-yellow.component';
       ,
       {
         path: 'resultadosFiltro/:id',
-        component: ResultadosFiltroComponent
+        component: ResultadosFiltrosComponent
       }
     ])
   ],

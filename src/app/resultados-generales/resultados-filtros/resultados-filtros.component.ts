@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 declare var Parse: any;
 declare var $: any;
@@ -7,11 +7,12 @@ var general = 0;
 var totalEncuestas = 0;
 
 @Component({
-  selector: 'app-resultados-filtro',
-  templateUrl: './resultados-generales.component.html',
-  styleUrls: ['./resultados-generales.component.css']
+  selector: 'app-resultados-filtros',
+  templateUrl: './resultados-filtros.component.html',
+  styleUrls: ['./resultados-filtros.component.css']
 })
-export class ResultadosFiltroComponent {
+export class ResultadosFiltrosComponent implements OnInit {
+
   filtros : boolean = true;
 
   constructor(private router: Router){
@@ -31,7 +32,7 @@ export class ResultadosFiltroComponent {
       var getString = loc.substring(loc.lastIndexOf(":")+1);
       var auxString = getString.replace(/%26/g, "&");
       var newString = auxString.replace(/%3D/g, "=");
-//console.log(newString);
+  //console.log(newString);
       var GET = newString.split('&');
       var get =[] ;//this object will be filled with the key-value pairs and returned.
 
@@ -205,7 +206,7 @@ export class ResultadosFiltroComponent {
 
             var number = pTotal;
             general += number;
-          
+
             if (pTotal.toFixed(1) == 'NaN') {
               $("#promedioTotal").html('NA');
             } else {
@@ -537,7 +538,6 @@ export class ResultadosFiltroComponent {
     this.circuloVerde();
 
   }
-
 
 
 }
