@@ -4,33 +4,12 @@
 
       <div class="col-md col-md-2" style="display: grid;">
 
-            <label *ngIf="filtros" for="">Resultados por:</label>
-            <div hidden class="" id="showInd" style="text-align: center;">
-                <label for="inName">Industria:</label>
-                <input  type="text" id="industriaName" name="inName" value="" class="filtros" >
-            </div>
-            <div hidden class="" id="showClient" style="text-align: center;">
-                <label for="clName">Cliente:</label>
-                <input  type="text" id="clienteName" name="clName" value="" class="filtros" >
-            </div>
-            <div hidden class="" id="showArea" style="text-align: center;">
-                <label for="arName">Área:</label>
-                <input type="text" id = "areaName" name="arName" value="" class="filtros">
-            </div>
-            <div hidden class="" id="showAntig" style="text-align: center;">
-                <label for="anName">Antigüedad:</label>
-                <input type="text" id = "antigName" name="anName" value="" class="filtros">
-            </div>
-            <div hidden class="" id="showGen" style="text-align: center;">
-                <label for="geName">Generación:</label>
-                <input type="text" id = "genName" name="geName" value="" class="filtros">
-            </div>
-
-
+            <label for="">Resultados por:</label>
+            <input hidden type="text" id="elVal" name="" value="" class="filtros" >
+            <input hidden type="text" id = "areaName" name="" value="" class="filtros">
+            <input Hidden type="text" id = "antigName" name="" value="" class="filtros">
             <input Hidden type="text" id = "genName" name="" value="" class="filtros">
 
-
-    <img  *ngIf="!filtros" src="assets/img/scLogo.jpg" style="width: 11em;margin-top: 23em;margin-left: .5em;"  />
 
 
 
@@ -40,7 +19,7 @@
 
         <div class="row" style="display: flex">
           <div class="col-md col-md-6" style="display: flex;justify-content: center;">
-  <a id="regresa" *ngIf="filtros" (click)="goBack()"><img src="assets/img/regresa.png" alt="" title="Regresa a resultados por industria" style="margin-left: 8%;"></a>
+  <a id="regresa" *ngIf="filtros" (click)="regresaResultados()"><img src="assets/img/regresa.png" alt="" title="Regresa a resultados por industria" style="margin-left: 8%;"></a>
               <div class="resGeneral">
                 <div class="row promGeneral">
                   <div  id="totalGlobal">

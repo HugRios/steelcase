@@ -19,64 +19,72 @@
               </div>
           </a>
 
-  <!--Filtro por empresa-->
-          <a id="empresas" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
-          " >
-              <div class="btn66" >
-                  <p style="width: 100%;" id="empresaP" (click)="mostrarEmpresasRes()">EMPRESA</p>
-                  <div id="triangle_right" style="margin: -12% 4% 0 0;" (click)="mostrarEmpresasRes()" ></div>
-                  <div class="dropdown-content" id="empresaR" >
-                    <ul   style="list-style:none;color:#404041" id="empresasWell" >
-                      <li *ngFor="let item of arregloClientes">{{item}}</li>
-                    </ul>
-                  </div>
-              </div>
-          </a>
-
           <!--Filtro por empresa-->
-                  <a id="areas" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
-                  " >
-                      <div class="btn66" >
-                          <p style="width: 100%;" id="areaP" (click)="mostrarAreasRes()">ÁREA</p>
-                          <div id="triangle_right" style="margin: -12% 4% 0 0;" (click)="mostrarAreasRes()" ></div>
-                          <div class="dropdown-content" id="areaR" >
-                            <ul  style="list-style:none;color:#404041" id="areaWell" >
-                              <li *ngFor = "let area of arregloAreas">{{area}}</li>
-                            </ul>
+                <a id="empresas" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
+                " >
+                    <div class="btn66" >
+                        <p style="width: 100%;" id="empresaP" (click)="mostrarEmpresasRes()">EMPRESA</p>
+                        <div id="triangle_right" style="margin: -12% 4% 0 0;" (click)="mostrarEmpresasRes()" ></div>
+                        <div class="dropdown-content" id="empresaR" >
+                          <ul   style="list-style:none;color:#404041" id="empresasWell" >
+                            <li *ngFor="let item of arregloClientes" id="{{item.id}}" (click)="filtraCliente(item.id)">{{item.nombre}}</li>
+                          </ul>
+                        </div>
+                    </div>
+                </a>
 
-                          </div>
-                      </div>
-                  </a>
+                <!--Filtro por empresa-->
+                      <!--  <a id="areas" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
+                        " >
+                            <div class="btn66" >
+                                <p style="width: 100%;" id="areaP" (click)="mostrarAreasRes()">ÁREA</p>
+                                <div id="triangle_right" style="margin: -12% 4% 0 0;" (click)="mostrarAreasRes()" ></div>
+                                <div class="dropdown-content" id="areaR" >
+                                  <ul  style="list-style:none;color:#404041" id="areaWell" >
+                                    <li *ngFor = "let area of arregloAreas" (click)="filtroArea(area.id)">{{area}}</li>
+                                  </ul>
+
+                                </div>
+                            </div>
+                        </a>-->
 
 
-                  <!--Filtro por empresa-->
-                          <a id="atiguedades" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
-                          " >
+                        <!--Filtro por empresa-->
+                                <a id="atiguedades" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
+                                " >
+                                    <div class="btn66" >
+                                        <p style="width: 100%;" id="antiguedadP" (click)="mostrarAntiguedadRes()">ANTIGüEDAD</p>
+                                        <div id="triangle_right" style="margin: -12% 4% 0 0;"(click)="mostrarAntiguedadRes()" ></div>
+                                        <div class="dropdown-content" id="antiguedadR" >
+                                          <ul  style="list-style:none;color:#404041" id="antigWell" >
+                                            <li *ngFor = "let antiguedad of arregloAntiguedad" (click)="filtroAntiguedad(antiguedad.id)">{{antiguedad.nombre}}</li>
+                                          </ul>
+
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a id="generaciones" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
+                                " >
+                                    <div class="btn66" >
+                                        <p style="width: 100%;" id="generacionP" (click)="mostrarGeneracionesRes()">GENERACIÓN</p>
+                                        <div id="triangle_right" style="margin: -12% 4% 0 0;"(click)="mostrarGeneracionesRes()" ></div>
+                                        <div class="dropdown-content" id="generacionR" >
+                                          <ul  style="list-style:none;color:#404041" id="genWell" >
+                                            <li *ngFor = "let generacion of arregloGeneracion" (click)="filtroGeneracion(generacion.id)">{{generacion.nombre}}</li>
+                                          </ul>
+
+                                        </div>
+                                    </div>
+                                </a>
+
                               <div class="btn66" >
-                                  <p style="width: 100%;" id="antiguedadP" (click)="mostrarAntiguedadRes()">ANTIGüEDAD</p>
-                                  <div id="triangle_right" style="margin: -12% 4% 0 0;"(click)="mostrarAntiguedadRes()" ></div>
-                                  <div class="dropdown-content" id="antiguedadR" >
-                                    <ul  style="list-style:none;color:#404041" id="antigWell" >
-                                      <li *ngFor = "let antiguedad of arregloAntiguedad">{{antiguedad}}</li>
-                                    </ul>
-
-                                  </div>
-                              </div>
-                          </a>
-
-                          <a id="generaciones" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
-                          " >
-                              <div class="btn66" >
-                                  <p style="width: 100%;" id="generacionP" (click)="mostrarGeneracionesRes()">GENERACIÓN</p>
-                                  <div id="triangle_right" style="margin: -12% 4% 0 0;"(click)="mostrarGeneracionesRes()" ></div>
+                                  <p style="width: 100%;" id="generacionP" (click)="showResults()">MOSTRAR</p>
                                   <div class="dropdown-content" id="generacionR" >
-                                    <ul  style="list-style:none;color:#404041" id="genWell" >
-                                      <li *ngFor = "let generacion of arregloGeneracion">{{generacion}}</li>
-                                    </ul>
+
 
                                   </div>
                               </div>
-                          </a>
 
 
 
@@ -168,10 +176,7 @@
                     <p>ÍNDICE DE</p>
                     <p>BIENESTAR GLOBAL</p>
                   </div>
-                  <div *ngIf="industria"  id="totalIndustria">
-                    <p id="pasa">ÍNDICE DE BIENESTAR</p>
-                    <p id="sector"> </p>
-                  </div>
+
                 </div>
                 <div class="row">
                   <p id="pgeneral" style="color:#767676"></p>

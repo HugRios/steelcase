@@ -9,11 +9,12 @@ var general = 0;
 var grlIndustria;
 var totalEncuestas = 0;
 var arrayClientes = [];
-var arrayAreas = [];
+var arrayAreas = ['RH', 'Administración y finanzas', 'Operaciones', 'Logística', 'Ventas', 'Marketing', 'Dirección general', 'Otra'];
 var arrayAnt = [];
 var arrayGeneracion = [];
 var fechaIngreso;
 var arrayCheckAreas = [];
+var empresaG, areaG, antiguedadG, generacionG, industriaG;
 
 @Component({
   selector: 'app-resultados-generales',
@@ -22,10 +23,10 @@ var arrayCheckAreas = [];
 })
 export class ResultadosGeneralesComponent implements OnInit {
 
-  industria : boolean = false;
+  industria : string = "Nueva";
   filtros : boolean;
   arregloClientes: any;
-  arregloAreas = ['RH', 'Administración y finanzas', 'Operaciones', 'Logística', 'Ventas', 'Marketing', 'Dirección general', 'Otra'];
+  arregloAreas : any;
   arregloAntiguedad: any;
   arregloGeneracion: any;
   public myDatePickerOptions: IMyDpOptions = {
@@ -45,11 +46,18 @@ public modelIngreso = { year: 2018, month: 10, day: 9 };
     Parse.serverURL = 'https://steelcase-circles.herokuapp.com/parse';
 
     this.arregloClientes = arrayClientes;
-    this.arregloAreas;
+    this.arregloAreas = arrayAreas;
     this.arregloAntiguedad = arrayAnt;
     this.arregloGeneracion = arrayGeneracion;
     totalEncuestas = 0;
-    this.filtros = false
+    this.filtros = false;
+
+    empresaG ="";
+    areaG="";
+    antiguedadG="";
+    generacionG="";
+    industriaG="";
+
   }
 
   enviaResultados(){
@@ -104,12 +112,14 @@ this.router.navigate(['/resultados/:'+industrias]);
 
 
   addEmpresa() {
+
     var query = new Parse.Query('ClienteWell');
+
     query.find({
       success: function(results) {
         var list = document.createElement('li');
         for (var i = 0; i < results.length; i++) {
-          arrayClientes.push(results[i].get("nombre"))
+          arrayClientes.push({nombre:results[i].get("nombre"), id: results[i].id})
           //$("#empresasWell").append('<li>'+results[i].get("nombre")+'</li>')
           //$("#empresasWell li").attr("value", results[i].id)
         }
@@ -134,7 +144,7 @@ this.router.navigate(['/resultados/:'+industrias]);
       query.find({
         success: function(res){
           for (var i = 0; i < res.length; i++) {
-            arrayAnt.push(res[i].get("nombre"));
+            arrayAnt.push({nombre: res[i].get("nombre"), id: res[i].id});
               //$("#antigWell").append('<li id='+res[i].id+'>'+res[i].get("nombre")+'</li>');
           }
         }
@@ -171,7 +181,7 @@ addGeneracion(){
       query.find({
         success: function(res){
           for (var i = 0; i < res.length; i++) {
-            arrayGeneracion.push(res[i].get("Nombre"))
+            arrayGeneracion.push({nombre:res[i].get("Nombre"), id: res[i].id})
               //$("#genWell").append('<li id='+res[i].id+'>'+res[i].get("Nombre")+'</li>');
           }
         }
@@ -350,6 +360,60 @@ return arrayCheckbox;
 
 }
 
+
+
+filtraCliente(ide: any){
+this.OcultarTodo();
+
+  empresaG = ide;
+  var Cliente = Parse.Object.extend("ClienteWell");
+  var cliente = new Cliente();
+      cliente.id = ide;
+      $("#empresaP").html(cliente.get("nombre"));
+
+
+  //alert("pus si funciona")
+}
+
+/*filtroArea(ide: any){
+  areaG = ide;
+  this.OcultarTodo();
+  var Area = Parse.Object.extend("areaWell");
+  var query = new Parse.Query(Area);
+      query.
+  var area = new Area();
+      area.id = ide;
+      $("#areaP").html(area.get("Name"));
+}*/
+
+
+filtroAntiguedad(ide: any){
+  antiguedadG = ide;
+  this.OcultarTodo();
+  var Antiguedad = Parse.Object.extend("Antiguedad");
+  var antiguedad = new Antiguedad();
+      antiguedad.id = ide;
+      $("#antiguedadP").html(antiguedad.get("nombre"));
+}
+
+filtroGeneracion(ide: any){
+  generacionG = ide;
+  this.OcultarTodo();
+  var Generacion = Parse.Object.extend("genWell");
+  var generacion = new Generacion();
+      generacion.id = ide;
+      $("#generacionP").html(generacion.get("Nombre"));
+}
+
+showResults(){
+  var arreglo = this.enviaResultados();
+  if(arreglo.length > 1){
+    alert("Si deseas hacer uso de los filtros solo puedes seleccionar una área")
+  }else{
+    this.router.navigate(['/resultadosFiltro/:'+"Empresa="+empresaG+"&"+"Area="+areaG+"&"+"Generacion="+generacionG+"&"+"Antiguedad="+antiguedadG+"&Industria="+arreglo[0]]);
+  }
+
+}
 
 
 

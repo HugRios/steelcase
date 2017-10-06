@@ -12,6 +12,7 @@ import { ResultadoDosComponent } from '../app/compara-resultados/resultado-dos/r
 import { InicioComponent } from './inicio/inicio.component';
 import { CircleYellowComponent } from './circle-yellow/circle-yellow.component';
 import { ResultadosFiltrosComponent } from './resultados-generales/resultados-filtros/resultados-filtros.component';
+import { ResultadosEmpresaComponent } from './resultados-generales/resultados-empresa/resultados-empresa.component';
 
 
 
@@ -25,6 +26,7 @@ import { ResultadosFiltrosComponent } from './resultados-generales/resultados-fi
     InicioComponent,
     CircleYellowComponent,
     ResultadosFiltrosComponent,
+    ResultadosEmpresaComponent,
 
   ],
   imports: [
@@ -53,6 +55,9 @@ import { ResultadosFiltrosComponent } from './resultados-generales/resultados-fi
       {
         path: 'resultadosFiltro/:id',
         component: ResultadosFiltrosComponent
+      },{
+        path: 'resultadosEmpresa',
+        component: ResultadosEmpresaComponent,
       }
     ])
   ],

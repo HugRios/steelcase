@@ -21,9 +21,23 @@ export class ResultadosFiltrosComponent implements OnInit {
     totalEncuestas = 0;
   }
 
-  regresaResultados(){
+goBack() {
+    window.history.back();
+}
+
+  regresaInd(){
     var array = this.getGET();
-    this.router.navigate(['/resultados/:'+array[4].id+","])
+    if(array[4].id != ""){
+      var query = new Parse.Query("indWell");
+          query.equalTo("objectId", array[4].id)
+          query.find({
+            success: function(res){
+              $("#showInd").show('fast');
+              $("#industriaName").val(res[0].get('Nombre'))
+            }
+          })
+    }
+
   }
 
   getGET(){
@@ -66,8 +80,8 @@ export class ResultadosFiltrosComponent implements OnInit {
                 queryCliente.equalTo("objectId", id);
                 queryCliente.find({
                   success: function(res){
-                    $("#elVal").show('fast');
-                       $("#elVal").val(res[0].get("nombre"));
+                    $("#showClient").show('fast');
+                       $("#clienteName").val(res[0].get("nombre"));
                   }
                 })
        //$("#empresaPP").html('hjdhfdf')
@@ -87,7 +101,7 @@ export class ResultadosFiltrosComponent implements OnInit {
                 queryArea.find({
                   success: function(res){
                     console.log(res[0].get("nombre"))
-                      $("#areaName").show('fast');
+                      $("#showArea").show('fast');
                        $("#areaName").val(res[0].get("Name"));
                   }
                 })
@@ -106,7 +120,7 @@ export class ResultadosFiltrosComponent implements OnInit {
                 queryGen.equalTo("objectId", id);
                 queryGen.find({
                   success: function(res){
-                      $("#genName").show('fast');
+                      $("#showGen").show('fast');
                        $("#genName").val(res[0].get("Nombre"));
                   }
                 })
@@ -127,7 +141,7 @@ export class ResultadosFiltrosComponent implements OnInit {
                 queryaAntiguedad.equalTo("objectId", id);
                 queryaAntiguedad.find({
                   success: function(res){
-                    $("#antigName").show('fast')
+                    $("#showAntig").show('fast')
                        $("#antigName").val(res[0].get("nombre"));
                   }
                 })
@@ -536,6 +550,7 @@ export class ResultadosFiltrosComponent implements OnInit {
 
   ngOnInit() {
     this.circuloVerde();
+    this.regresaInd();
 
   }
 
