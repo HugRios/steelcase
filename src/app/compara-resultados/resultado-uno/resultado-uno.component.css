@@ -907,35 +907,7 @@ margin: 0;
 }
 
 
-@media screen and (min-width: 750px){
-    div#circles
-    {
-      height: 640px;
-      width: 132%;
-      position: absolute;
-      right: 117%;
-      top: -13%;
 
-
-    }
-    div #star
-    {
-    float: left;
-    width: 100%;
-    height: 613px;
-    background: url(//assets/img/yellow_circle.svg) 0 0 / 100% no-repeat;
-    position: relative;
-    margin: 0 8%;
-    top: 0%;
-    left: 0%;
-    z-index: 1100;
-    }
-    .btn66, .btn67
-    {
-    width: 70%;
-
-    }
-}
 @media screen and (min-width: 1000px){
   .divYellow{
     width: 135px;
