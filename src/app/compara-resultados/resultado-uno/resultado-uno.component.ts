@@ -56,6 +56,11 @@ export class ResultadoUnoComponent implements OnInit {
 
 }
 
+regresaHome(){
+  console.log("si estoy");
+  this.router.navigate(['/home'])
+}
+
 nombreInd(){
   var url = window.location.pathname;
   industriaG = url.substring(url.indexOf(":")+1, url.length-1);
