@@ -1780,11 +1780,15 @@ display: flex;
 
 }
 
+.grayCircle{
+  width: 25em;
+  margin-left: 1.5em;
+}
+
 #pgeneral{
   text-align: center;
-  margin-top: 0.7em;
+  margin-top: -2.1em;
   font-size: 9em;
-
 }
 
 .azul{
@@ -1876,6 +1880,10 @@ width: 9em;
         z-index: 1100;
 
   }
+  .grayCircle{
+    width: 25em;
+    margin-left: 5.5em;
+  }
 
   .content{
     text-align: center;
@@ -1960,6 +1968,11 @@ width: 9em;
 
   }
 
+  .grayCircle{
+    width: 25em;
+    margin-left: 5.5em;
+  }
+
   .resultadosblue{
         background-color: blue;
         background: url(/assets/img/blue_circle.svg) 0 0 / 100% no-repeat;
@@ -2006,8 +2019,9 @@ width: 9em;
   }
   #pgeneral{
     text-align: center;
-    margin-top: 1em;
+    margin-top: -2.1em;
     font-size: 9em;
+    margin-left: .6em;
   }
 
   .divYellow{
