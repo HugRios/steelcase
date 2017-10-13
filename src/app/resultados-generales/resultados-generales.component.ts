@@ -1644,6 +1644,18 @@ sigPaso(){
   }
 
   ngOnInit() {
+
+  //  document.getElementById("testScript").remove();
+var testScript = document.createElement("script");
+testScript.setAttribute("id", "testScript");
+testScript.setAttribute("src", "assets/PptxGenJS/dist/pptxgen.js");
+document.body.appendChild(testScript);
+
+var testScript2 = document.createElement("script");
+testScript2.setAttribute("id", "testScript");
+testScript2.setAttribute("src", "assets/PptxGenJS/libs/jszip.min.js");
+document.body.appendChild(testScript2);
+
     this.circuloVerde();
     this.addIndustrias();
     this.addEmpresa();
@@ -2149,7 +2161,8 @@ slideGrafico.addChart(pptx.charts.PIE, dataChartPieGen,
     arrAntAzul.length = 0;
     arrAntVerde.length = 0;
   }catch(exception){
-    alert("La información no se encuentra lista, intentelo de nuevo en unos minutos")
+  //  alert("La información no se encuentra lista, intentelo de nuevo en unos minutos")
+  alert(exception)
     arrGenAmarillo.length = 0;
     arrGenAzul.length = 0;
     arrGenVerde.length = 0;
