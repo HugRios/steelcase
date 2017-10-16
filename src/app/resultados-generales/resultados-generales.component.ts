@@ -465,7 +465,12 @@ showResults(){
     if(arreglo.length != 0){
       industria = arreglo[0];
     }
-    this.router.navigate(['/resultadosFiltro/:'+"Empresa="+empresaG+"&"+"Area="+areaG+"&"+"Generacion="+generacionG+"&"+"Antiguedad="+antiguedadG+"&Industria="+industria]);
+    if(empresaG == '' && areaG =='' && generacionG == '' && antiguedadG =='' && industria ==''){
+      alert('No existen filtros para la búsqueda');
+    }else{
+      this.router.navigate(['/resultadosFiltro/:'+"Empresa="+empresaG+"&"+"Area="+areaG+"&"+"Generacion="+generacionG+"&"+"Antiguedad="+antiguedadG+"&Industria="+industria]);
+      
+    }
   }
 
 }
@@ -615,9 +620,9 @@ try {
           rb += object.get("peso");
           //b+=object.get("presence");
           b += object.get("ergonomia");
-          lb += object.get("jornada");
+          lb += object.get("cargaTrabajo");//cambiar nueva encuesta carga de trabajo
           //l+=object.get("privacy");
-          l += object.get("dieta");
+          l += object.get("vitalidad");//cambiar nueva encuesta vitalidad
           //lt+=object.get("cognitive");
           lt += object.get("luz");
 
@@ -703,22 +708,22 @@ try {
           for (var i = 0; i < results.length; i++) {
             var object = results[i];
             //t+=object.get("physical");
-            t += object.get("privAcustica");
+            t += object.get("realizacion");//cambiar para nueva encuesta//realizacion
             //rt+=object.get("choice");
-            rt += object.get("privVisual");
+            rt += object.get("eleccion");//cambiar para nueva encuesta//eleccion
             //r+=object.get("posture");
             r += object.get("estres");
             //rb+=object.get("control");
             rb += object.get("anonEstrategico");
             //b+=object.get("presence");
-            b += object.get("expSelectiva");
-            lb += object.get("privTerritorial");
+            b += object.get("atencionPlena");//cambiar para nueva encuesta//atencion plena
+            lb += object.get("confidencialidad");//cambiar para nueva encuesta//confidencialidad
             //l+=object.get("privacy");
             l += object.get("bloqueEst");
             //lt+=object.get("cognitive");
-            lt += object.get("confidencialidad");
+            lt += object.get("revitalizacion");// cambiar por revitalizacion
 
-            eb += object.get("revitalizacion");
+            eb += object.get("creatividad");//cambiar por creatividad
           }
 
           var fct = t / results.length;
@@ -750,7 +755,7 @@ try {
               datasets: [{
                 backgroundColor: "rgba(253, 99, 68, 0.81)",
                 borderColor: "rgba(253, 86, 53, 1)",
-                data: [fct, fcrt, fcr, fcrb, fcb, fclb, fcl, fclt, fceb]
+                data: [fct.toFixed(1), fcrt.toFixed(1), fcr.toFixed(1), fcrb.toFixed(1), fcb.toFixed(1), fclb.toFixed(1), fcl.toFixed(1), fclt.toFixed(1), fceb.toFixed(1)]
               }]
             },
             options: {
@@ -803,7 +808,7 @@ try {
             var object = results[i];
 
             //t+=object.get("physical");
-            t += object.get("pertenencia");
+            t += object.get("sentValorado"); // cambiar por sentValorado
             //rt+=object.get("choice");
             rt += object.get("conectarseOtros");
             //r+=object.get("posture");
@@ -811,12 +816,12 @@ try {
             //rb+=object.get("control");
             rb += object.get("confianza");
             //b+=object.get("presence");
-            b += object.get("inovacion");
-            lb += object.get("trabajoEquipo");
+            b += object.get("sentido");//cambiar para encuestas por sentido
+            lb += object.get("optimismo");//cambair por optimismo
             //l+=object.get("privacy");
-            l += object.get("resProblemas");
+            l += object.get("autenticidad");//cambiar para encuestas por autenticidad
             //lt+=object.get("cognitive");
-            lt += object.get("pertenencia");
+            lt += object.get("intLider");//cambiar para encuestas por intLider
 
             eb += object.get("proposito");
           }
@@ -924,9 +929,9 @@ reporteGeneracion(){
                     rb += object.get("peso");
                     //b+=object.get("presence");
                     b += object.get("ergonomia");
-                    lb += object.get("jornada");
+                    lb += object.get("cargaTrabajo");//cambiar nueva encuesta carga de trabajo
                     //l+=object.get("privacy");
-                    l += object.get("dieta");
+                    l += object.get("vitalidad");//cambiar nueva encuesta vitalidad
                     //lt+=object.get("cognitive");
                     lt += object.get("luz");
 
@@ -976,22 +981,22 @@ reporteGenAzul(){
                     for (let i = 0; i < results.length; i++) {
                       var object = results[i];
                       //t+=object.get("physical");
-                      t += object.get("privAcustica");
+                      t += object.get("realizacion");//cambiar para nueva encuesta//realizacion
                       //rt+=object.get("choice");
-                      rt += object.get("privVisual");
+                      rt += object.get("eleccion");//cambiar para nueva encuesta//eleccion
                       //r+=object.get("posture");
                       r += object.get("estres");
                       //rb+=object.get("control");
                       rb += object.get("anonEstrategico");
                       //b+=object.get("presence");
-                      b += object.get("expSelectiva");
-                      lb += object.get("privTerritorial");
+                      b += object.get("atencionPlena");//cambiar para nueva encuesta//atencion plena
+                      lb += object.get("confidencialidad");//cambiar para nueva encuesta//confidencialidad
                       //l+=object.get("privacy");
                       l += object.get("bloqueEst");
                       //lt+=object.get("cognitive");
-                      lt += object.get("confidencialidad");
+                      lt += object.get("revitalizacion");// cambiar por revitalizacion
 
-                      eb += object.get("revitalizacion");
+                      eb += object.get("creatividad");//cambiar por creatividad
                     }//termina for query
                     var fct = t / results.length;
                     var fcrt = rt / results.length;
@@ -1035,7 +1040,7 @@ reporteGenVerde(){
                   var object = results[i];
 
                   //t+=object.get("physical");
-                  t += object.get("pertenencia");
+                  t += object.get("sentValorado"); // cambiar por sentValorado
                   //rt+=object.get("choice");
                   rt += object.get("conectarseOtros");
                   //r+=object.get("posture");
@@ -1043,12 +1048,12 @@ reporteGenVerde(){
                   //rb+=object.get("control");
                   rb += object.get("confianza");
                   //b+=object.get("presence");
-                  b += object.get("inovacion");
-                  lb += object.get("trabajoEquipo");
+                  b += object.get("sentido");//cambiar para encuestas por sentido
+                  lb += object.get("optimismo");//cambair por optimismo
                   //l+=object.get("privacy");
-                  l += object.get("resProblemas");
+                  l += object.get("autenticidad");//cambiar para encuestas por autenticidad
                   //lt+=object.get("cognitive");
-                  lt += object.get("pertenencia");
+                  lt += object.get("intLider");//cambiar para encuestas por intLider
 
                   eb += object.get("proposito");
                 }//termina for query
@@ -1103,9 +1108,9 @@ reporteIndAmarillo(){
                       rb += object.get("peso");
                       //b+=object.get("presence");
                       b += object.get("ergonomia");
-                      lb += object.get("jornada");
+                      lb += object.get("cargaTrabajo");//cambiar nueva encuesta carga de trabajo
                       //l+=object.get("privacy");
-                      l += object.get("dieta");
+                      l += object.get("vitalidad");//cambiar nueva encuesta vitalidad
                       //lt+=object.get("cognitive");
                       lt += object.get("luz");
 
@@ -1154,22 +1159,22 @@ reporteIndAzul(){
                 for (let i = 0; i < results.length; i++) {
                   var object = results[i];
                   //t+=object.get("physical");
-                  t += object.get("privAcustica");
+                  t += object.get("realizacion");//cambiar para nueva encuesta//realizacion
                   //rt+=object.get("choice");
-                  rt += object.get("privVisual");
+                  rt += object.get("eleccion");//cambiar para nueva encuesta//eleccion
                   //r+=object.get("posture");
                   r += object.get("estres");
                   //rb+=object.get("control");
                   rb += object.get("anonEstrategico");
                   //b+=object.get("presence");
-                  b += object.get("expSelectiva");
-                  lb += object.get("privTerritorial");
+                  b += object.get("atencionPlena");//cambiar para nueva encuesta//atencion plena
+                  lb += object.get("confidencialidad");//cambiar para nueva encuesta//confidencialidad
                   //l+=object.get("privacy");
                   l += object.get("bloqueEst");
                   //lt+=object.get("cognitive");
-                  lt += object.get("confidencialidad");
+                  lt += object.get("revitalizacion");// cambiar por revitalizacion
 
-                  eb += object.get("revitalizacion");
+                  eb += object.get("creatividad");//cambiar por creatividad
                 }//termina for query
                 var fct = t / results.length;
                 var fcrt = rt / results.length;
@@ -1213,7 +1218,7 @@ reporteIndVerde(){
                   var object = results[i];
 
                   //t+=object.get("physical");
-                  t += object.get("pertenencia");
+                  t += object.get("sentValorado"); // cambiar por sentValorado
                   //rt+=object.get("choice");
                   rt += object.get("conectarseOtros");
                   //r+=object.get("posture");
@@ -1221,12 +1226,12 @@ reporteIndVerde(){
                   //rb+=object.get("control");
                   rb += object.get("confianza");
                   //b+=object.get("presence");
-                  b += object.get("inovacion");
-                  lb += object.get("trabajoEquipo");
+                  b += object.get("sentido");//cambiar para encuestas por sentido
+                  lb += object.get("optimismo");//cambair por optimismo
                   //l+=object.get("privacy");
-                  l += object.get("resProblemas");
+                  l += object.get("autenticidad");//cambiar para encuestas por autenticidad
                   //lt+=object.get("cognitive");
-                  lt += object.get("pertenencia");
+                  lt += object.get("intLider");//cambiar para encuestas por intLider
 
                   eb += object.get("proposito");
                 }//termina for query
@@ -1281,9 +1286,9 @@ reporteAreaAmarillo(){
                       rb += object.get("peso");
                       //b+=object.get("presence");
                       b += object.get("ergonomia");
-                      lb += object.get("jornada");
+                      lb += object.get("cargaTrabajo");//cambiar nueva encuesta carga de trabajo
                       //l+=object.get("privacy");
-                      l += object.get("dieta");
+                      l += object.get("vitalidad");//cambiar nueva encuesta vitalidad
                       //lt+=object.get("cognitive");
                       lt += object.get("luz");
 
@@ -1332,22 +1337,22 @@ reporteAreaAzul(){
                 for (let i = 0; i < results.length; i++) {
                   var object = results[i];
                   //t+=object.get("physical");
-                  t += object.get("privAcustica");
+                  t += object.get("realizacion");//cambiar para nueva encuesta//realizacion
                   //rt+=object.get("choice");
-                  rt += object.get("privVisual");
+                  rt += object.get("eleccion");//cambiar para nueva encuesta//eleccion
                   //r+=object.get("posture");
                   r += object.get("estres");
                   //rb+=object.get("control");
                   rb += object.get("anonEstrategico");
                   //b+=object.get("presence");
-                  b += object.get("expSelectiva");
-                  lb += object.get("privTerritorial");
+                  b += object.get("atencionPlena");//cambiar para nueva encuesta//atencion plena
+                  lb += object.get("confidencialidad");//cambiar para nueva encuesta//confidencialidad
                   //l+=object.get("privacy");
                   l += object.get("bloqueEst");
                   //lt+=object.get("cognitive");
-                  lt += object.get("confidencialidad");
+                  lt += object.get("revitalizacion");// cambiar por revitalizacion
 
-                  eb += object.get("revitalizacion");
+                  eb += object.get("creatividad");//cambiar por creatividad
                 }//termina for query
                 var fct = t / results.length;
                 var fcrt = rt / results.length;
@@ -1389,9 +1394,8 @@ reporteAreaVerde(){
                 var t = 0, b = 0, l = 0, r = 0, lt = 0, lb = 0, rt = 0, rb = 0, eb = 0;
                 for (let i = 0; i < results.length; i++) {
                   var object = results[i];
-
                   //t+=object.get("physical");
-                  t += object.get("pertenencia");
+                  t += object.get("sentValorado"); // cambiar por sentValorado
                   //rt+=object.get("choice");
                   rt += object.get("conectarseOtros");
                   //r+=object.get("posture");
@@ -1399,12 +1403,12 @@ reporteAreaVerde(){
                   //rb+=object.get("control");
                   rb += object.get("confianza");
                   //b+=object.get("presence");
-                  b += object.get("inovacion");
-                  lb += object.get("trabajoEquipo");
+                  b += object.get("sentido");//cambiar para encuestas por sentido
+                  lb += object.get("optimismo");//cambair por optimismo
                   //l+=object.get("privacy");
-                  l += object.get("resProblemas");
+                  l += object.get("autenticidad");//cambiar para encuestas por autenticidad
                   //lt+=object.get("cognitive");
-                  lt += object.get("pertenencia");
+                  lt += object.get("intLider");//cambiar para encuestas por intLider
 
                   eb += object.get("proposito");
                 }//termina for query
@@ -1448,7 +1452,6 @@ reporteAntAmarillo(){
                   var t = 0, b = 0, l = 0, r = 0, lt = 0, lb = 0, rt = 0, rb = 0, eb = 0;
                     for (let i = 0; i < results.length; i++) {
                       var object = results[i];
-
                       //t+=object.get("physical");
                       t += object.get("postura");
                       //rt+=object.get("choice");
@@ -1459,9 +1462,9 @@ reporteAntAmarillo(){
                       rb += object.get("peso");
                       //b+=object.get("presence");
                       b += object.get("ergonomia");
-                      lb += object.get("jornada");
+                      lb += object.get("cargaTrabajo");//cambiar nueva encuesta carga de trabajo
                       //l+=object.get("privacy");
-                      l += object.get("dieta");
+                      l += object.get("vitalidad");//cambiar nueva encuesta vitalidad
                       //lt+=object.get("cognitive");
                       lt += object.get("luz");
 
@@ -1510,22 +1513,22 @@ reporteAntAzul(){
                 for (let i = 0; i < results.length; i++) {
                   var object = results[i];
                   //t+=object.get("physical");
-                  t += object.get("privAcustica");
+                  t += object.get("realizacion");//cambiar para nueva encuesta//realizacion
                   //rt+=object.get("choice");
-                  rt += object.get("privVisual");
+                  rt += object.get("eleccion");//cambiar para nueva encuesta//eleccion
                   //r+=object.get("posture");
                   r += object.get("estres");
                   //rb+=object.get("control");
                   rb += object.get("anonEstrategico");
                   //b+=object.get("presence");
-                  b += object.get("expSelectiva");
-                  lb += object.get("privTerritorial");
+                  b += object.get("atencionPlena");//cambiar para nueva encuesta//atencion plena
+                  lb += object.get("confidencialidad");//cambiar para nueva encuesta//confidencialidad
                   //l+=object.get("privacy");
                   l += object.get("bloqueEst");
                   //lt+=object.get("cognitive");
-                  lt += object.get("confidencialidad");
+                  lt += object.get("revitalizacion");// cambiar por revitalizacion
 
-                  eb += object.get("revitalizacion");
+                  eb += object.get("creatividad");//cambiar por creatividad
                 }//termina for query
                 var fct = t / results.length;
                 var fcrt = rt / results.length;
@@ -1567,9 +1570,8 @@ reporteAntVerde(){
                 var t = 0, b = 0, l = 0, r = 0, lt = 0, lb = 0, rt = 0, rb = 0, eb = 0;
                 for (let i = 0; i < results.length; i++) {
                   var object = results[i];
-
                   //t+=object.get("physical");
-                  t += object.get("pertenencia");
+                  t += object.get("sentValorado"); // cambiar por sentValorado
                   //rt+=object.get("choice");
                   rt += object.get("conectarseOtros");
                   //r+=object.get("posture");
@@ -1577,12 +1579,12 @@ reporteAntVerde(){
                   //rb+=object.get("control");
                   rb += object.get("confianza");
                   //b+=object.get("presence");
-                  b += object.get("inovacion");
-                  lb += object.get("trabajoEquipo");
+                  b += object.get("sentido");//cambiar para encuestas por sentido
+                  lb += object.get("optimismo");//cambair por optimismo
                   //l+=object.get("privacy");
-                  l += object.get("resProblemas");
+                  l += object.get("autenticidad");//cambiar para encuestas por autenticidad
                   //lt+=object.get("cognitive");
-                  lt += object.get("pertenencia");
+                  lt += object.get("intLider");//cambiar para encuestas por intLider
 
                   eb += object.get("proposito");
                 }//termina for query
@@ -1636,6 +1638,19 @@ sigPaso(){
     console.log(results);*/
     crearImagen(crearImagenDone)
   })
+}
+
+ imagenChart(){
+   html2canvas($("#myChartYellow"), {
+       onrendered: function(canvas) {
+           var theCanvas = canvas;
+           //document.body.appendChild(canvas);
+           Canvas2Image.saveAsPNG(canvas);
+           //image.src = canvas.toDataURL("image/png");
+           console.log("primer paso")
+           //cb1(image.src);
+       }
+   });
 }
 
   crearPptx(){
@@ -1716,6 +1731,8 @@ function crearImagen(cb1){
 
   //return image;
 }
+
+
 
 function crearImagenDone(infoImage: any){
   console.log("2do paso")

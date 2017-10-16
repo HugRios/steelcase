@@ -192,10 +192,13 @@ export class ResultadosEmpresaComponent implements OnInit {
     var cliente = new Cliente();
         cliente.id = ide;
         $("#empresaP").html(cliente.get("nombre"));
-    var query = new Parse.Query("areaWell");
-        query.exists("cliente")
-        query.equalTo("cliente", cliente);
-        query.find({
+    var queryArea = new Parse.Query("areaWell");
+        queryArea.doesNotExist("cliente")
+
+    var queryCliente = new Parse.Query("areaWell");
+        queryCliente.equalTo("cliente", cliente);
+        var allQuery = Parse.Query.or(queryCliente, queryArea) 
+        allQuery.find({
           success: function(res){
             for (let i = 0; i < res.length; i++) {
 
@@ -281,23 +284,23 @@ export class ResultadosEmpresaComponent implements OnInit {
           for (var i = 0; i < results.length; i++) {
             var object = results[i];
 
-            //t+=object.get("physical");
-            t += object.get("postura");
-            //rt+=object.get("choice");
-            rt += object.get("movimiento");
-            //r+=object.get("posture");
-            r += object.get("temperatura");
-            //rb+=object.get("control");
-            rb += object.get("peso");
-            //b+=object.get("presence");
-            b += object.get("ergonomia");
-            lb += object.get("jornada");
-            //l+=object.get("privacy");
-            l += object.get("dieta");
-            //lt+=object.get("cognitive");
-            lt += object.get("luz");
+                      //t+=object.get("physical");
+                      t += object.get("postura");
+                      //rt+=object.get("choice");
+                      rt += object.get("movimiento");
+                      //r+=object.get("posture");
+                      r += object.get("temperatura");
+                      //rb+=object.get("control");
+                      rb += object.get("peso");
+                      //b+=object.get("presence");
+                      b += object.get("ergonomia");
+                      lb += object.get("cargaTrabajo");//cambiar nueva encuesta carga de trabajo
+                      //l+=object.get("privacy");
+                      l += object.get("vitalidad");//cambiar nueva encuesta vitalidad
+                      //lt+=object.get("cognitive");
+                      lt += object.get("luz");
 
-            eb += object.get("contactoexterior");
+                      eb += object.get("contactoexterior");
           }
 
           var fct = t / results.length;
@@ -386,23 +389,24 @@ export class ResultadosEmpresaComponent implements OnInit {
 
             for (var i = 0; i < results.length; i++) {
               var object = results[i];
+              var object = results[i];
               //t+=object.get("physical");
-              t += object.get("privAcustica");
+              t += object.get("realizacion");//cambiar para nueva encuesta//realizacion
               //rt+=object.get("choice");
-              rt += object.get("privVisual");
+              rt += object.get("eleccion");//cambiar para nueva encuesta//eleccion
               //r+=object.get("posture");
               r += object.get("estres");
               //rb+=object.get("control");
               rb += object.get("anonEstrategico");
               //b+=object.get("presence");
-              b += object.get("expSelectiva");
-              lb += object.get("privTerritorial");
+              b += object.get("atencionPlena");//cambiar para nueva encuesta//atencion plena
+              lb += object.get("confidencialidad");//cambiar para nueva encuesta//confidencialidad
               //l+=object.get("privacy");
               l += object.get("bloqueEst");
               //lt+=object.get("cognitive");
-              lt += object.get("confidencialidad");
+              lt += object.get("revitalizacion");// cambiar por revitalizacion
 
-              eb += object.get("revitalizacion");
+              eb += object.get("creatividad");//cambiar por creatividad
             }
 
             var fct = t / results.length;
@@ -492,23 +496,23 @@ export class ResultadosEmpresaComponent implements OnInit {
             for (var i = 0; i < results.length; i++) {
               var object = results[i];
 
-              //t+=object.get("physical");
-              t += object.get("pertenencia");
-              //rt+=object.get("choice");
-              rt += object.get("conectarseOtros");
-              //r+=object.get("posture");
-              r += object.get("interaccionSocial");
-              //rb+=object.get("control");
-              rb += object.get("confianza");
-              //b+=object.get("presence");
-              b += object.get("inovacion");
-              lb += object.get("trabajoEquipo");
-              //l+=object.get("privacy");
-              l += object.get("resProblemas");
-              //lt+=object.get("cognitive");
-              lt += object.get("pertenencia");
+                          //t+=object.get("physical");
+                          t += object.get("sentValorado"); // cambiar por sentValorado
+                          //rt+=object.get("choice");
+                          rt += object.get("conectarseOtros");
+                          //r+=object.get("posture");
+                          r += object.get("interaccionSocial");
+                          //rb+=object.get("control");
+                          rb += object.get("confianza");
+                          //b+=object.get("presence");
+                          b += object.get("sentido");//cambiar para encuestas por sentido
+                          lb += object.get("optimismo");//cambair por optimismo
+                          //l+=object.get("privacy");
+                          l += object.get("autenticidad");//cambiar para encuestas por autenticidad
+                          //lt+=object.get("cognitive");
+                          lt += object.get("intLider");//cambiar para encuestas por intLider
 
-              eb += object.get("proposito");
+                          eb += object.get("proposito");
             }
 
             var fct = t / results.length;

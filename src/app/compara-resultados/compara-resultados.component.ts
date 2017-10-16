@@ -11,6 +11,7 @@ empresa: boolean = false;
 uno : boolean = false;
 dos : boolean = false;
 tres : boolean = false;
+clase: any;
   constructor() {
 
    }
@@ -30,12 +31,13 @@ tres : boolean = false;
 //retrasar aparicion 2do
   muestraComponentes(){
     var noComponentes = this.cuentaResultados();
+    console.log(noComponentes.length);
     if(noComponentes.length == 1){
       this.empresa=true
     }else if(noComponentes.length == 2){
+      this.clase = "col-md col-md-6"
       this.uno=true
       this.dos = true;
-
     }
   }
 

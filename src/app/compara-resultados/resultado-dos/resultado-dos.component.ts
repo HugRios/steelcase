@@ -95,23 +95,23 @@ regresaHome(){
         for (var i = 0; i < results.length; i++) {
           var object = results[i];
 
-          //t+=object.get("physical");
-          t += object.get("postura");
-          //rt+=object.get("choice");
-          rt += object.get("movimiento");
-          //r+=object.get("posture");
-          r += object.get("temperatura");
-          //rb+=object.get("control");
-          rb += object.get("peso");
-          //b+=object.get("presence");
-          b += object.get("ergonomia");
-          lb += object.get("jornada");
-          //l+=object.get("privacy");
-          l += object.get("dieta");
-          //lt+=object.get("cognitive");
-          lt += object.get("luz");
+                    //t+=object.get("physical");
+                    t += object.get("postura");
+                    //rt+=object.get("choice");
+                    rt += object.get("movimiento");
+                    //r+=object.get("posture");
+                    r += object.get("temperatura");
+                    //rb+=object.get("control");
+                    rb += object.get("peso");
+                    //b+=object.get("presence");
+                    b += object.get("ergonomia");
+                    lb += object.get("cargaTrabajo");//cambiar nueva encuesta carga de trabajo
+                    //l+=object.get("privacy");
+                    l += object.get("vitalidad");//cambiar nueva encuesta vitalidad
+                    //lt+=object.get("cognitive");
+                    lt += object.get("luz");
 
-          eb += object.get("contactoexterior");
+                    eb += object.get("contactoexterior");
         }
 
         var fct = t / results.length;
@@ -180,6 +180,7 @@ regresaHome(){
 
 
   circuloAzulDos(): any {
+    debugger
     var promise = new Parse.Promise();
     this.circuloAmarilloDos().then((response: any) => {
       var url = window.location.pathname;
@@ -202,22 +203,22 @@ regresaHome(){
           for (var i = 0; i < results.length; i++) {
             var object = results[i];
             //t+=object.get("physical");
-            t += object.get("privAcustica");
+            t += object.get("realizacion");//cambiar para nueva encuesta//realizacion
             //rt+=object.get("choice");
-            rt += object.get("privVisual");
+            rt += object.get("eleccion");//cambiar para nueva encuesta//eleccion
             //r+=object.get("posture");
             r += object.get("estres");
             //rb+=object.get("control");
             rb += object.get("anonEstrategico");
             //b+=object.get("presence");
-            b += object.get("expSelectiva");
-            lb += object.get("privTerritorial");
+            b += object.get("atencionPlena");//cambiar para nueva encuesta//atencion plena
+            lb += object.get("confidencialidad");//cambiar para nueva encuesta//confidencialidad
             //l+=object.get("privacy");
             l += object.get("bloqueEst");
             //lt+=object.get("cognitive");
-            lt += object.get("confidencialidad");
+            lt += object.get("revitalizacion");// cambiar por revitalizacion
 
-            eb += object.get("revitalizacion");
+            eb += object.get("creatividad");//cambiar por creatividad
           }
 
           var fct = t / results.length;
@@ -309,23 +310,23 @@ regresaHome(){
           for (var i = 0; i < results.length; i++) {
             var object = results[i];
 
-            //t+=object.get("physical");
-            t += object.get("pertenencia");
-            //rt+=object.get("choice");
-            rt += object.get("conectarseOtros");
-            //r+=object.get("posture");
-            r += object.get("interaccionSocial");
-            //rb+=object.get("control");
-            rb += object.get("confianza");
-            //b+=object.get("presence");
-            b += object.get("inovacion");
-            lb += object.get("trabajoEquipo");
-            //l+=object.get("privacy");
-            l += object.get("resProblemas");
-            //lt+=object.get("cognitive");
-            lt += object.get("pertenencia");
+                        //t+=object.get("physical");
+                        t += object.get("sentValorado"); // cambiar por sentValorado
+                        //rt+=object.get("choice");
+                        rt += object.get("conectarseOtros");
+                        //r+=object.get("posture");
+                        r += object.get("interaccionSocial");
+                        //rb+=object.get("control");
+                        rb += object.get("confianza");
+                        //b+=object.get("presence");
+                        b += object.get("sentido");//cambiar para encuestas por sentido
+                        lb += object.get("optimismo");//cambair por optimismo
+                        //l+=object.get("privacy");
+                        l += object.get("autenticidad");//cambiar para encuestas por autenticidad
+                        //lt+=object.get("cognitive");
+                        lt += object.get("intLider");//cambiar para encuestas por intLider
 
-            eb += object.get("proposito");
+                        eb += object.get("proposito");
           }
 
           var fct = t / results.length;
@@ -385,7 +386,8 @@ regresaHome(){
 
           if (pTotal == 'NaN') {
             //$("#promedioTotalVerde").html(0);
-            arrayTotales.push("NA");
+            TotalesVerde.push({total: 'NA', totalF: final, encuestas: totalEncuestas2});
+            promise.resolve(TotalesVerde);
           } else {
               TotalesVerde.push({total: pTotal, totalF: final, encuestas: totalEncuestas2});
               promise.resolve(TotalesVerde);
@@ -434,6 +436,7 @@ regresaHome(){
     arrayGeneracion.length = 0;
     arrayAnt.length = 0;
     this.nombreIndDos().then((response: any) =>{
+      debugger
       console.log(response[0].total);
       this.totalAmarillo = arrayTotales[0];
       this.totalAzul  = arrayTotales[1];
@@ -443,7 +446,7 @@ regresaHome(){
       //this.addIndustrias();
       this.nombreIndDos()
       this.industriaName = response;
-        this.termine = true;
+      this.termine = true;
         console.log(this.termine);
     })
 

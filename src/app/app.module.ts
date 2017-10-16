@@ -13,6 +13,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { CircleYellowComponent } from './circle-yellow/circle-yellow.component';
 import { ResultadosFiltrosComponent } from './resultados-generales/resultados-filtros/resultados-filtros.component';
 import { ResultadosEmpresaComponent } from './resultados-generales/resultados-empresa/resultados-empresa.component';
+import { ResultadoTresComponent } from '../app/compara-resultados/resultado-tres/resultado-tres.component';
 
 
 
@@ -27,6 +28,7 @@ import { ResultadosEmpresaComponent } from './resultados-generales/resultados-em
     CircleYellowComponent,
     ResultadosFiltrosComponent,
     ResultadosEmpresaComponent,
+    ResultadoTresComponent,
 
   ],
   imports: [

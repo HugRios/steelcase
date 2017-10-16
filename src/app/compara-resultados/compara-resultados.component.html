@@ -2,10 +2,10 @@
   <app-resultados-empresa *ngIf = "empresa"></app-resultados-empresa>
 
   <div class="row">
-    <div class="col-md col-md-6">
+    <div [className]="clase">
       <app-resultado-uno *ngIf="uno"></app-resultado-uno>
     </div>
-    <div class="col-md col-md-6">
+    <div [className]="clase">
       <app-resultado-dos *ngIf="dos"></app-resultado-dos>
     </div>
   </div>
