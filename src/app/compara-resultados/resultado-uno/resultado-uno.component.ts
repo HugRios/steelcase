@@ -63,9 +63,10 @@ regresaHome(){
 
 nombreInd(){
   var url = window.location.pathname;
-  industriaG = url.substring(url.indexOf(":")+1, url.length-1);
+  var id = url.substring(url.indexOf(":")+1, url.indexOf(','));
   var Industria = Parse.Object.extend("indWell");
   var query = new Parse.Query(Industria);
+      query.equalTo('objectId',id )
       query.find({
         success: function(res){
           var nombre = res[0].get("Nombre");
@@ -261,7 +262,8 @@ OcultarTodo(){
 
   circuloAmarillo(): any {
     var url = window.location.pathname;
-    var id = url.substring(url.indexOf(":")+1, url.length-1);
+    var id = url.substring(url.indexOf(":")+1, url.indexOf(','));
+    console.log(id);
     var promise = new Parse.Promise();
     var t = 0, b = 0, l = 0, r = 0, lt = 0, lb = 0, rt = 0, rb = 0, eb = 0;
     var pTotal: number = 0;
@@ -320,7 +322,7 @@ OcultarTodo(){
         fceb = (eb / results.length);
 
 
-        var ctx = document.getElementById("myChartYellow");
+        /*var ctx = document.getElementById("myChartYellow");
         var myChart = new Chart(ctx, {
           type: 'radar',
           data: {
@@ -340,7 +342,7 @@ OcultarTodo(){
            }
        }
           }
-        });
+        });*/
 
         var number = pTotal;
         general += number;
@@ -368,7 +370,7 @@ OcultarTodo(){
     var promise = new Parse.Promise();
     this.circuloAmarillo().then((response: any) => {
       var url = window.location.pathname;
-      var id = url.substring(url.indexOf(":")+1, url.length-1)
+      var id = url.substring(url.indexOf(":")+1, url.indexOf(','));
       //var t=0,b=0,l=0,r=0,lt=0,lb=0,rt=0,rb=0,eb=0;
       var Industria = Parse.Object.extend("indWell");
       var industria = new Industria();
@@ -425,7 +427,7 @@ OcultarTodo(){
           fceb = (eb / results.length);
 
 
-          var ctx = document.getElementById("myChart");
+          /*var ctx = document.getElementById("myChart");
           var myChart = new Chart(ctx, {
             type: 'radar',
             data: {
@@ -445,7 +447,7 @@ OcultarTodo(){
            }
           }
             }
-          });
+          });*/
 
 
           //var pTotal=((fct+fcrt+fcr+fcrb+fcb+fclb+fcl+fclt)/8).toFixed(1);
@@ -476,7 +478,7 @@ OcultarTodo(){
     this.circuloAzul().then((pAzul: any) => {
 
       var url = window.location.pathname;
-      var id = url.substring(url.indexOf(":")+1, url.length-1)
+      var id = url.substring(url.indexOf(":")+1, url.indexOf(','));
 
       var Industria = Parse.Object.extend("indWell");
       var industria = new Industria();
@@ -535,7 +537,7 @@ OcultarTodo(){
 
 
 
-          var ctx = document.getElementById("myChartGreen");
+          /*var ctx = document.getElementById("myChartGreen");
           var myChart = new Chart(ctx, {
             type: 'radar',
             data: {
@@ -555,7 +557,7 @@ OcultarTodo(){
            }
        }
             }
-          });
+          });*/
 
 
           totalEncuestas += totalG;
@@ -569,7 +571,7 @@ OcultarTodo(){
             $("#promedioTotalVerde").html(0);
           } else {
             $("#promedioTotalVerde").html(pTotal);
-            $("#pgeneral").html(final);
+            //$("#pgeneral").html(final);
           }
 
 

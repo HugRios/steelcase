@@ -1,3 +1,55 @@
-<p>
-  resultado-dos works!
-</p>
+<div class="row" *ngIf="termine" style="margin-top: 3.2em;">
+
+<div class="row">
+  <div class="col-md col-md-12">
+    <a id="regresa" ><img hidden src="assets/img/regresa.png" (click)="regresaHome()" alt="" title="Regresa a resultados generales" style="margin-left: 8%;"></a>
+    <div class="row" style="text-align: center;">
+      <div  id="totalGlobal">
+        <p>ÍNDICE DE</p>
+        <p >{{industriaName}}</p>
+      </div>
+    </div>
+    <div class="row" style="text-align:center;margin-bottom: 6em;">
+      <img class="grayCircle" src="/assets/img/gray_circle.svg" alt="">
+      <p id ="pgeneral" style="color:#767676;margin-top: -3.1em;">{{promTotal}}</p>
+    </div>
+    <div class="row">
+      <p id="encuestas" style="margin-left: 3em;">Total de encuestas: {{totalEnc}}</p>
+    </div>
+  </div>
+
+</div>
+<div class="row">
+<div class="col-md col-md-4">
+  <div class="totales" style="color: #FBC100;">
+    <p>Físico</p>
+    <p  style="margin-top: -15%;">{{totalAmarillo}}</p>
+  </div>
+  <img class="yellowCir" src="assets/img/yellow_circle.svg" alt="">
+  <div class="divYellow">
+        <canvas id="myChartYellow" width="300" height="300"></canvas>
+  </div>
+</div>
+<div class="col-md col-md-4">
+  <div class="totales" style="margin-top: -4%;color:#31AEF2;">
+    <p>Cognitivo</p>
+    <p style="margin-top: -13%;">{{totalAzul}}</p>
+  </div>
+  <img class="blueCir" src="assets/img/blue_circle.svg" alt="">
+  <div class="divBlue" >
+
+        <canvas id="myChart" width="300" height="300"></canvas>
+  </div>
+</div>
+<div class="col-md col-md-4">
+  <div class="totales" style="color:#98CE3D">
+    <p>Emocional</p>
+    <p style="margin-top: -12%">{{totalVerde}}</p>
+  </div>
+  <img class="greenCir" src="assets/img/green_circle.svg" alt="">
+  <div class="divGreen">
+        <canvas id="myChartGreen" width="300" height="300"></canvas>
+  </div>
+</div>
+</div>
+</div>

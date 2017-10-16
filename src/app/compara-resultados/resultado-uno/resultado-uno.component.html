@@ -1,226 +1,55 @@
+<div class="row" >
+
 <div class="row">
-  <div class="col-md col-md-2" style="margin-top: 5em;">
-    <div id="opcionesWell">
-
-
-<!--Filtro por empresa-->
-      <a id="empresas" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
-      " >
-          <div class="btn66" >
-              <p style="width: 100%;" id="empresaP" (click)="mostrarEmpresasRes()">EMPRESA</p>
-              <div id="triangle_right" style="margin: -12% 4% 0 0;" (click)="mostrarEmpresasRes()" ></div>
-              <div class="dropdown-content" id="empresaR" >
-                <ul   style="list-style:none;color:#404041" id="empresasWell" >
-                  <li *ngFor="let item of arregloClientes" id="{{item.id}}" (click)="filtraCliente(item.id)">{{item.nombre}}</li>
-                </ul>
-              </div>
-          </div>
-      </a>
-
-      <!--Filtro por empresa-->
-              <a id="areas" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
-              " >
-                  <div class="btn66" >
-                      <p style="width: 100%;" id="areaP" (click)="mostrarAreasRes()">ÁREA</p>
-                      <div id="triangle_right" style="margin: -12% 4% 0 0;" (click)="mostrarAreasRes()" ></div>
-                      <div class="dropdown-content" id="areaR" >
-                        <ul  style="list-style:none;color:#404041" id="areaWell" >
-                          <li *ngFor = "let area of arregloAreas" (click)="filtroArea(area.id)">{{area.nombre}}</li>
-                        </ul>
-
-                      </div>
-                  </div>
-              </a>
-
-
-              <!--Filtro por empresa-->
-                      <a id="atiguedades" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
-                      " >
-                          <div class="btn66" >
-                              <p style="width: 100%;" id="antiguedadP" (click)="mostrarAntiguedadRes()">ANTIGüEDAD</p>
-                              <div id="triangle_right" style="margin: -12% 4% 0 0;"(click)="mostrarAntiguedadRes()" ></div>
-                              <div class="dropdown-content" id="antiguedadR" >
-                                <ul  style="list-style:none;color:#404041" id="antigWell" >
-                                  <li *ngFor = "let antiguedad of arregloAntiguedad" (click)="filtroAntiguedad(antiguedad.id)">{{antiguedad.nombre}}</li>
-                                </ul>
-
-                              </div>
-                          </div>
-                      </a>
-
-                      <a id="generaciones" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
-                      " >
-                          <div class="btn66" >
-                              <p style="width: 100%;" id="generacionP" (click)="mostrarGeneracionesRes()">GENERACIÓN</p>
-                              <div id="triangle_right" style="margin: -12% 4% 0 0;"(click)="mostrarGeneracionesRes()" ></div>
-                              <div class="dropdown-content" id="generacionR" >
-                                <ul  style="list-style:none;color:#404041" id="genWell" >
-                                  <li *ngFor = "let generacion of arregloGeneracion" (click)="filtroGeneracion(generacion.id)">{{generacion.nombre}}</li>
-                                </ul>
-
-                              </div>
-                          </div>
-                      </a>
-
-
-
-
-      <a  style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;float: left;line-height: 1.8em;text-decoration: none;font-weight: 700;
-      " >
-        <div class="btn67">
-          <p style="width: 100%;" (click)="showResults()" >MOSTRAR</p>
-          <div id="triangle_right" (click)="showResults()"  ></div>
-
-        </div>
-      </a>
-
-
-
-
-      <a  style="display:none; margin-bottom:5%;color: #FFFFFF;width: 85%;height: 27px;float: left;line-height: 1.8em;text-decoration: none;font-weight: 700;
-      "id="cDD">
-        <div class="btn66">
-          <p style="width: 100%;" onclick="mostrarClienteDD();">CLIENTE</p>
-          <div id="triangle_right" onclick="mostrarClienteDD();"></div>
-          <div class="dropdown-content" id="clienteDD">
-
-
-              </div>
-        </div>
-      </a>
-
-      <a  style="display:none; margin-bottom:5%;color: #FFFFFF;width: 85%;height: 27px;float: left;line-height: 1.8em;text-decoration: none;font-weight: 700;
-      " href="#" id="pDD">
-        <div class="btn66" >
-          <p style="width: 100%;" onclick="mostrarPeriodoDD();">PERIODO</p>
-          <div id="triangle_right" onclick="mostrarPeriodoDD();"></div>
-          <div class="dropdown-content" id="periodoDD">
-
-
-              </div>
-        </div>
-      </a>
-
-      <a style="display:none; margin-bottom:5%;color: #FFFFFF;width: 85%;height: 27px;float: left;line-height: 1.8em;text-decoration: none;font-weight: 700;
-      " href="#" id="aDD">
-        <div class="btn66" >
-          <p style="width: 100%;" onclick="mostrarAreaDD();">ÁREA</p>
-          <div id="triangle_right" onclick="mostrarAreaDD();"></div>
-          <div class="dropdown-content" id="areaDD">
-
-
-              </div>
-        </div>
-      </a>
-      <a style="display:none; margin-bottom:5%;color: #FFFFFF;width: 85%;height: 27px;float: left;line-height: 1.8em;text-decoration: none;font-weight: 700;
-      " href="#" id="gDD">
-        <div class="btn66" >
-
-          <p style="width: 200px; font-size: 10px; padding-top: 4px;" onclick="mostrarGeneracionDD();">GENERACIÓN</p>
-          <div id="triangle_right" onclick="mostrarGeneracionDD();"></div>
-          <div class="dropdown-content" id="generacionDD">
-
-
-              </div>
-        </div>
-      </a>
-
+  <div class="col-md col-md-12">
+    <a id="regresa" ><img src="assets/img/regresa.png" (click)="regresaHome()" alt="" title="Regresa a resultados generales" style="margin-left: 8%;"></a>
+    <div class="row" style="text-align: center;">
+      <div  id="totalGlobal">
+        <p>ÍNDICE DE</p>
+        <p id="nameInd"></p>
+      </div>
     </div>
-<img  src="assets/img/scLogo.jpg" style="width: 9em;margin-left: .5em;margin-top: 24em;"  />
-  </div>
-  <div class="col-md col-md-9">
-
-    <div class="row" style="display: flex">
-      <div class="col-md col-md-6" style="display: flex;justify-content: center;margin-top: 5%;">
-<a id="regresa" ><img src="assets/img/regresa.png" (click)="regresaHome()" alt="" title="Regresa a resultados generales" style="margin-left: 8%;"></a>
-          <div class="resGeneral">
-            <div class="row promGeneral">
-              <div  id="totalGlobal">
-                <p>ÍNDICE DE</p>
-                <p id="nameInd"></p>
-              </div>
-
-            </div>
-            <div class="row">
-              <p id="pgeneral" style="color:#767676;margin-top: 0.5em;"></p>
-            </div>
-            <div class="" style="margin-top: 33%;">
-              <p id="encuestas"></p>
-            </div>
-        </div>
-
-      </div>
-      <div class="col-md col-md-4" style="float: right;display: grid;width: 50%;margin-top: 3%;">
-        <div class="row" style="margin-top: -8%;">
-          <div class="content">
-            <div class="col-md col-md-6">
-                  <img class="yellowCir" src="assets/img/yellow_circle.svg" alt="">
-                  <div class="divYellow">
-                        <canvas id="myChartYellow" width="300" height="300"></canvas>
-                  </div>
-            </div>
-
-            <div class="col-md col-md-6">
-                <div class="totales" style="color: #FBC100;">
-                  <p>Físico</p>
-                  <p id="promedioTotal" style="margin-top: -15%;">0</p>
-                </div>
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="row azul">
-    <div class="content">
-      <div class="col-md col-md-6" id="blue">
-        <img class="blueCir" src="assets/img/blue_circle.svg" alt="">
-        <div class="divBlue" >
-
-              <canvas id="myChart" width="300" height="300"></canvas>
-        </div>
-
-      </div>
-
-      <div class="col-md col-md-6">
-        <div class="totales" style="margin-top: -4%;color:#31AEF2;">
-          <p>Cognitivo</p>
-          <p id="promedioTotalAzul" style="margin-top: -13%;">0</p>
-        </div>
-
-      </div>
-
+    <div class="row" style="text-align:center;margin-bottom: 6em;">
+      <img class="grayCircle" src="/assets/img/gray_circle.svg" alt="">
+      <p id="pgeneral" style="color:#767676;margin-top: -3.1em;">dfdfd</p>
     </div>
-
-                <!--........................................star div end........................................-->
-
-
-
-
-        </div>
-
-        <div class="row verde" style="height: 100%;">
-
-    <div class="content">
-      <div class="col-md col-md-6" id ="green">
-        <img class="greenCir" src="assets/img/green_circle.svg" alt="">
-        <div class="divGreen">
-              <canvas id="myChartGreen" width="300" height="300"></canvas>
-        </div>
-      </div>
-      <div class="col-md col-md-6">
-        <div class="totales" style="color:#98CE3D">
-          <p>Emocional</p>
-          <p id="promedioTotalVerde" style="margin-top: -12%"></p>
-        </div>
-
-      </div>
-
-    </div>
-        </div>
-
-      </div>
+    <div class="row">
+      <p id="encuestas" style="margin-left: 3em;"></p>
     </div>
   </div>
+
+</div>
+<div class="row">
+<div class="col-md col-md-4">
+  <div class="totales" style="color: #FBC100;">
+    <p>Físico</p>
+    <p id="promedioTotal" style="margin-top: -15%;">0</p>
+  </div>
+  <img class="yellowCir" src="assets/img/yellow_circle.svg" alt="">
+  <div hidden class="divYellow">
+        <canvas id="myChartYellow" width="300" height="300"></canvas>
+  </div>
+</div>
+<div class="col-md col-md-4">
+  <div class="totales" style="margin-top: -4%;color:#31AEF2;">
+    <p>Cognitivo</p>
+    <p id="promedioTotalAzul" style="margin-top: -13%;">0</p>
+  </div>
+  <img class="blueCir" src="assets/img/blue_circle.svg" alt="">
+  <div hidden class="divBlue" >
+
+        <canvas id="myChart" width="300" height="300"></canvas>
+  </div>
+</div>
+<div class="col-md col-md-4">
+  <div class="totales" style="color:#98CE3D">
+    <p>Emocional</p>
+    <p id="promedioTotalVerde" style="margin-top: -12%"></p>
+  </div>
+  <img class="greenCir" src="assets/img/green_circle.svg" alt="">
+  <div hidden class="divGreen">
+        <canvas id="myChartGreen" width="300" height="300"></canvas>
+  </div>
+</div>
+</div>
 </div>

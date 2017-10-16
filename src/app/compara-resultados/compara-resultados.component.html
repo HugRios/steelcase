@@ -1,4 +1,12 @@
 <div class="">
-  <app-resultado-uno *ngIf="uno"></app-resultado-uno>
-  <app-resultado-dos *ngIf="dos"></app-resultado-dos>
+  <app-resultados-empresa *ngIf = "empresa"></app-resultados-empresa>
+
+  <div class="row">
+    <div class="col-md col-md-6">
+      <app-resultado-uno *ngIf="uno"></app-resultado-uno>
+    </div>
+    <div class="col-md col-md-6">
+      <app-resultado-dos *ngIf="dos"></app-resultado-dos>
+    </div>
+  </div>
 </div>

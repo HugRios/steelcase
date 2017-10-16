@@ -1754,8 +1754,7 @@ display: flex;
 
 #pgeneral{
   text-align: center;
-      margin-top: 18%;
-      font-size: 7em;
+  font-size: 2em;
 
 }
 
@@ -1773,7 +1772,7 @@ display: flex;
 
 .totales{
   text-align: center;
-  font-size: 45px;
+  font-size: 26px;
   margin-right: 17%;
   font-family: Avenir Next Bold;
 
@@ -1813,18 +1812,21 @@ width: 9em;
 
 
 
-
+.grayCircle{
+  width: 10.5em;
+}
 
 .blueCir{
-    width: 13.5em;
+    width: 9.5em;
 }
 
 .yellowCir{
-      width: 13em;
+  width: 9em;
+  margin-left: 1.5em;
 }
 
 .greenCir{
-  width: 13.5em;
+  width: 9.5em;
 }
 
 
@@ -1961,9 +1963,9 @@ width: 9em;
 
   .resGeneral {
     background: url(/assets/img/gray_circle.svg) 0 0 / 100% no-repeat;
-    width: 73%;
+    width: 31%;
     margin-top: 23%;
-    margin-left: 20%;
+    margin-left: 35%;
   }
 
   .promGeneral{
@@ -1979,55 +1981,58 @@ width: 9em;
   }
   #pgeneral{
     text-align: center;
-    margin-top: 27%;
-    font-size: 9em;
+    font-size: 3em;
   }
 
   .divYellow{
-  width: 9em;
+  width: 6em;
   }
 
   .divBlue{
-    width: 9em;
+    width: 6em;
   }
 
   .divGreen{
-    width: 9em;
+    width: 6em;
   }
 
   #myChartYellow{
-    margin-left: 3.8em;
-    margin-top: -10.7em;
+    margin-left: 2.98em;
+    margin-top: -7.7em;
     margin-bottom: 2.6em;
 
   }
   #myChartGreen{
-    margin-left: 3.5em;
-    margin-top: -10.6em;
+    margin-left: 3em;
+    margin-top: -7.6em;
     margin-bottom: 2.6em;
-
   }
 
   #myChart{
-    margin-left: 3.8em;
-    margin-top: -10.8em;
+    margin-left: 3.2em;
+    margin-top: -7.8em;
     margin-bottom: 2.9em;
   }
 
-
+  .grayCircle{
+    width: 13.5em;
+  }
 
 
 
   .blueCir{
-      width: 12.5em;
+    width: 9.5em;
+    margin-left: 1.5em;
   }
 
   .yellowCir{
-        width: 12em;
+    width: 9em;
+    margin-left: 1.5em;
   }
 
   .greenCir{
-    width: 12.5em;
+    width: 9.5em;
+    margin-left: 1.3em;
   }
   .azul{
     -webkit-margin-before: 1em;

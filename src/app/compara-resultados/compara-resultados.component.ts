@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-compara-resultados',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComparaResultadosComponent implements OnInit {
 
+empresa: boolean = false;
 uno : boolean = false;
 dos : boolean = false;
 tres : boolean = false;
@@ -26,16 +27,18 @@ tres : boolean = false;
     return vecAux;
 
   }
-
+//retrasar aparicion 2do
   muestraComponentes(){
     var noComponentes = this.cuentaResultados();
     if(noComponentes.length == 1){
-      this.uno=true
+      this.empresa=true
     }else if(noComponentes.length == 2){
       this.uno=true
       this.dos = true;
+
     }
   }
+
 
 
 

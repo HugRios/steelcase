@@ -69,7 +69,7 @@ goBack() {
 
      var query = new Parse.Query("Wellbeing");
 
-     /*if(vector[0].id == ""){
+     if(vector[0].id == ""){
        query.exists("cliente")
      }else{
        var id = vector[0].id ;
@@ -86,7 +86,7 @@ goBack() {
                 })
        //$("#empresaPP").html('hjdhfdf')
        query.equalTo("cliente", cliente);
-     }*/
+     }
 
      if(vector[1].id == ""){
        query.exists("area")
