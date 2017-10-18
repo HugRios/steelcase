@@ -28,6 +28,11 @@
 
 
             <input Hidden type="text" id = "genName" name="" value="" class="filtros">
+            <div hidden id="btnReporte" class="btn66" >
+                <p style="width: 100%;" (click)="sigPaso()">REPORTE</p>
+                <div class="dropdown-content">
+                </div>
+            </div>
 
 
     <img  *ngIf="!filtros" src="assets/img/scLogo.jpg" style="width: 11em;margin-top: 23em;margin-left: .5em;"  />
@@ -39,29 +44,34 @@
       <div class="col-md col-md-9">
 
         <div class="row" style="display: flex">
-          <div class="col-md col-md-6" style="display: flex;justify-content: center;">
+          <div class="col-md col-md-6" style="justify-content: center;">
   <a id="regresa" *ngIf="filtros" (click)="goBack()"><img src="assets/img/regresa.png" alt="" title="Regresa a resultados por industria" style="margin-left: 8%;"></a>
-              <div class="resGeneral">
-                <div class="row promGeneral">
-                  <div  id="totalGlobal">
-                    <p>ÍNDICE DE</p>
-                    <p>BIENESTAR GLOBAL</p>
-                  </div>
+  <div class="row">
+    <div  id="totalGlobal" style="text-align: center;font-size: 1.5em;">
+      <p>ÍNDICE DE</p>
+      <p>BIENESTAR GLOBAL</p>
+    </div>
+  </div>
 
-                </div>
-                <div class="row">
-                  <p id="pgeneral" style="color:#767676"></p>
-                </div>
-                <div class="" style="padding-top: 10em;">
-                  <p id="encuestas"></p>
-                  <p hidden id="numEmpleados"></p>
-                  <p hidden id="linkAc"></p>
-                </div>
-            </div>
-
+  <div class="row" style="height: 62%;">
+    <div class="" id="generales" style="width: 83%;height: 100%;">
+        <img class="grayCircle" style="" src="assets/img/gray_circle.svg" alt="">
+        <p id="pgeneral" style="color:#767676"></p>
+  </div>
+  </div>
+      <div class="row">
+        <div class="" style="padding-top: 0em;">
+          <div class="">
+             <p id="encuestas"></p>
+             <p hidden id="numEmpleados"></p>
+             <p hidden id="linkAc"></p>
+           </div>
+        </div>
+      </div>
           </div>
+
           <div class="col-md col-md-4" style="float: right;display: grid;width: 50%;margin-top: 3%;">
-            <div class="row" style="margin-top: -8%;">
+            <div id="amarillo" class="row" style="margin-top: -8%;">
               <div class="content">
                 <div class="col-md col-md-6">
                       <img class="yellowCir" src="assets/img/yellow_circle.svg" alt="">
@@ -102,7 +112,6 @@
           </div>
 
         </div>
-
                     <!--........................................star div end........................................-->
 
 

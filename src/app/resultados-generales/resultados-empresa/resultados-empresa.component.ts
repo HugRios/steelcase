@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as html2canvas from "html2canvas"
+declare var Canvas2Image : any;
+declare var require : any;
 declare var Parse: any;
 declare var $: any;
+declare var PptxGenJS : any;
 import Chart from 'chart.js';
 
 var general = 0;
@@ -14,6 +18,8 @@ var arrayGeneracion = [];
 var fechaIngreso;
 var arrayCheckAreas = [];
 var empresaG, areaG, antiguedadG, generacionG, industriaG;
+
+
 
 @Component({
   selector: 'app-resultados-empresa',
@@ -46,6 +52,7 @@ export class ResultadosEmpresaComponent implements OnInit {
       generacionG="";
       industriaG="";
 
+
     }
 
 
@@ -77,6 +84,10 @@ export class ResultadosEmpresaComponent implements OnInit {
 
 
   }
+
+
+
+
 
 
     addEmpresa() {
@@ -197,7 +208,7 @@ export class ResultadosEmpresaComponent implements OnInit {
 
     var queryCliente = new Parse.Query("areaWell");
         queryCliente.equalTo("cliente", cliente);
-        var allQuery = Parse.Query.or(queryCliente, queryArea) 
+        var allQuery = Parse.Query.or(queryCliente, queryArea)
         allQuery.find({
           success: function(res){
             for (let i = 0; i < res.length; i++) {
@@ -586,6 +597,7 @@ export class ResultadosEmpresaComponent implements OnInit {
 
       })
     }
+
 
 
     ngOnInit() {
