@@ -14,7 +14,7 @@ import { CircleYellowComponent } from './circle-yellow/circle-yellow.component';
 import { ResultadosFiltrosComponent } from './resultados-generales/resultados-filtros/resultados-filtros.component';
 import { ResultadosEmpresaComponent } from './resultados-generales/resultados-empresa/resultados-empresa.component';
 import { ResultadoTresComponent } from '../app/compara-resultados/resultado-tres/resultado-tres.component';
-
+import { Servicios } from './services/service';
 
 
 @NgModule({
@@ -38,7 +38,7 @@ import { ResultadoTresComponent } from '../app/compara-resultados/resultado-tres
     RouterModule.forRoot([
       { path: '', redirectTo: 'home', pathMatch: 'full'},
       {
-        path: 'home',
+        path: '',
         component: ResultadosGeneralesComponent
       },
       {
@@ -63,7 +63,7 @@ import { ResultadoTresComponent } from '../app/compara-resultados/resultado-tres
       }
     ])
   ],
-  providers: [],
+  providers: [Servicios],
   bootstrap: [AppComponent]
 })
 

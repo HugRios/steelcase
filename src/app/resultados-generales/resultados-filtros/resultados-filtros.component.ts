@@ -29,6 +29,7 @@ var arrAntVerde = [];
 var arrayIndustrias = [];
 var arrayAreasWell = [];
 var clienteEncuesta;
+var nombreCliente;
 
 var amarillo = 0, azul= 0, verde = 0;
 
@@ -45,6 +46,7 @@ export class ResultadosFiltrosComponent implements OnInit {
     Parse.initialize("steelcaseCirclesAppId");
     Parse.serverURL = 'https://steelcase-circles.herokuapp.com/parse';
     totalEncuestas = 0;
+    nombreCliente = '';
   }
 
 goBack() {
@@ -68,6 +70,14 @@ goBack() {
   muestraBoton(){
     var array = this.getGET();
     if(array[0].id != '' && array[1].id == '' && array[2].id == '' && array[3].id == '' && array[4].id == ''){
+      var query = new Parse.Query('ClienteWell');
+          query.equalTo('objectId', array[0].id);
+          query.find({
+            success: function(res){
+              var nombre = res[0].get('nombre')
+              $("#tipo").html("BIENESTAR "+ nombre.toUpperCase());
+            }
+          })
       $("#btnReporte").show();
     }
   }
@@ -110,8 +120,9 @@ goBack() {
                 queryCliente.equalTo("objectId", id);
                 queryCliente.find({
                   success: function(res){
+                    nombreCliente = res[0].get("nombre");
                     $("#showClient").show('fast');
-                       $("#clienteName").val(res[0].get("nombre"));
+                       $("#clienteName").val(nombreCliente);
                   }
                 })
        //$("#empresaPP").html('hjdhfdf')
@@ -591,10 +602,12 @@ goBack() {
     var date = new Date();
      if(vector[1].id== '' && vector[2].id =='' && vector[3].id =='' && vector[0].id != ''){
        var id = vector[0].id ;
+       console.log(id);
        var Cliente = Parse.Object.extend("ClienteWell");
        var cliente = new Cliente();
           cliente.id = id;
        var query = new Parse.Query(Cliente);
+           query.equalTo('objectId', id);
             query.find({
               success: function(res){
                 $("#numEmpleados").show();
@@ -621,7 +634,7 @@ goBack() {
    }
 
 
-addAreas(){
+   addAreas(){
   var array = this.getGET();
   clienteEncuesta = array[0].id
   var AreaWell  = Parse.Object.extend('areaWell');
@@ -1264,7 +1277,7 @@ addAreas(){
        }
 
        sigPaso(){
-         //$("#modalAlert").modal('toggle');
+         $("#modalAlert").modal('toggle');
          this.reporteAntVerde().then((results: any) =>{
            console.log(arrGenAmarillo[0].nombre);
            /*console.log(arrGenAmarillo[0].nombre);
@@ -1298,6 +1311,8 @@ addAreas(){
            this.sigPaso();
 
          }
+
+
 
 
   ngOnInit() {
@@ -1378,11 +1393,17 @@ function crearImagenDone(infoImage: any){
 
 function crearReporte(info: any){
   try{
+    var date = new Date();
+    var cAmarillo = 'assets/img/yellow_circle.svg', cAzul = 'assets/img/blue_circle.svg', cVerde = 'assets/img/green_circle.svg';
+
     var dataimage = info.substring(info.indexOf(":")+1);
     //console.log(info);
     //considerar agregar condicional para agregar las slides
     var pptx = new PptxGenJS();
-    var slide = pptx.addNewSlide();
+    var slideTitulo = pptx.addNewSlide();
+    var slideEstadistica = pptx.addNewSlide();
+    var slide = pptx.addNewSlide();//slide general
+    var slideYellow = pptx.addNewSlide();
     var slideR = pptx.addNewSlide();
 
     if(arrAreaAmarillo.length <= 4){
@@ -1491,12 +1512,69 @@ console.log('si llego acá');
                 chartColors:['E9B200','FFC000','FFD243','FFE286'], dataLabelColor:'FFFFFF'
             });
 
+    slideTitulo.addText('Wellbeing Research',{x: 6, y:2, font_size:22, color:'363636' });
+    slideTitulo.addText(nombreCliente, {x:7, y:2.5, font_size:18, color:'363636'});
+    //****agregar fecha de reporte
+    //slideTitulo.addText(date, {x:4, y:4.2, font_size:18, color:'363636'})
 
 
-    slide.addText('ÍNDICE DE BIENESTAR GLOBAL', { x:3.0, y:0.5, font_size:18, color:'363636' });
-    slide.addImage({x:3.5, y:.8, w:2.8, h:2,
-    data: info})
-    slide.addText('FÍSICO '+amarillo.toFixed(1),{x:1, y:3.0, font_size:18, font_face:'Arial Black', color:'FBC100'})
+
+    var dataChartGen = [
+    { name: 'Region 1', labels: ['May', 'June', 'July', 'August'], values: [26.0, 53.0, 99, 75.00] },
+    { name: 'Region 2', labels: ['May', 'June', 'July', 'August'], values: [43.5, 70.3, 90, 80.05] }
+];
+
+var dataChartAnt = [
+{ name: 'Region 1', labels: ['May', 'June', 'July', 'August'], values: [26.0, 53.0, 99, 75.00] },
+{ name: 'Region 2', labels: ['May', 'June', 'July', 'August'], values: [43.5, 70.3, 90, 80.05] }
+];
+
+slideEstadistica.addChart(
+    pptx.charts.BAR, dataChartGen,
+    { x:5.3, y:0.9, w:3.5, h:2, barDir:'bar', catAxisLabelColor:'0000CC', catAxisLabelFontFace:'Courier' }
+);
+
+slideEstadistica.addChart(
+    pptx.charts.BAR, dataChartAnt,
+    { x:5.3, y:2.9, w:3.5, h:2, barDir:'bar', catAxisLabelColor:'0000CC', catAxisLabelFontFace:'Courier' }
+);
+
+
+    slideEstadistica.addText('Estadisticas de la muestra',{x: 1, y:0.5, font_size:20, color:'363636' })
+    slideEstadistica.addText('STATUS FINAL',{x: 1, y:0.9, font_size:9, color:'363636' })
+    slideEstadistica.addText('Total',{x: 4, y:0.9, font_size:9, color:'363636' })
+    slideEstadistica.addText('POBLACION TOTAL',{x: 1, y:1.3, font_size:9, color:'363636' })
+    slideEstadistica.addText('Total',{x: 4, y:1.3, font_size:9, color:'363636' })
+    slideEstadistica.addText('NÚMERO DE RESPUESTAS',{x: 1, y:1.5, font_size:9, color:'363636' })
+    slideEstadistica.addText('Total',{x: 4, y:1.5, font_size:9, color:'363636' })
+
+    var Ax = 0, Ay = 1.9, tAx = 0, tAy = 1.9;
+
+    var i = 0;
+    do{
+
+      slideEstadistica.addText('area 1',{x: 1, y:Ay, font_size:9, color:'363636' })
+      slideEstadistica.addText('Total',{x: 4, y:tAy, font_size:9, color:'363636' })
+      Ay +=0.2;
+      tAy +=0.2;
+      i++
+    }while(i<5)
+
+
+    slide.addText('ÍNDICE DE BIENESTAR GLOBAL '+nombreCliente.toUpperCase(), { x:1.0, y:0.5, font_size:18,font_face:'Arial Black', color:'363636' });
+    slide.addImage({x:1.5, y:1.3, w:3, h:3, path:'assets/img/gray_circle.svg'});
+    slide.addText('3.5',{x:2, y:2.6, font_size:105, font_face:'Calibri', color:'FBC100'})
+    slide.addText('Media nacional: ',{x:4.7, y:2.3, font_size:20, font_face:'Helvetica Neue Light', color:'363636'});
+    slide.addText('Media del sector: ',{x:4.7, y:2.7, font_size:20, font_face:'Helvetica Neue Light', color:'363636'})
+
+    slideYellow.addText('Índice de bienestar físico',{x:1, y:0.5, font_size:28,font_face:'Arial', color:'363636'});
+    slideYellow.addImage({x:1.5, y:1.3, w:2.5, h:2.5, path: cAmarillo});
+    slideYellow.addText('Valor promedio de cada categoría', {x:5, y:1, font_size:12,font_face:'Arial', color:'363636'})
+    slideYellow.addText('Tengo opciones para trabajar en distintas posturas físicas a lo largo del día.', {x:5, y:1.4, font_size:7,font_face:'Arial', color:'363636'})
+    //slide.addImage({x:3.5, y:.8, w:2.8, h:2,data: info})
+
+
+  /*  slide.addText('FÍSICO '+amarillo.toFixed(1),{x:1, y:3.0, font_size:18, font_face:'Arial Black', color:'FBC100'})
     slide.addImage({
       x:1, y:3.5, w:1.5, h:1.5,
       path: 'assets/img/yellow_circle.svg'
@@ -1510,7 +1588,7 @@ console.log('si llego acá');
     slide.addImage({
       x:7.6, y:3.5, w:1.5, h:1.5,
       path: 'assets/img/green_circle.svg'
-    })
+    })*/
 
     slideR.addText('GENERACIÓN', { x:4.2, y:0.5, font_size:18, color:'363636' });
     slideR.addText(arrGenAmarillo[0].nombre, {x:0.6, y:1.5, font_size:18, color:'363636'})
@@ -1570,7 +1648,6 @@ console.log('si llego acá');
     var ex = 0.5, ey = 4.6; //valores EMOCIONAL
     var cAx = 2, cAy = 2.4; //valores imagen círculo amarillo
     var w = 0.7, h = 0.7; //medidas para todas la imagenes de circulos
-    var cAmarillo = 'assets/img/yellow_circle.svg', cAzul = 'assets/img/blue_circle.svg', cVerde = 'assets/img/green_circle.svg';
     var nameAreasX, nameAreasY;//valores para nombres de áreas
     var t0x, t0y, t1x, t1y, t2x, t2y, t3x, t3y;
     var tAm0x, tAm0y, tAz0x, tAz0y,tV0x, tV0y;

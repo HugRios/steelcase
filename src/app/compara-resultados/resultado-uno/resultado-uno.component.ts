@@ -58,7 +58,7 @@ export class ResultadoUnoComponent implements OnInit {
 
 regresaHome(){
   console.log("si estoy");
-  this.router.navigate(['/home'])
+  this.router.navigate([''])
 }
 
 nombreInd(){
@@ -573,6 +573,7 @@ OcultarTodo(){
             $("#promedioTotalVerde").html(pTotal);
             $("#pgeneral").html(final);
           }
+
 
 
         },

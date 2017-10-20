@@ -66,7 +66,7 @@ export class ResultadosEmpresaComponent implements OnInit {
 
   regresaHome(){
     console.log("si estoy");
-    this.router.navigate(['/home'])
+    this.router.navigate([''])
   }
 
   nombreInd(){
@@ -74,6 +74,7 @@ export class ResultadosEmpresaComponent implements OnInit {
     industriaG = url.substring(url.indexOf(":")+1, url.length-1);
     var Industria = Parse.Object.extend("indWell");
     var query = new Parse.Query(Industria);
+        query.equalTo('objectId', industriaG);
         query.find({
           success: function(res){
             var nombre = res[0].get("Nombre");

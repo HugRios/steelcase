@@ -469,7 +469,7 @@ showResults(){
       alert('No existen filtros para la búsqueda');
     }else{
       this.router.navigate(['/resultadosFiltro/:'+"Empresa="+empresaG+"&"+"Area="+areaG+"&"+"Generacion="+generacionG+"&"+"Antiguedad="+antiguedadG+"&Industria="+industria]);
-      
+
     }
   }
 
@@ -1080,7 +1080,7 @@ reporteGenVerde(){
   return promise;
 }
 
-reporteIndAmarillo(){
+/*reporteIndAmarillo(){
   var Wellbeing = Parse.Object.extend('Wellbeing');
   var promise = new Parse.Promise();
     this.reporteGenVerde().then((results: any) => {
@@ -1139,9 +1139,9 @@ reporteIndAmarillo(){
       }
     })
       return promise;
-} //add reporte gen verde
+} //add reporte gen verde*/
 
-reporteIndAzul(){
+/*reporteIndAzul(){
   var Wellbeing = Parse.Object.extend('WellCognitivo');
   var promise = new Parse.Promise();
   this.reporteIndAmarillo().then((results: any) =>{
@@ -1197,9 +1197,9 @@ reporteIndAzul(){
     }//termina for primer arreglo
   })
   return promise;
-}
+}*/
 
-reporteIndVerde(){
+/*reporteIndVerde(){
   var Wellbeing = Parse.Object.extend('WellEmocional');
   var promise = new Parse.Promise();
   this.reporteIndAzul().then((results: any) => {
@@ -1256,12 +1256,12 @@ reporteIndVerde(){
     }//termina for primer arreglo
   })
   return promise;
-}
+}*/
 
 reporteAreaAmarillo(){
   var Wellbeing = Parse.Object.extend('Wellbeing');
   var promise = new Parse.Promise();
-    this.reporteIndVerde().then((results: any) => {
+    this.reporteGenVerde().then((results: any) => {
       for (let i = 0; i < arrayAreasWell.length; i++) {
         var AreaWell  = Parse.Object.extend('areaWell');
         var area = new AreaWell();
@@ -1682,7 +1682,8 @@ document.body.appendChild(testScript2);
     arrayClientes.length = 0;
     arrayAnt.length = 0;
     arrayGeneracion.length = 0;
-    arrayIndustrias.length = 0;
+    //arrayIndustrias.length = 0;
+    arrayAreasWell.length = 0;
   //  this.crearReporte();
     //this.crearImagen()
   }
@@ -1750,13 +1751,13 @@ function crearReporte(info: any){
     var pptx = new PptxGenJS();
     var slide = pptx.addNewSlide();
     var slideR = pptx.addNewSlide();
-    var slideInd = pptx.addNewSlide();
-    var slideInd2  = pptx.addNewSlide();
+    //var slideInd = pptx.addNewSlide();
+    //var slideInd2  = pptx.addNewSlide();
     var slideArea = pptx.addNewSlide();
     var slideArea2 = pptx.addNewSlide();
     var slideAnt = pptx.addNewSlide();
     var slideGrafico = pptx.addNewSlide();
-    var slideGraficoInd = pptx.addNewSlide();
+    //var slideGraficoInd = pptx.addNewSlide();
     var slideGraficoA = pptx.addNewSlide();
     var slideGraficoAnt = pptx.addNewSlide();
 
@@ -1764,7 +1765,7 @@ function crearReporte(info: any){
     var datosGraf = [];
     var datosArea = [];
     var datosAnt = [];
-    var datosInd = [];
+    //var datosInd = [];
 
 
 
@@ -1799,7 +1800,7 @@ function crearReporte(info: any){
       }
     }
 
-    for (let i = 0; i < arrIndAmarillo.length; i++) {
+  /*  for (let i = 0; i < arrIndAmarillo.length; i++) {
       var total = (parseFloat(arrIndAmarillo[i].total) + parseFloat(arrIndAzul[i].total) + parseFloat(arrIndVerde[i].total))/3;
       if( total.toString() == 'NaN'){
         total = 0;
@@ -1807,7 +1808,7 @@ function crearReporte(info: any){
       }else{
         datosInd.push(total)
       }
-    }
+    }*/
 
     var dataChartPieGen = [{ name: 'Generación',
     labels: [arrGenAmarillo[0].nombre, arrGenAmarillo[1].nombre, arrGenAmarillo[2].nombre, arrGenAmarillo[3].nombre, arrGenAmarillo[4].nombre],
@@ -1833,7 +1834,7 @@ slideGrafico.addChart(pptx.charts.PIE, dataChartPieGen,
         });
 
 
-        var dataChartPieAnt = [{ name: 'Antigüedad',
+  /*      var dataChartPieAnt = [{ name: 'Antigüedad',
         labels: [arrAntAmarillo[0].nombre, arrAntAmarillo[1].nombre, arrAntAmarillo[2].nombre, arrAntAmarillo[3].nombre],
         values: [  datosAnt[0],   datosAnt[1],   datosAnt[2],   datosAnt[3]]
     }];
@@ -1842,9 +1843,9 @@ slideGrafico.addChart(pptx.charts.PIE, dataChartPieGen,
             {
                 x:1.5, y:0.9, w:7.5, h:4.5, showLegend:true, legendPos:'t',
                 chartColors:['E9B200','FFC000','FFD243','FFE286'], dataLabelColor:'FFFFFF'
-            });
+            });*/
 
-            var dataChartPieInd = [{ name: 'Industria',
+      /*      var dataChartPieInd = [{ name: 'Industria',
             labels: [arrIndAmarillo[0].nombre, arrIndAmarillo[1].nombre, arrIndAmarillo[2].nombre,
             arrIndAmarillo[3].nombre, arrIndAmarillo[4].nombre, arrIndAmarillo[5].nombre,
             arrIndAmarillo[6].nombre, arrIndAmarillo[7].nombre, arrIndAmarillo[8].nombre, arrIndAmarillo[9].nombre],
@@ -1856,7 +1857,7 @@ slideGrafico.addChart(pptx.charts.PIE, dataChartPieGen,
                 {
                     x:1.5, y:0.9, w:7.5, h:4.5, showLegend:true, legendPos:'t',
                     chartColors:['FC0000','FFCC00','009900','6600CC','0091D0', 'FFE286', '4cc3c0'], dataLabelColor:'FFFFFF'
-                });
+                });*/
 
 
 
@@ -1933,7 +1934,7 @@ slideGrafico.addChart(pptx.charts.PIE, dataChartPieGen,
     slideR.addText(arrGenVerde[4].total, {x:8.25, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
 
-    slideInd.addText('INDUSTRIA', { x:4.4, y:0.5, font_size:18, color:'363636' });
+  /*  slideInd.addText('INDUSTRIA', { x:4.4, y:0.5, font_size:18, color:'363636' });
     slideInd.addText(arrIndAmarillo[0].nombre, {x:0.9, y:1.5, font_size:18, color:'363636'})
     slideInd.addText('F', { x:0.5, y:2.6, font_size:18, color:'363636' })
     slideInd.addText('C', { x:0.5, y:3.6, font_size:18, color:'363636' })
@@ -2031,7 +2032,7 @@ slideGrafico.addChart(pptx.charts.PIE, dataChartPieGen,
     slideInd2.addImage({x:8.2, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
     slideInd2.addText(arrIndAzul[9].total, {x:8.25, y:3.6  , font_size:18, font_face:'Arial Black', color:'31AEF2'})
     slideInd2.addImage({x:8.2, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
-    slideInd2.addText(arrIndVerde[9].total, {x:8.25, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
+    slideInd2.addText(arrIndVerde[9].total, {x:8.25, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})*/
 
 
 

@@ -38,7 +38,12 @@ clase: any;
       this.clase = "col-md col-md-6"
       this.uno=true
       this.dos = true;
-    }
+    }/*else if(noComponentes.length == 3){
+      this.clase = "col-md col-md-4"
+      this.uno=true
+      this.dos = true;
+      this.tres = true;
+    }*/
   }
 
 

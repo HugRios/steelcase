@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
+import { Servicios } from '../../services/service';
 import { Router } from '@angular/router';
 declare var Parse: any;
 declare var $: any;
@@ -36,7 +37,7 @@ export class ResultadoDosComponent implements OnInit {
   totalAzul = 0;
   totalEnc : any ;
   industriaName : string = 'rtrtrt';
-  constructor(private router : Router) {
+  constructor(private router : Router, private servicios : Servicios) {
     Parse.initialize("steelcaseCirclesAppId");
     Parse.serverURL = 'https://steelcase-circles.herokuapp.com/parse';
 
@@ -57,6 +58,10 @@ export class ResultadoDosComponent implements OnInit {
   }
 
 
+muestraMensaje(){
+  var msj = this.servicios.tengoId('husdhfuashfr');
+  console.log(msj);
+}
 
   addIndustrias() {
 
@@ -135,7 +140,7 @@ regresaHome(){
         fceb = (eb / results.length);
 
 
-        var ctx = document.getElementById("myChartYellow");
+      /*  var ctx = document.getElementById("myChartYellow");
         var myChart = new Chart(ctx, {
           type: 'radar',
           data: {
@@ -155,7 +160,7 @@ regresaHome(){
            }
        }
           }
-        });
+        });*/
 
         var number = pTotal;
         general2 += number;
@@ -180,7 +185,6 @@ regresaHome(){
 
 
   circuloAzulDos(): any {
-    debugger
     var promise = new Parse.Promise();
     this.circuloAmarilloDos().then((response: any) => {
       var url = window.location.pathname;
@@ -242,7 +246,7 @@ regresaHome(){
           fceb = (eb / results.length);
 
 
-          var ctx = document.getElementById("myChart");
+      /*    var ctx = document.getElementById("myChart");
           var myChart = new Chart(ctx, {
             type: 'radar',
             data: {
@@ -262,7 +266,7 @@ regresaHome(){
            }
           }
             }
-          });
+          });*/
 
 
           //var pTotal=((fct+fcrt+fcr+fcrb+fcb+fclb+fcl+fclt)/8).toFixed(1);
@@ -354,7 +358,7 @@ regresaHome(){
 
 
 
-          var ctx = document.getElementById("myChartGreen");
+        /*  var ctx = document.getElementById("myChartGreen");
           var myChart = new Chart(ctx, {
             type: 'radar',
             data: {
@@ -374,7 +378,7 @@ regresaHome(){
            }
        }
             }
-          });
+          });*/
 
 
           totalEncuestas2 += totalG;
@@ -435,20 +439,20 @@ regresaHome(){
     arrayClientes2.length = 0;
     arrayGeneracion.length = 0;
     arrayAnt.length = 0;
-    this.nombreIndDos().then((response: any) =>{
-      debugger
-      console.log(response[0].total);
-      this.totalAmarillo = arrayTotales[0];
-      this.totalAzul  = arrayTotales[1];
-      this.totalVerde = TotalesVerde[0].total;//response[0].total;
-      this.promTotal = TotalesVerde[0].totalF;//response[0].totalF;
-      this.totalEnc = TotalesVerde[0].encuestas;
-      //this.addIndustrias();
-      this.nombreIndDos()
-      this.industriaName = response;
-      this.termine = true;
-        console.log(this.termine);
-    })
+    this.muestraMensaje();
+this.nombreIndDos().then((response: any) =>{
+          console.log(response[0].total);
+          this.totalAmarillo = arrayTotales[0];
+          this.totalAzul  = arrayTotales[1];
+          this.totalVerde = TotalesVerde[0].total;//response[0].total;
+          this.promTotal = TotalesVerde[0].totalF;//response[0].totalF;
+          this.totalEnc = TotalesVerde[0].encuestas;
+          //this.addIndustrias();
+          this.nombreIndDos()
+          this.industriaName = response;
+          this.termine = true;
+        })
+
 
   }
 
