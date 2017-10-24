@@ -30,6 +30,13 @@ var arrayIndustrias = [];
 var arrayAreasWell = [];
 var clienteEncuesta;
 var nombreCliente;
+var arrInfoImg = [];
+var arrayEstadisticas = [];
+var areasCliente = []
+var statusFinal;
+var pobTotal;
+var numRespuestas;
+var totalGral;
 
 var amarillo = 0, azul= 0, verde = 0;
 
@@ -47,6 +54,7 @@ export class ResultadosFiltrosComponent implements OnInit {
     Parse.serverURL = 'https://steelcase-circles.herokuapp.com/parse';
     totalEncuestas = 0;
     nombreCliente = '';
+    arrayEstadisticas.length = 0;
   }
 
 goBack() {
@@ -141,7 +149,6 @@ goBack() {
                 queryArea.equalTo("objectId", id);
                 queryArea.find({
                   success: function(res){
-                    console.log(res[0].get("nombre"))
                       $("#showArea").show('fast');
                        $("#areaName").val(res[0].get("Name"));
                   }
@@ -299,7 +306,6 @@ goBack() {
          var Cliente = Parse.Object.extend("ClienteWell");
          var cliente = new Cliente();
              cliente.id = id;
-         console.log("entra aqui");
          query.equalTo("cliente", cliente);
        }
 
@@ -310,7 +316,6 @@ goBack() {
          var area = Parse.Object.extend("areaWell");
          var area = new area();
              area.id = id;
-         console.log("entra aqui area");
          query.equalTo("area", area);
        }
 
@@ -321,7 +326,6 @@ goBack() {
          var Generacion = Parse.Object.extend("genWell");
          var generacion = new Generacion();
              generacion.id = id;
-         console.log("entra aqui area");
          query.equalTo("generacion", generacion);
        }
 
@@ -332,7 +336,6 @@ goBack() {
          var Antiguedad = Parse.Object.extend("Antiguedad");
          var antiguedad = new Antiguedad();
              antiguedad.id = id;
-         console.log("entra aqui antiguedad");
          query.equalTo("antiguedad", antiguedad);
        }
 
@@ -456,9 +459,6 @@ goBack() {
          var Cliente = Parse.Object.extend("ClienteWell");
          var cliente = new Cliente();
              cliente.id = id;
-
-
-         console.log("entra aqui");
          query.equalTo("cliente", cliente);
        }
 
@@ -469,7 +469,6 @@ goBack() {
          var area = Parse.Object.extend("areaWell");
          var area = new area();
              area.id = id;
-         console.log("entra aqui area");
          query.equalTo("area", area);
        }
 
@@ -480,7 +479,6 @@ goBack() {
          var Generacion = Parse.Object.extend("genWell");
          var generacion = new Generacion();
              generacion.id = id;
-         console.log("entra aqui area");
          query.equalTo("generacion", generacion);
        }
 
@@ -491,7 +489,6 @@ goBack() {
          var Antiguedad = Parse.Object.extend("Antiguedad");
          var antiguedad = new Antiguedad();
              antiguedad.id = id;
-         console.log("entra aqui antiguedad");
          query.equalTo("antiguedad", antiguedad);
        }
 
@@ -577,7 +574,7 @@ goBack() {
            verde = total3;
            var t3 = total3 + pAzul;
            var final = (t3 / 3).toFixed(1);
-           console.log(final);
+           totalGral = pTotal;
            if (pTotal == 'NaN') {
              $("#promedioTotalVerde").html('NA');
              $("#pgeneral").html('NA');
@@ -602,7 +599,6 @@ goBack() {
     var date = new Date();
      if(vector[1].id== '' && vector[2].id =='' && vector[3].id =='' && vector[0].id != ''){
        var id = vector[0].id ;
-       console.log(id);
        var Cliente = Parse.Object.extend("ClienteWell");
        var cliente = new Cliente();
           cliente.id = id;
@@ -634,7 +630,7 @@ goBack() {
    }
 
 
-   addAreas(){
+/*addAreas(){
   var array = this.getGET();
   clienteEncuesta = array[0].id
   var AreaWell  = Parse.Object.extend('areaWell');
@@ -642,16 +638,29 @@ goBack() {
   var cliente = new Cliente();
       cliente.id = clienteEncuesta;
   var queryArea  = new Parse.Query(AreaWell);
-      queryArea.equalTo("cliente", cliente);
+      queryArea.exists('cliente');
+      queryArea.equalTo('cliente', cliente);
       queryArea.find({
         success: function(resAreas){
           for (let i = 0; i < resAreas.length; i++) {
               arrayAreasWell.push({nombre:resAreas[i].get("Name"), id: resAreas[i].id});
           }
+          var queryAreasSCli = new Parse.Query('areaWell');
+              queryAreasSCli.doesNotExist('cliente')
+              queryAreasSCli.find({
+                success: function(areasSCliente){
+                  for (let i = 0; i < areasSCliente.length; i++) {
+                    arrayAreasWell.push({nombre:resAreas[i].get("Name"), id: resAreas[i].id});
+
+                  }
+                  console.log(arrayAreasWell);
+                }
+              })
 
         }
       })
-}
+
+}*/
 
 
    addGeneracion(){
@@ -884,10 +893,10 @@ goBack() {
          var Wellbeing = Parse.Object.extend('Wellbeing');
          var promise = new Parse.Promise();
            this.reporteGenVerde().then((results: any) => {
-             for (let i = 0; i < arrayAreasWell.length; i++) {
+             for (let i = 0; i <  areasCliente.length; i++) {
                var AreaWell  = Parse.Object.extend('areaWell');
                var area = new AreaWell();
-                   area.id = arrayAreasWell[i].id;
+                   area.id =  areasCliente[i].id;
                    var Cliente  = Parse.Object.extend('ClienteWell');
                    var cliente = new Cliente();
                        cliente.id = clienteEncuesta;
@@ -932,10 +941,10 @@ goBack() {
                            var fclt = lt / results.length;
                            var fceb = eb / results.length;
                            pTotal = ((fct + fcrt + fcr + fcrb + fcb + fclb + fcl + fclt + fceb) / 9);
-                           arrAreaAmarillo.push({nombre: arrayAreasWell[i].nombre,
+                           arrAreaAmarillo.push({nombre:  areasCliente[i].nombre,
                                                total: pTotal.toFixed(1)})
                        }else{
-                         arrAreaAmarillo.push({nombre: arrayAreasWell[i].nombre, total: 'NA'})
+                         arrAreaAmarillo.push({nombre:  areasCliente[i].nombre, total: 'NA'})
                        }
                        promise.resolve(arrAreaAmarillo.sort(compararNombre))
                      }
@@ -950,10 +959,10 @@ goBack() {
          var Wellbeing = Parse.Object.extend('WellCognitivo');
          var promise = new Parse.Promise();
          this.reporteAreaAmarillo().then((results: any) =>{
-           for (let i = 0; i < arrayAreasWell.length; i++) {
+           for (let i = 0; i <  areasCliente.length; i++) {
              var AreaWell  = Parse.Object.extend('areaWell');
              var area = new AreaWell();
-                 area.id = arrayAreasWell[i].id;
+                 area.id =  areasCliente[i].id;
                  var Cliente  = Parse.Object.extend('ClienteWell');
                  var cliente = new Cliente();
                      cliente.id = clienteEncuesta;
@@ -995,10 +1004,10 @@ goBack() {
                        var fclt = lt / results.length;
                        var fceb = eb / results.length;
                        pTotal = ((fct + fcrt + fcr + fcrb + fcb + fclb + fcl + fclt + fceb) / 9);
-                       arrAreaAzul.push({nombre: arrayAreasWell[i].nombre,
+                       arrAreaAzul.push({nombre:  areasCliente[i].nombre,
                                        total: pTotal.toFixed(1)})
                      }else{
-                       arrAreaAzul.push({nombre: arrayAreasWell[i].nombre, total: 'NA'})
+                       arrAreaAzul.push({nombre:  areasCliente[i].nombre, total: 'NA'})
                      }
                      promise.resolve(arrAreaAzul.sort(compararNombre))
                    }
@@ -1012,10 +1021,10 @@ goBack() {
          var Wellbeing = Parse.Object.extend('WellEmocional');
          var promise = new Parse.Promise();
          this.reporteAreaAzul().then((results: any) => {
-           for (let i = 0; i < arrayAreasWell.length; i++) {
+           for (let i = 0; i <  areasCliente.length; i++) {
              var AreaWell  = Parse.Object.extend('areaWell');
              var area = new AreaWell();
-                 area.id = arrayAreasWell[i].id;
+                 area.id =  areasCliente[i].id;
                  var Cliente  = Parse.Object.extend('ClienteWell');
                  var cliente = new Cliente();
                      cliente.id = clienteEncuesta;
@@ -1057,10 +1066,10 @@ goBack() {
                        var fclt = lt / results.length;
                        var fceb = eb / results.length;
                        pTotal = ((fct + fcrt + fcr + fcrb + fcb + fclb + fcl + fclt + fceb) / 9);
-                       arrAreaVerde.push({nombre: arrayAreasWell[i].nombre,
+                       arrAreaVerde.push({nombre:  areasCliente[i].nombre,
                                          total: pTotal.toFixed(1)})
                      }else{
-                       arrAreaVerde.push({nombre: arrayAreasWell[i].nombre, total: 'NA'})
+                       arrAreaVerde.push({nombre:  areasCliente[i].nombre, total: 'NA'})
                      }
                        promise.resolve(arrAreaVerde.sort(compararNombre))
                    }
@@ -1279,7 +1288,6 @@ goBack() {
        sigPaso(){
          $("#modalAlert").modal('toggle');
          this.reporteAntVerde().then((results: any) =>{
-           console.log(arrGenAmarillo[0].nombre);
            /*console.log(arrGenAmarillo[0].nombre);
            console.log(arrGenAzul);
            console.log(arrGenVerde)
@@ -1299,7 +1307,7 @@ goBack() {
               onrendered: function(canvas) {
                   var theCanvas = canvas;
                   //document.body.appendChild(canvas);
-                  Canvas2Image.saveAsPNG(canvas);
+                  //Canvas2Image.saveAsPNG(canvas);
                   //image.src = canvas.toDataURL("image/png");
                   console.log("primer paso")
                   //cb1(image.src);
@@ -1312,10 +1320,94 @@ goBack() {
 
          }
 
+         Estadistica(){
+           var noEmpleados;
+           var vector = this.getGET();
+           var promise = new Parse.Promise();
+           var Cliente = Parse.Object.extend('ClienteWell');
+           var cliente = new Cliente();
+               cliente.id = vector[0].id;
+           var queryCliente = new Parse.Query(Cliente);
+               queryCliente.equalTo('objectId', vector[0].id)
+               queryCliente.find({
+                 success: function(res){
+                   pobTotal = res[0].get('noEmpleados');//numero de empleados
+                   var queryEncuesta = new Parse.Query('Wellbeing');
+                       queryEncuesta.equalTo('cliente', cliente);
+                       queryEncuesta.count({
+                         success: function(noRespuestas){//total RESPUESTAS
+                           numRespuestas = noRespuestas;
+                           statusFinal = (noRespuestas * 100)/pobTotal;
 
+                           var queryAreas = new Parse.Query('areaWell');
+                               queryAreas.exists('cliente');
+                               queryAreas.equalTo('cliente', cliente);
+                               queryAreas.find({
+                                 success: function(areasClienteRes){
+                                   for (let i = 0; i < areasClienteRes.length; i++) {
+                                       areasCliente.push({nombre: areasClienteRes[i].get('Name'),
+                                                              id: areasClienteRes[i].id})
+                                   }
+                                   var queryAreasSCli = new Parse.Query('areaWell');
+                                       queryAreasSCli.doesNotExist('cliente')
+                                       queryAreasSCli.find({
+                                         success: function(areasSCliente){
+                                           for (let i = 0; i < areasSCliente.length; i++) {
+                                             areasCliente.push({nombre: areasSCliente[i].get('Name'),
+                                                                    id: areasSCliente[i].id})
+                                           }
+                                           promise.resolve(areasCliente)
+                                         }
+                                       })
+                                 }
+                            })
+                         }
+                       });
+                 }
+               })
+               return promise
+         }
+
+         totalesAreas(){
+           this.Estadistica().then((response: any)=>{
+             console.log(response)
+             var Area = Parse.Object.extend('areaWell')
+             for (let i = 0; i < response.length; i++) {
+                var queryEncuesta = new Parse.Query('Wellbeing');
+               var area = new Area();
+                  area.id = response[i].id
+                 queryEncuesta.equalTo('area', area);
+                 queryEncuesta.count({
+                   success: function(res){
+                     console.log(res);
+                     arrayEstadisticas.push({nombre:response[i].nombre, total:res})
+                   }
+                 })
+             }
+
+           })
+         }
 
 
   ngOnInit() {
+    arrayEstadisticas = [];
+    arrGenAmarillo.length = 0;
+    arrGenAzul.length = 0;
+    arrGenVerde.length = 0;
+    arrIndAmarillo.length = 0;
+    arrIndAzul.length = 0;
+    arrIndVerde.length = 0;
+    arrAreaAmarillo.length = 0;
+    arrAreaAzul.length = 0;
+    arrAreaVerde.length = 0;
+    arrAntAmarillo.length = 0;
+    arrAntAzul.length = 0;
+    arrAntVerde.length = 0;
+    statusFinal = 0;
+    pobTotal = 0;
+    numRespuestas = 0;
+    areasCliente.length = 0;
+    totalGral = 0;
     var testScript = document.createElement("script");
     testScript.setAttribute("id", "testScript");
     testScript.setAttribute("src", "assets/PptxGenJS/dist/pptxgen.js");
@@ -1330,11 +1422,16 @@ goBack() {
     this.regresaInd();
     this.datosCliente();
     this.addGeneracion();
-    this.addAreas();
+    //this.addAreas();
     this.addAntiguedad();
     this.muestraBoton();
+    this.totalesAreas();
     var array = this.getGET();
     clienteEncuesta = array[0].id
+    statusFinal = 0;
+    pobTotal = 0;
+    numRespuestas = 0;
+
   }
 
 
@@ -1365,21 +1462,10 @@ function crearImagen(cb1){
           //Canvas2Image.saveAsPNG(canvas);
           image.src = canvas.toDataURL("image/png");
           console.log("primer paso")
-          cb1(image.src);
+          arrInfoImg.push(image.src);
+          cb1(arrInfoImg);
       }
   });
-
-  html2canvas($("#amarillo"), {
-      onrendered: function(canvas) {
-          var theCanvas = canvas;
-          //document.body.appendChild(canvas);
-          //Canvas2Image.saveAsPNG(canvas);
-          image.src = canvas.toDataURL("image/png");
-          console.log("primer paso")
-          //cb1(image.src);
-      }
-  });
-
 
   //return image;
 }
@@ -1388,7 +1474,30 @@ function crearImagen(cb1){
 
 function crearImagenDone(infoImage: any){
   console.log("2do paso")
-  crearReporte(infoImage);
+  crearImgAmarillo(infoImage, crearImgAmaDone);
+  //crearReporte(infoImage);
+}
+
+function crearImgAmarillo(arrayInfo: any, cb2){
+  var image = new Image();
+  var amarillo = new Image();
+  html2canvas($("#myChartYellow"), {
+      onrendered: function(canvas) {
+          var theCanvas = canvas;
+          //document.body.appendChild(canvas);
+          Canvas2Image.saveAsPNG(canvas);
+          image.src = canvas.toDataURL("image/png");
+          console.log("primer paso")
+          console.log(image.src);
+          arrInfoImg.push(image.src);
+          cb2(arrayInfo);
+      }
+  });
+}
+
+function crearImgAmaDone(arrInfo: any){
+  console.log(arrInfo);
+  crearReporte(arrInfo);
 }
 
 function crearReporte(info: any){
@@ -1396,7 +1505,8 @@ function crearReporte(info: any){
     var date = new Date();
     var cAmarillo = 'assets/img/yellow_circle.svg', cAzul = 'assets/img/blue_circle.svg', cVerde = 'assets/img/green_circle.svg';
 
-    var dataimage = info.substring(info.indexOf(":")+1);
+    var dataimage = info[0].substring(info.indexOf(":")+1);
+    var dataImageAm = info[1].substring(info.indexOf(":")+1);
     //console.log(info);
     //considerar agregar condicional para agregar las slides
     var pptx = new PptxGenJS();
@@ -1404,6 +1514,8 @@ function crearReporte(info: any){
     var slideEstadistica = pptx.addNewSlide();
     var slide = pptx.addNewSlide();//slide general
     var slideYellow = pptx.addNewSlide();
+    var slideBlue = pptx.addNewSlide();
+    var slideGreen = pptx.addNewSlide();
     var slideR = pptx.addNewSlide();
 
     if(arrAreaAmarillo.length <= 4){
@@ -1419,6 +1531,11 @@ function crearReporte(info: any){
       var slideArea = pptx.addNewSlide();
       var slideArea2 = pptx.addNewSlide();
       var slideArea3 = pptx.addNewSlide();
+    }else if(arrAreaAmarillo.length <= 16){
+      var slideArea = pptx.addNewSlide();
+      var slideArea2 = pptx.addNewSlide();
+      var slideArea3 = pptx.addNewSlide();
+      var slideArea4 = pptx.addNewSlide();
     }
 
 
@@ -1442,7 +1559,8 @@ function crearReporte(info: any){
         total = 0;
         datosGraf.push(total)
       }else{
-        datosGraf.push(total)
+        var porcentaje = (total * 100)/5;
+        datosGraf.push(porcentaje)
       }
     }
 
@@ -1458,12 +1576,14 @@ function crearReporte(info: any){
     }
 
     for (let i = 0; i < arrAntAmarillo.length; i++) {
+
       var total = (parseFloat(arrAntAmarillo[i].total) + parseFloat(arrAntAzul[i].total) + parseFloat(arrAntVerde[i].total))/3;
       if( total.toString() == 'NaN'){
         total = 0;
         datosAnt.push(total)
       }else{
-        datosAnt.push(total)
+        var porcentaje = (total * 100)/5;
+        datosAnt.push(porcentaje)
       }
     }
 
@@ -1477,7 +1597,7 @@ function crearReporte(info: any){
       }
     }
 
-    var dataChartPieGen = [{ name: 'Generación',
+  /*  var dataChartPieGen = [{ name: 'Generación',
     labels: [arrGenAmarillo[0].nombre, arrGenAmarillo[1].nombre, arrGenAmarillo[2].nombre, arrGenAmarillo[3].nombre, arrGenAmarillo[4].nombre],
     values: [  datosGraf[0],   datosGraf[1],   datosGraf[2],   datosGraf[3],   datosGraf[4]]
 }];
@@ -1488,7 +1608,7 @@ slideGrafico.addChart(pptx.charts.PIE, dataChartPieGen,
         x:1.5, y:0.9, w:7.5, h:4.5, showLegend:true, legendPos:'t',
         chartColors:['73CD52','92D04F','ADD24F','82d586'], dataLabelColor:'FFFFFF'
     });
-console.log('si llego acá');
+
     var dataChartPieArea = [{ name: 'Área',
     labels: [arrAreaAmarillo[0].nombre, arrAreaAmarillo[1].nombre, arrAreaAmarillo[2].nombre, arrAreaAmarillo[3].nombre, arrAreaAmarillo[4].nombre],
     values: [  datosArea[0],   datosArea[1],   datosArea[2],   datosArea[3],   datosArea[4]]
@@ -1510,7 +1630,7 @@ console.log('si llego acá');
             {
                 x:1.5, y:0.9, w:7.5, h:4.5, showLegend:true, legendPos:'t',
                 chartColors:['E9B200','FFC000','FFD243','FFE286'], dataLabelColor:'FFFFFF'
-            });
+            });*/
 
     slideTitulo.addText('Wellbeing Research',{x: 6, y:2, font_size:22, color:'363636' });
     slideTitulo.addText(nombreCliente, {x:7, y:2.5, font_size:18, color:'363636'});
@@ -1520,13 +1640,13 @@ console.log('si llego acá');
 
 
     var dataChartGen = [
-    { name: 'Region 1', labels: ['May', 'June', 'July', 'August'], values: [26.0, 53.0, 99, 75.00] },
-    { name: 'Region 2', labels: ['May', 'June', 'July', 'August'], values: [43.5, 70.3, 90, 80.05] }
+    { name: 'Region 1', labels: [arrGenAmarillo[0].nombre, arrGenAmarillo[1].nombre,
+        arrGenAmarillo[2].nombre, arrGenAmarillo[3].nombre, arrGenAmarillo[4].nombre], values: [datosGraf[0],   datosGraf[1],   datosGraf[2],   datosGraf[3],   datosGraf[4]] },
 ];
 
 var dataChartAnt = [
-{ name: 'Region 1', labels: ['May', 'June', 'July', 'August'], values: [26.0, 53.0, 99, 75.00] },
-{ name: 'Region 2', labels: ['May', 'June', 'July', 'August'], values: [43.5, 70.3, 90, 80.05] }
+{ name: 'Region 1', labels: [arrAntAmarillo[0].nombre, arrAntAmarillo[1].nombre,
+  arrAntAmarillo[2].nombre, arrAntAmarillo[3].nombre], values: [datosAnt[0],   datosAnt[1],   datosAnt[2],   datosAnt[3]] }
 ];
 
 slideEstadistica.addChart(
@@ -1539,38 +1659,113 @@ slideEstadistica.addChart(
     { x:5.3, y:2.9, w:3.5, h:2, barDir:'bar', catAxisLabelColor:'0000CC', catAxisLabelFontFace:'Courier' }
 );
 
-
     slideEstadistica.addText('Estadisticas de la muestra',{x: 1, y:0.5, font_size:20, color:'363636' })
     slideEstadistica.addText('STATUS FINAL',{x: 1, y:0.9, font_size:9, color:'363636' })
-    slideEstadistica.addText('Total',{x: 4, y:0.9, font_size:9, color:'363636' })
+    slideEstadistica.addText(statusFinal.toFixed(1),{x: 4, y:0.9, font_size:9, color:'363636' })
     slideEstadistica.addText('POBLACION TOTAL',{x: 1, y:1.3, font_size:9, color:'363636' })
-    slideEstadistica.addText('Total',{x: 4, y:1.3, font_size:9, color:'363636' })
+    slideEstadistica.addText(pobTotal,{x: 4, y:1.3, font_size:9, color:'363636' })
     slideEstadistica.addText('NÚMERO DE RESPUESTAS',{x: 1, y:1.5, font_size:9, color:'363636' })
-    slideEstadistica.addText('Total',{x: 4, y:1.5, font_size:9, color:'363636' })
+    slideEstadistica.addText(numRespuestas,{x: 4, y:1.5, font_size:9, color:'363636' })
 
     var Ax = 0, Ay = 1.9, tAx = 0, tAy = 1.9;
 
     var i = 0;
     do{
-
-      slideEstadistica.addText('area 1',{x: 1, y:Ay, font_size:9, color:'363636' })
-      slideEstadistica.addText('Total',{x: 4, y:tAy, font_size:9, color:'363636' })
+      slideEstadistica.addText(arrayEstadisticas[i].nombre,{x: 1, y:Ay, font_size:9, color:'363636' })
+      slideEstadistica.addText(arrayEstadisticas[i].total,{x: 4, y:tAy, font_size:9, color:'363636' })
       Ay +=0.2;
       tAy +=0.2;
       i++
-    }while(i<5)
+    }while(i<arrayEstadisticas.length)
 
 
     slide.addText('ÍNDICE DE BIENESTAR GLOBAL '+nombreCliente.toUpperCase(), { x:1.0, y:0.5, font_size:18,font_face:'Arial Black', color:'363636' });
     slide.addImage({x:1.5, y:1.3, w:3, h:3, path:'assets/img/gray_circle.svg'});
-    slide.addText('3.5',{x:2, y:2.6, font_size:105, font_face:'Calibri', color:'FBC100'})
+    slide.addText(totalGral,{x:2, y:2.6, font_size:105, font_face:'Calibri', color:'FBC100'})
     slide.addText('Media nacional: ',{x:4.7, y:2.3, font_size:20, font_face:'Helvetica Neue Light', color:'363636'});
     slide.addText('Media del sector: ',{x:4.7, y:2.7, font_size:20, font_face:'Helvetica Neue Light', color:'363636'})
 
     slideYellow.addText('Índice de bienestar físico',{x:1, y:0.5, font_size:28,font_face:'Arial', color:'363636'});
-    slideYellow.addImage({x:1.5, y:1.3, w:2.5, h:2.5, path: cAmarillo});
+    slideYellow.addImage({x:1.5, y:1.3, w:2.5, h:2.5, path: 'assets/img/yellowCircleSlim.svg'});
+    slideYellow.addImage({x:1.8, y:1.6, w:2, h:2, data:dataImageAm});
+    slideYellow.addText('3.5',{x:2.2, y:4, font_size:50, font_face:'Calibri', color:'FBC100'})
+    slideYellow.addText('Media nacional: ', {x:2, y:4.5, font_size:11,font_face:'Arial', color:'363636'})
+    slideYellow.addText('Media del sector:', {x:1.7, y:4.7, font_size:11,font_face:'Arial', color:'363636'})
+
     slideYellow.addText('Valor promedio de cada categoría', {x:5, y:1, font_size:12,font_face:'Arial', color:'363636'})
-    slideYellow.addText('Tengo opciones para trabajar en distintas posturas físicas a lo largo del día.', {x:5, y:1.4, font_size:7,font_face:'Arial', color:'363636'})
+    slideYellow.addText('Tengo opciones para trabajar en distintas posturas físicas a lo largo del día.', {x:5, y:1.5, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('T1', {x:9, y:1.5, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('En un día de trabajo normal, estoy en constante movimiento.', {x:5, y:1.7, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('T1', {x:9, y:1.7, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('La temperatura de la oficina es la adecuada la mayor parte del tiempo.', {x:5, y:1.9, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('T1', {x:9, y:1.9, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('Considero que tengo un peso adecuado, normalmente elijo\n alimentos saludables .', {x:5, y:2.2, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('T1', {x:9, y:2.2, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('Mi espacio de trabajo es cómodo y no me genera dolores de\nespalda, cuello, etc..', {x:5, y:2.5, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('T1', {x:9, y:2.5, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('En mi opinion, mis horas de trabajo son las adecuadas,\n todas mis tareas las realizo dentro del horario laboral.', {x:5, y:2.8, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('T1', {x:9, y:2.8, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('Me siento lleno de vida y dinamismo.', {x:5, y:3, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('T1', {x:9, y:3, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('Estoy satisfecho con la iluminación en mi espacio de trabajo .', {x:5, y:3.2, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('T1', {x:9, y:3.2, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('Mi espacio de trabajo me permite estar en contacto con la\n naturaleza y/o espacios exteriores.', {x:5, y:3.4, font_size:8,font_face:'Arial', color:'363636'})
+    slideYellow.addText('T1', {x:9, y:3.4, font_size:8,font_face:'Arial', color:'363636'})
+
+
+    slideBlue.addText('Índice de bienestar cognitivo',{x:1, y:0.5, font_size:28,font_face:'Arial', color:'363636'});
+    slideBlue.addImage({x:1.5, y:1.3, w:2.5, h:2.5, path: 'assets/img/blueCircleSlim.svg'});
+    slideBlue.addImage({x:1.8, y:1.6, w:2, h:2, data:dataImageAm});
+    slideBlue.addText('3.5',{x:2.2, y:4, font_size:50, font_face:'Calibri', color:'FBC100'})
+    slideBlue.addText('Media nacional: ', {x:2, y:4.5, font_size:11,font_face:'Arial', color:'363636'})
+    slideBlue.addText('Media del sector:', {x:1.7, y:4.7, font_size:11,font_face:'Arial', color:'363636'})
+    slideBlue.addText('Valor promedio de cada categoría', {x:5, y:1, font_size:12,font_face:'Arial', color:'363636'})
+    slideBlue.addText('Normalmente, siento que hice un avance en mi trabajo al finalizar\nel día.', {x:5, y:1.7, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('T1', {x:9, y:1.7, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('Tengo acceso a una variedad de espacios que puedo adecuar\ndependiendo de mis actividades.', {x:5, y:2.0, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('T1', {x:9, y:2, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('Mis niveles de estrés son bajos la mayor parte del tiempo.', {x:5, y:2.2, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('T1', {x:9, y:2.2, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('Cuando así lo deseo, puedo pasar “desapercibido” al trabajar en\nespacios alternos a mi estación de trabajo.', {x:5, y:2.5, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('T1', {x:9, y:2.5, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('Considero que puedo prestar plena atención a cada actividad que\nrealizo.', {x:5, y:2.8, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('T1', {x:9, y:2.8, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('Puedo tener una conversacion confidencial con alguien.', {x:5, y:3, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('T1', {x:9, y:3, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('Normalmente uso audífonos u otros elementos para bloquear las\ndistracciones del entorno.', {x:5, y:3.3, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('T1', {x:9, y:3.3, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('Puedo tomar breaks de mis actividades y re-energizarme durante el\ndía.', {x:5, y:3.6, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('T1', {x:9, y:3.6, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('Tengo oportunidad de ser creativo y planear para el futuro.', {x:5, y:3.8, font_size:8,font_face:'Arial', color:'363636'})
+    slideBlue.addText('T1', {x:9, y:3.8, font_size:8,font_face:'Arial', color:'363636'})
+
+
+    slideGreen.addText('Índice de bienestar emocional',{x:1, y:0.5, font_size:28,font_face:'Arial', color:'363636'});
+    slideGreen.addImage({x:1.5, y:1.3, w:2.5, h:2.5, path: 'assets/img/greenCircleSlim.svg'});
+    slideGreen.addImage({x:1.8, y:1.6, w:2, h:2, data:dataImageAm});
+    slideGreen.addText('Media nacional: ', {x:2, y:4.5, font_size:11,font_face:'Arial', color:'363636'})
+    slideGreen.addText('Media del sector:', {x:1.7, y:4.7, font_size:11,font_face:'Arial', color:'363636'})
+    slideGreen.addText('3.5',{x:2.2, y:4, font_size:50, font_face:'Calibri', color:'FBC100'})
+    slideGreen.addText('Valor promedio de cada categoría', {x:5, y:1, font_size:12,font_face:'Arial', color:'363636'})
+    slideGreen.addText('En mi organización, siento que mi persona y mis ideas importan.', {x:5, y:1.5, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('T1', {x:9, y:1.5, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('Considero que mis compañeros de trabajo se preocupan por mí\ncomo persona.', {x:5, y:1.8, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('T1', {x:9, y:1.8, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('La gente tiende a hablar con consideración por los demás.', {x:5, y:2, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('T1', {x:9, y:2, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('Confío en la mayoría de mis compañeros, puedo contar con ellos\npara encontrar soluciones cuando las cosas van mal.', {x:5, y:2.3, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('T1', {x:9, y:2.2, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('Normalmente veo el impacto que mi trabajo tiene en otros o en la\norganización.', {x:5, y:2.6, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('T1', {x:9, y:2.5, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('Me siento motivado y optimista para intentar cosas nuevas.', {x:5, y:2.8, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('T1', {x:9, y:2.8, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('Siento que puedo ser yo mismo la mayor parte del tiempo, puedo\nser informal y espontáneo.', {x:5, y:3.1, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('T1', {x:9, y:3, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('Mi líder toma en cuenta mis ideas y me apoya cuando lo necesito.', {x:5, y:3.3, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('T1', {x:9, y:3.3, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('Los objetivos y la misión de mi organización son personalmente\nsignificativos para mí.',{x:5, y:3.6, font_size:8,font_face:'Arial', color:'363636'})
+    slideGreen.addText('T1', {x:9, y:3.5, font_size:8,font_face:'Arial', color:'363636'})
+
     //slide.addImage({x:3.5, y:.8, w:2.8, h:2,data: info})
 
 
@@ -1589,7 +1784,7 @@ slideEstadistica.addChart(
       x:7.6, y:3.5, w:1.5, h:1.5,
       path: 'assets/img/green_circle.svg'
     })*/
-
+    console.log('hasta aquí llega');
     slideR.addText('GENERACIÓN', { x:4.2, y:0.5, font_size:18, color:'363636' });
     slideR.addText(arrGenAmarillo[0].nombre, {x:0.6, y:1.5, font_size:18, color:'363636'})
     slideR.addText('F', { x:0.5, y:2.6, font_size:18, color:'363636' })
@@ -1603,6 +1798,7 @@ slideEstadistica.addChart(
     slideR.addImage({x:1.2, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
     slideR.addText(arrGenVerde[0].total, {x:1.27, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
+    console.log('ya no');
 
     slideR.addText(arrGenAmarillo[1].nombre, {x:2.7, y:1.5, font_size:18, color:'363636'})
     slideR.addText(datosGraf[1].toFixed(1), {x:3.15, y:2.1  , font_size:18, font_face:'Arial Black', color:'FBC100'})
@@ -1613,6 +1809,7 @@ slideEstadistica.addChart(
     slideR.addImage({x:3.1, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
     slideR.addText(arrGenVerde[1].total, {x:3.17, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
+    console.log('hasta aquí llega 2');
 
     slideR.addText(arrGenAmarillo[2].nombre, {x:4.5, y:1.5, font_size:18, color:'363636'})
     slideR.addText(datosGraf[2].toFixed(1), {x:4.9, y:2.1  , font_size:18, font_face:'Arial Black', color:'FBC100'})
@@ -1623,7 +1820,7 @@ slideEstadistica.addChart(
     slideR.addImage({x:4.9, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
     slideR.addText(arrGenVerde[2].total, {x:4.95, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
-
+console.log('hasta aquí llega 3');
     slideR.addText(arrGenAmarillo[3].nombre, {x:6.2, y:1.5, font_size:18, color:'363636'})
     slideR.addText(datosGraf[3].toFixed(1), {x:6.6, y:2.1  , font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideR.addImage({x:6.6, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
@@ -1702,7 +1899,7 @@ slideEstadistica.addChart(
 
       }
 
-      for (let i = 4; i < arrAreaAmarillo.length; i++) {
+      for (let i = 4; i < 8; i++) {
 
                 if(i == 4){//las variables tienen que tomar los valores del arreglo en posicion 0
                   nameAreasX = 1.6;
@@ -1730,7 +1927,7 @@ slideEstadistica.addChart(
                   tAm0x = 8.09, tAm0y = 2.6, tAz0x = 8.09, tAz0y = 3.6 ,tV0x = 8.09, tV0y = 4.6;
                   imgAx = 8.07, imgAy = 2.4, imgAzX = 8.07, imgAzY = 3.4, imgVx = 8.07, imgVy = 4.4;
                 }
-
+console.log('hasta aquí llega 4');
                 slideArea2.addText(arrAreaAmarillo[i].nombre, {x:nameAreasX, y:nameAreasY, font_size:18, color:'363636'})
                 slideArea2.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
 
@@ -1741,7 +1938,92 @@ slideEstadistica.addChart(
                 slideArea2.addImage({x:imgVx, y:imgVy, w:w, h:h,path: cVerde})
                 slideArea2.addText(arrAreaVerde[i].total, {x:tV0x, y:tV0y  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
-      }
+      }//termina for
+
+
+      for (let i = 8; i < 12; i++) {
+
+                if(i == 8){//las variables tienen que tomar los valores del arreglo en posicion 0
+                  nameAreasX = 1.6;
+                  nameAreasY = 1.5;
+                  t0x = 2, t0y =2.1;
+                  tAm0x = 2, tAm0y = 2.6, tAz0x = 2, tAz0y = 3.6 ,tV0x = 2, tV0y = 4.6;
+                  imgAx = 2, imgAy = 2.4, imgAzX = 2, imgAzY = 3.4, imgVx = 2, imgVy = 4.4;
+
+                }else if(i == 9){
+                  nameAreasX = 3.9;
+                  nameAreasY = 1.5;
+                  t0x = 4.69, t0y =2.1;
+                  tAm0x = 4.73, tAm0y = 2.6, tAz0x = 4.73, tAz0y = 3.6 ,tV0x = 4.73, tV0y = 4.6;
+                  imgAx = 4.7, imgAy = 2.4, imgAzX = 4.7, imgAzY = 3.4, imgVx = 4.7, imgVy = 4.4;
+                }else if(i == 10){
+                  nameAreasX = 6.4;
+                  nameAreasY = 1.5;
+                  t0x = 6.68, t0y =2.1;
+                  tAm0x = 6.68, tAm0y = 2.6, tAz0x = 6.68, tAz0y = 3.6 ,tV0x = 6.68, tV0y = 4.6;
+                  imgAx = 6.68, imgAy = 2.4, imgAzX = 6.68, imgAzY = 3.4, imgVx = 6.68, imgVy = 4.4;
+                }else if(i == 11){
+                  nameAreasX = 7.72;
+                  nameAreasY = 1.5;
+                  t0x = 8.2, t0y =2.1;
+                  tAm0x = 8.09, tAm0y = 2.6, tAz0x = 8.09, tAz0y = 3.6 ,tV0x = 8.09, tV0y = 4.6;
+                  imgAx = 8.07, imgAy = 2.4, imgAzX = 8.07, imgAzY = 3.4, imgVx = 8.07, imgVy = 4.4;
+                }
+console.log('hasta aquí llega 4');
+                slideArea3.addText(arrAreaAmarillo[i].nombre, {x:nameAreasX, y:nameAreasY, font_size:18, color:'363636'})
+                slideArea3.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
+
+                slideArea3.addImage({x:imgAx, y:imgAy, w:w, h:h,path: cAmarillo})
+                slideArea3.addText(arrAreaAmarillo[i].total, {x:tAm0x, y:tAm0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
+                slideArea3.addImage({x:imgAzX, y:imgAzY, w:w, h:h,path: cAzul})
+                slideArea3.addText(arrAreaAzul[i].total, {x:tAz0x, y:tAz0y  , font_size:18, font_face:'Arial Black', color:'31AEF2'})
+                slideArea3.addImage({x:imgVx, y:imgVy, w:w, h:h,path: cVerde})
+                slideArea3.addText(arrAreaVerde[i].total, {x:tV0x, y:tV0y  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
+
+      }//termina for
+
+      for (let i = 12; i < arrAreaAmarillo.length; i++) {
+
+                if(i == 12){//las variables tienen que tomar los valores del arreglo en posicion 0
+                  nameAreasX = 1.6;
+                  nameAreasY = 1.5;
+                  t0x = 2, t0y =2.1;
+                  tAm0x = 2, tAm0y = 2.6, tAz0x = 2, tAz0y = 3.6 ,tV0x = 2, tV0y = 4.6;
+                  imgAx = 2, imgAy = 2.4, imgAzX = 2, imgAzY = 3.4, imgVx = 2, imgVy = 4.4;
+
+                }else if(i == 13){
+                  nameAreasX = 3.9;
+                  nameAreasY = 1.5;
+                  t0x = 4.69, t0y =2.1;
+                  tAm0x = 4.73, tAm0y = 2.6, tAz0x = 4.73, tAz0y = 3.6 ,tV0x = 4.73, tV0y = 4.6;
+                  imgAx = 4.7, imgAy = 2.4, imgAzX = 4.7, imgAzY = 3.4, imgVx = 4.7, imgVy = 4.4;
+                }else if(i == 14){
+                  nameAreasX = 6.4;
+                  nameAreasY = 1.5;
+                  t0x = 6.68, t0y =2.1;
+                  tAm0x = 6.68, tAm0y = 2.6, tAz0x = 6.68, tAz0y = 3.6 ,tV0x = 6.68, tV0y = 4.6;
+                  imgAx = 6.68, imgAy = 2.4, imgAzX = 6.68, imgAzY = 3.4, imgVx = 6.68, imgVy = 4.4;
+                }else if(i == 15){
+                  nameAreasX = 7.72;
+                  nameAreasY = 1.5;
+                  t0x = 8.2, t0y =2.1;
+                  tAm0x = 8.09, tAm0y = 2.6, tAz0x = 8.09, tAz0y = 3.6 ,tV0x = 8.09, tV0y = 4.6;
+                  imgAx = 8.07, imgAy = 2.4, imgAzX = 8.07, imgAzY = 3.4, imgVx = 8.07, imgVy = 4.4;
+                }
+console.log('hasta aquí llega 4');
+                slideArea4.addText(arrAreaAmarillo[i].nombre, {x:nameAreasX, y:nameAreasY, font_size:18, color:'363636'})
+                slideArea4.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
+
+                slideArea4.addImage({x:imgAx, y:imgAy, w:w, h:h,path: cAmarillo})
+                slideArea4.addText(arrAreaAmarillo[i].total, {x:tAm0x, y:tAm0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
+                slideArea4.addImage({x:imgAzX, y:imgAzY, w:w, h:h,path: cAzul})
+                slideArea4.addText(arrAreaAzul[i].total, {x:tAz0x, y:tAz0y  , font_size:18, font_face:'Arial Black', color:'31AEF2'})
+                slideArea4.addImage({x:imgVx, y:imgVy, w:w, h:h,path: cVerde})
+                slideArea4.addText(arrAreaVerde[i].total, {x:tV0x, y:tV0y  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
+
+      }//termina for
+
+
 
 
 
@@ -1831,6 +2113,8 @@ slideEstadistica.addChart(
     arrAntAmarillo.length = 0;
     arrAntAzul.length = 0;
     arrAntVerde.length = 0;
+    datosGraf.length = 0;
+    datosAnt.length = 0;
   }catch(exception){
   //  alert("La información no se encuentra lista, intentelo de nuevo en unos minutos")
   alert(exception)
@@ -1846,6 +2130,8 @@ slideEstadistica.addChart(
     arrAntAmarillo.length = 0;
     arrAntAzul.length = 0;
     arrAntVerde.length = 0;
+    datosGraf.length = 0;
+    datosAnt.length = 0;
   }
 
 
