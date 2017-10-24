@@ -490,7 +490,7 @@ generarWell(){ //genera link por cliente
   var newInd =  $("#newIndustria").val();
   console.log(industria);
   var fecha = fechaIngreso;
-  var link = "https://hugrios.bitbucket.io/inicio.html";
+  var link = "https://steelcasemx-wellbeingsurvey.com";
   var date = new Date(fecha);
   console.log(date);
   date.setHours(date.getHours()+23);
