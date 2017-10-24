@@ -543,7 +543,7 @@ try {
                     newLink.set("link", link+"?Cliente="+newCliente.id+"&Industria="+newIndustria.id+"&Areas="+areasLink);
                     newLink.set("fechaLimite", date);
                     newLink.save();
-                    $("#link").val("https://hugrios.bitbucket.io/inicio.html"+"?Cliente="+newCliente.id+"&Industria="+newIndustria.id+"&Areas="+areasLink);
+                    $("#link").val("https://steelcasemx-wellbeingsurvey.com"+"?Cliente="+newCliente.id+"&Industria="+newIndustria.id+"&Areas="+areasLink);
                   }//
                 })//termina creación del cliente
               }
@@ -576,7 +576,7 @@ try {
                 newLink.set("link", link+"?Cliente="+newCliente.id+"&Industria="+res[0].id+"&Areas="+areasLink);
                 newLink.set("fechaLimite", date);
                 newLink.save();
-                $("#link").val("https://hugrios.bitbucket.io/inicio.html"+"?Cliente="+newCliente.id+"&Industria="+res[0].id+"&Areas="+areasLink);
+                $("#link").val("https://steelcasemx-wellbeingsurvey.com"+"?Cliente="+newCliente.id+"&Industria="+res[0].id+"&Areas="+areasLink);
               }//
             })//termina creación del cliente
           }
