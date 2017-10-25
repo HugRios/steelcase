@@ -2211,19 +2211,42 @@ function crearReporte(info: any){
     }else if(arrAreaAmarillo.length <= 8){
       var slideArea = pptx.addNewSlide();
       var slideArea2 = pptx.addNewSlide();
-      slideArea2.addText('ÁREA', { x:4.6, y:0.5, font_size:18, color:'363636' });
-      slideArea2.addText('F', { x:0.5, y:2.6, font_size:18, color:'363636' })
-      slideArea2.addText('C', { x:0.5, y:3.6, font_size:18, color:'363636' })
-      slideArea2.addText('E', { x:0.5, y:4.6, font_size:18, color:'363636' })
+      slideArea2.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636' });
+      slideArea2.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
+      slideArea2.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
+      slideArea2.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
     }else if(arrAreaAmarillo.length <= 12){
       var slideArea = pptx.addNewSlide();
       var slideArea2 = pptx.addNewSlide();
       var slideArea3 = pptx.addNewSlide();
+      slideArea2.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636' });
+      slideArea2.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
+      slideArea2.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
+      slideArea2.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
+
+      slideArea3.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636' });
+      slideArea3.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
+      slideArea3.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
+      slideArea3.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
     }else if(arrAreaAmarillo.length <= 16){
       var slideArea = pptx.addNewSlide();
       var slideArea2 = pptx.addNewSlide();
       var slideArea3 = pptx.addNewSlide();
       var slideArea4 = pptx.addNewSlide();
+      slideArea2.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636' });
+      slideArea2.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
+      slideArea2.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
+      slideArea2.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
+
+      slideArea3.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636' });
+      slideArea3.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
+      slideArea3.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
+      slideArea3.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
+
+      slideArea4.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636' });
+      slideArea4.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
+      slideArea4.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
+      slideArea4.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
     }
 
 
@@ -2348,17 +2371,17 @@ var dataChartAnt = [
 
 slideEstadistica.addChart(
     pptx.charts.BAR, dataChartGen,
-    { x:5.3, y:0.9, w:3.5, h:2, barDir:'bar', catAxisLabelColor:'0000CC', catAxisLabelFontFace:'Courier' }
+    { x:5.3, y:0.9, w:3.5, h:2, barDir:'bar', catAxisLabelColor:'0000CC', catAxisLabelFontFace:'Arial' }
 );
 
 slideEstadistica.addChart(
     pptx.charts.BAR, dataChartAnt,
-    { x:5.3, y:2.9, w:3.5, h:2, barDir:'bar', catAxisLabelColor:'0000CC', catAxisLabelFontFace:'Courier' }
+    { x:5.3, y:2.9, w:3.5, h:2, barDir:'bar', catAxisLabelColor:'0000CC', catAxisLabelFontFace:'Arial' }
 );
 
     slideEstadistica.addText('Estadisticas de la muestra',{x: 1, y:0.5, font_size:20, color:'363636' })
     slideEstadistica.addText('STATUS FINAL',{x: 1, y:0.9, font_size:9, color:'363636' })
-    slideEstadistica.addText(statusFinal.toFixed(1),{x: 4, y:0.9, font_size:9, color:'363636' })
+    slideEstadistica.addText(statusFinal.toFixed(1),{x: 4, y:0.9, font_size:9, color:'8B1D9B' })
     slideEstadistica.addText('POBLACION TOTAL',{x: 1, y:1.3, font_size:9, color:'363636' })
     slideEstadistica.addText(pobTotal,{x: 4, y:1.3, font_size:9, color:'363636' })
     slideEstadistica.addText('NÚMERO DE RESPUESTAS',{x: 1, y:1.5, font_size:9, color:'363636' })
@@ -2378,7 +2401,7 @@ slideEstadistica.addChart(
 
     slide.addText('ÍNDICE DE BIENESTAR GLOBAL '+nombreCliente.toUpperCase(), { x:1.0, y:0.5, font_size:18,font_face:'Arial Black', color:'363636' });
     slide.addImage({x:1.5, y:1.3, w:3, h:3, path:'assets/img/gray_circle.svg'});
-    slide.addText(totalGral,{x:2, y:2.6, font_size:105, font_face:'Calibri', color:'FBC100'})
+    slide.addText(totalGral,{x:2, y:2.6, font_size:105, font_face:'Calibri', color:'8B1D9B'})
     slide.addText('Media nacional: '+gralTotal,{x:4.7, y:2.3, font_size:20, font_face:'Helvetica Neue Light', color:'363636'});
     slide.addText('Media del sector '+tipoSector+": "+indTotal,{x:4.7, y:2.7, font_size:20, font_face:'Helvetica Neue Light', color:'363636'})
 
@@ -2489,12 +2512,12 @@ slideEstadistica.addChart(
       x:7.6, y:3.5, w:1.5, h:1.5,
       path: 'assets/img/green_circle.svg'
     })*/
-    slideR.addText('GENERACIÓN', { x:4.2, y:0.5, font_size:18, color:'363636' });
+    slideR.addText('Resultados por generación', { x:1, y:0.5, font_size:18, color:'363636' });
+    slideR.addText(datosGraf[0].toFixed(1), {x:1.27, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
     slideR.addText(arrGenAmarillo[0].nombre, {x:0.6, y:1.5, font_size:18, color:'363636'})
-    slideR.addText('F', { x:0.5, y:2.6, font_size:18, color:'363636' })
-    slideR.addText('C', { x:0.5, y:3.6, font_size:18, color:'363636' })
-    slideR.addText('E', { x:0.5, y:4.6, font_size:18, color:'363636' })
-    slideR.addText(datosGraf[0].toFixed(1), {x:1.27, y:2.1  , font_size:18, font_face:'Arial Black', color:'FBC100'})
+    slideR.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
+    slideR.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
+    slideR.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
     slideR.addImage({x:1.2, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
     slideR.addText(arrGenAmarillo[0].total, {x:1.27, y:2.6  , font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideR.addImage({x:1.2, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
@@ -2502,9 +2525,8 @@ slideEstadistica.addChart(
     slideR.addImage({x:1.2, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
     slideR.addText(arrGenVerde[0].total, {x:1.27, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
-
+    slideR.addText(datosGraf[1].toFixed(1), {x:3.15, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
     slideR.addText(arrGenAmarillo[1].nombre, {x:2.7, y:1.5, font_size:18, color:'363636'})
-    slideR.addText(datosGraf[1].toFixed(1), {x:3.15, y:2.1  , font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideR.addImage({x:3.1, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
     slideR.addText(arrGenAmarillo[1].total, {x:3.13, y:2.6, font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideR.addImage({x:3.1, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
@@ -2512,9 +2534,8 @@ slideEstadistica.addChart(
     slideR.addImage({x:3.1, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
     slideR.addText(arrGenVerde[1].total, {x:3.17, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
-
+    slideR.addText(datosGraf[2].toFixed(1), {x:4.9, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
     slideR.addText(arrGenAmarillo[2].nombre, {x:4.5, y:1.5, font_size:18, color:'363636'})
-    slideR.addText(datosGraf[2].toFixed(1), {x:4.9, y:2.1  , font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideR.addImage({x:4.9, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
     slideR.addText(arrGenAmarillo[2].total, {x:4.95, y:2.6, font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideR.addImage({x:4.9, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
@@ -2522,8 +2543,8 @@ slideEstadistica.addChart(
     slideR.addImage({x:4.9, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
     slideR.addText(arrGenVerde[2].total, {x:4.95, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
+    slideR.addText(datosGraf[3].toFixed(1), {x:6.6, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
     slideR.addText(arrGenAmarillo[3].nombre, {x:6.2, y:1.5, font_size:18, color:'363636'})
-    slideR.addText(datosGraf[3].toFixed(1), {x:6.6, y:2.1  , font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideR.addImage({x:6.6, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
     slideR.addText(arrGenAmarillo[3].total, {x:6.65, y:2.6, font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideR.addImage({x:6.6, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
@@ -2531,9 +2552,8 @@ slideEstadistica.addChart(
     slideR.addImage({x:6.6, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
     slideR.addText(arrGenVerde[3].total, {x:6.65, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
-
+    slideR.addText(datosGraf[4].toFixed(1), {x:8.25, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
     slideR.addText(arrGenAmarillo[4].nombre, {x:7.9, y:1.5, font_size:18, color:'363636'})
-    slideR.addText(datosGraf[4].toFixed(1), {x:8.25, y:2.1  , font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideR.addImage({x:8.2, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
     slideR.addText(arrGenAmarillo[4].total, {x:8.25, y:2.6, font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideR.addImage({x:8.2, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
@@ -2552,10 +2572,10 @@ slideEstadistica.addChart(
     var imgAx, imgAy, imgAzX, imgAzY, imgVx, imgVy;
 
 
-    slideArea.addText('ÁREA', { x:4.6, y:0.5, font_size:18, color:'363636' });
-    slideArea.addText('F', { x:0.5, y:2.6, font_size:18, color:'363636' })
-    slideArea.addText('C', { x:0.5, y:3.6, font_size:18, color:'363636' })
-    slideArea.addText('E', { x:0.5, y:4.6, font_size:18, color:'363636' })
+    slideArea.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636' });
+    slideArea.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
+    slideArea.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
+    slideArea.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
 
     if(arrAreaAmarillo.length <= 4){
       for (let i = 0; i < arrAreaAmarillo.length; i++) { //probar con un do while
@@ -2563,33 +2583,31 @@ slideEstadistica.addChart(
         if(i == 0){//las variables tienen que tomar los valores del arreglo en posicion 0
           nameAreasX = 1.6;
           nameAreasY = 1.5;
-          t0x = 2, t0y =2.1;
+          t0x = 2, t0y =1;
           tAm0x = 2, tAm0y = 2.6, tAz0x = 2, tAz0y = 3.6 ,tV0x = 2, tV0y = 4.6;
           imgAx = 2, imgAy = 2.4, imgAzX = 2, imgAzY = 3.4, imgVx = 2, imgVy = 4.4;
 
         }else if(i == 1){
           nameAreasX = 4.1;
           nameAreasY = 1.5;
-          t0x = 4.69, t0y =2.1;
+          t0x = 4.69, t0y =1;
           tAm0x = 4.73, tAm0y = 2.6, tAz0x = 4.73, tAz0y = 3.6 ,tV0x = 4.73, tV0y = 4.6;
           imgAx = 4.7, imgAy = 2.4, imgAzX = 4.7, imgAzY = 3.4, imgVx = 4.7, imgVy = 4.4;
         }else if(i == 2){
           nameAreasX = 6.4;
           nameAreasY = 1.5;
-          t0x = 6.68, t0y =2.1;
+          t0x = 6.68, t0y =1;
           tAm0x = 6.68, tAm0y = 2.6, tAz0x = 6.68, tAz0y = 3.6 ,tV0x = 6.68, tV0y = 4.6;
           imgAx = 6.68, imgAy = 2.4, imgAzX = 6.68, imgAzY = 3.4, imgVx = 6.68, imgVy = 4.4;
         }else if(i == 3){
           nameAreasX = 7.72;
           nameAreasY = 1.5;
-          t0x = 8.2, t0y =2.1;
+          t0x = 8.2, t0y =1;
           tAm0x = 8.09, tAm0y = 2.6, tAz0x = 8.09, tAz0y = 3.6 ,tV0x = 8.09, tV0y = 4.6;
           imgAx = 8.07, imgAy = 2.4, imgAzX = 8.07, imgAzY = 3.4, imgVx = 8.07, imgVy = 4.4;
         }
-
+        slideArea.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
         slideArea.addText(arrAreaAmarillo[i].nombre, {x:nameAreasX, y:nameAreasY, font_size:18, color:'363636'})
-        slideArea.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
-
         slideArea.addImage({x:imgAx, y:imgAy, w:w, h:h,path: cAmarillo})
         slideArea.addText(arrAreaAmarillo[i].total, {x:tAm0x, y:tAm0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
         slideArea.addImage({x:imgAzX, y:imgAzY, w:w, h:h,path: cAzul})
@@ -2607,32 +2625,32 @@ slideEstadistica.addChart(
               if(i == 0){//las variables tienen que tomar los valores del arreglo en posicion 0
                 nameAreasX = 1.6;
                 nameAreasY = 1.5;
-                t0x = 2, t0y =2.1;
+                t0x = 2, t0y =1;
                 tAm0x = 2, tAm0y = 2.6, tAz0x = 2, tAz0y = 3.6 ,tV0x = 2, tV0y = 4.6;
                 imgAx = 2, imgAy = 2.4, imgAzX = 2, imgAzY = 3.4, imgVx = 2, imgVy = 4.4;
 
               }else if(i == 1){
                 nameAreasX = 4.1;
                 nameAreasY = 1.5;
-                t0x = 4.69, t0y =2.1;
+                t0x = 4.69, t0y =1;
                 tAm0x = 4.73, tAm0y = 2.6, tAz0x = 4.73, tAz0y = 3.6 ,tV0x = 4.73, tV0y = 4.6;
                 imgAx = 4.7, imgAy = 2.4, imgAzX = 4.7, imgAzY = 3.4, imgVx = 4.7, imgVy = 4.4;
               }else if(i == 2){
                 nameAreasX = 6.4;
                 nameAreasY = 1.5;
-                t0x = 6.68, t0y =2.1;
+                t0x = 6.68, t0y =1;
                 tAm0x = 6.68, tAm0y = 2.6, tAz0x = 6.68, tAz0y = 3.6 ,tV0x = 6.68, tV0y = 4.6;
                 imgAx = 6.68, imgAy = 2.4, imgAzX = 6.68, imgAzY = 3.4, imgVx = 6.68, imgVy = 4.4;
               }else if(i == 3){
                 nameAreasX = 7.72;
                 nameAreasY = 1.5;
-                t0x = 8.2, t0y =2.1;
+                t0x = 8.2, t0y =1;
                 tAm0x = 8.09, tAm0y = 2.6, tAz0x = 8.09, tAz0y = 3.6 ,tV0x = 8.09, tV0y = 4.6;
                 imgAx = 8.07, imgAy = 2.4, imgAzX = 8.07, imgAzY = 3.4, imgVx = 8.07, imgVy = 4.4;
               }
 
               slideArea.addText(arrAreaAmarillo[i].nombre, {x:nameAreasX, y:nameAreasY, font_size:18, color:'363636'})
-              slideArea.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
+              slideArea.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
 
               slideArea.addImage({x:imgAx, y:imgAy, w:w, h:h,path: cAmarillo})
               slideArea.addText(arrAreaAmarillo[i].total, {x:tAm0x, y:tAm0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
@@ -2649,31 +2667,31 @@ slideEstadistica.addChart(
                       if(i == 4){//las variables tienen que tomar los valores del arreglo en posicion 0
                         nameAreasX = 1.6;
                         nameAreasY = 1.5;
-                        t0x = 2, t0y =2.1;
+                        t0x = 2, t0y =1;
                         tAm0x = 2, tAm0y = 2.6, tAz0x = 2, tAz0y = 3.6 ,tV0x = 2, tV0y = 4.6;
                         imgAx = 2, imgAy = 2.4, imgAzX = 2, imgAzY = 3.4, imgVx = 2, imgVy = 4.4;
 
                       }else if(i == 5){
                         nameAreasX = 3.9;
                         nameAreasY = 1.5;
-                        t0x = 4.69, t0y =2.1;
+                        t0x = 4.69, t0y =1;
                         tAm0x = 4.73, tAm0y = 2.6, tAz0x = 4.73, tAz0y = 3.6 ,tV0x = 4.73, tV0y = 4.6;
                         imgAx = 4.7, imgAy = 2.4, imgAzX = 4.7, imgAzY = 3.4, imgVx = 4.7, imgVy = 4.4;
                       }else if(i == 6){
                         nameAreasX = 6.4;
                         nameAreasY = 1.5;
-                        t0x = 6.68, t0y =2.1;
+                        t0x = 6.68, t0y =1;
                         tAm0x = 6.68, tAm0y = 2.6, tAz0x = 6.68, tAz0y = 3.6 ,tV0x = 6.68, tV0y = 4.6;
                         imgAx = 6.68, imgAy = 2.4, imgAzX = 6.68, imgAzY = 3.4, imgVx = 6.68, imgVy = 4.4;
                       }else if(i == 7){
                         nameAreasX = 7.72;
                         nameAreasY = 1.5;
-                        t0x = 8.2, t0y =2.1;
+                        t0x = 8.2, t0y =1;
                         tAm0x = 8.09, tAm0y = 2.6, tAz0x = 8.09, tAz0y = 3.6 ,tV0x = 8.09, tV0y = 4.6;
                         imgAx = 8.07, imgAy = 2.4, imgAzX = 8.07, imgAzY = 3.4, imgVx = 8.07, imgVy = 4.4;
                       }
                       slideArea2.addText(arrAreaAmarillo[i].nombre, {x:nameAreasX, y:nameAreasY, font_size:18, color:'363636'})
-                      slideArea2.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
+                      slideArea2.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
 
                       slideArea2.addImage({x:imgAx, y:imgAy, w:w, h:h,path: cAmarillo})
                       slideArea2.addText(arrAreaAmarillo[i].total, {x:tAm0x, y:tAm0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
@@ -2690,32 +2708,32 @@ slideEstadistica.addChart(
         if(i == 0){//las variables tienen que tomar los valores del arreglo en posicion 0
           nameAreasX = 1.6;
           nameAreasY = 1.5;
-          t0x = 2, t0y =2.1;
+          t0x = 2, t0y =1;
           tAm0x = 2, tAm0y = 2.6, tAz0x = 2, tAz0y = 3.6 ,tV0x = 2, tV0y = 4.6;
           imgAx = 2, imgAy = 2.4, imgAzX = 2, imgAzY = 3.4, imgVx = 2, imgVy = 4.4;
 
         }else if(i == 1){
           nameAreasX = 4.1;
           nameAreasY = 1.5;
-          t0x = 4.69, t0y =2.1;
+          t0x = 4.69, t0y =1;
           tAm0x = 4.73, tAm0y = 2.6, tAz0x = 4.73, tAz0y = 3.6 ,tV0x = 4.73, tV0y = 4.6;
           imgAx = 4.7, imgAy = 2.4, imgAzX = 4.7, imgAzY = 3.4, imgVx = 4.7, imgVy = 4.4;
         }else if(i == 2){
           nameAreasX = 6.4;
           nameAreasY = 1.5;
-          t0x = 6.68, t0y =2.1;
+          t0x = 6.68, t0y =1;
           tAm0x = 6.68, tAm0y = 2.6, tAz0x = 6.68, tAz0y = 3.6 ,tV0x = 6.68, tV0y = 4.6;
           imgAx = 6.68, imgAy = 2.4, imgAzX = 6.68, imgAzY = 3.4, imgVx = 6.68, imgVy = 4.4;
         }else if(i == 3){
           nameAreasX = 7.72;
           nameAreasY = 1.5;
-          t0x = 8.2, t0y =2.1;
+          t0x = 8.2, t0y =1;
           tAm0x = 8.09, tAm0y = 2.6, tAz0x = 8.09, tAz0y = 3.6 ,tV0x = 8.09, tV0y = 4.6;
           imgAx = 8.07, imgAy = 2.4, imgAzX = 8.07, imgAzY = 3.4, imgVx = 8.07, imgVy = 4.4;
         }
 
         slideArea.addText(arrAreaAmarillo[i].nombre, {x:nameAreasX, y:nameAreasY, font_size:18, color:'363636'})
-        slideArea.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
+        slideArea.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
 
         slideArea.addImage({x:imgAx, y:imgAy, w:w, h:h,path: cAmarillo})
         slideArea.addText(arrAreaAmarillo[i].total, {x:tAm0x, y:tAm0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
@@ -2732,31 +2750,31 @@ slideEstadistica.addChart(
                 if(i == 4){//las variables tienen que tomar los valores del arreglo en posicion 0
                   nameAreasX = 1.6;
                   nameAreasY = 1.5;
-                  t0x = 2, t0y =2.1;
+                  t0x = 2, t0y =1;
                   tAm0x = 2, tAm0y = 2.6, tAz0x = 2, tAz0y = 3.6 ,tV0x = 2, tV0y = 4.6;
                   imgAx = 2, imgAy = 2.4, imgAzX = 2, imgAzY = 3.4, imgVx = 2, imgVy = 4.4;
 
                 }else if(i == 5){
                   nameAreasX = 3.9;
                   nameAreasY = 1.5;
-                  t0x = 4.69, t0y =2.1;
+                  t0x = 4.69, t0y =1;
                   tAm0x = 4.73, tAm0y = 2.6, tAz0x = 4.73, tAz0y = 3.6 ,tV0x = 4.73, tV0y = 4.6;
                   imgAx = 4.7, imgAy = 2.4, imgAzX = 4.7, imgAzY = 3.4, imgVx = 4.7, imgVy = 4.4;
                 }else if(i == 6){
                   nameAreasX = 6.4;
                   nameAreasY = 1.5;
-                  t0x = 6.68, t0y =2.1;
+                  t0x = 6.68, t0y =1;
                   tAm0x = 6.68, tAm0y = 2.6, tAz0x = 6.68, tAz0y = 3.6 ,tV0x = 6.68, tV0y = 4.6;
                   imgAx = 6.68, imgAy = 2.4, imgAzX = 6.68, imgAzY = 3.4, imgVx = 6.68, imgVy = 4.4;
                 }else if(i == 7){
                   nameAreasX = 7.72;
                   nameAreasY = 1.5;
-                  t0x = 8.2, t0y =2.1;
+                  t0x = 8.2, t0y =1;
                   tAm0x = 8.09, tAm0y = 2.6, tAz0x = 8.09, tAz0y = 3.6 ,tV0x = 8.09, tV0y = 4.6;
                   imgAx = 8.07, imgAy = 2.4, imgAzX = 8.07, imgAzY = 3.4, imgVx = 8.07, imgVy = 4.4;
                 }
                 slideArea2.addText(arrAreaAmarillo[i].nombre, {x:nameAreasX, y:nameAreasY, font_size:18, color:'363636'})
-                slideArea2.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
+                slideArea2.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
 
                 slideArea2.addImage({x:imgAx, y:imgAy, w:w, h:h,path: cAmarillo})
                 slideArea2.addText(arrAreaAmarillo[i].total, {x:tAm0x, y:tAm0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
@@ -2773,31 +2791,31 @@ slideEstadistica.addChart(
                 if(i == 8){//las variables tienen que tomar los valores del arreglo en posicion 0
                   nameAreasX = 1.6;
                   nameAreasY = 1.5;
-                  t0x = 2, t0y =2.1;
+                  t0x = 2, t0y =1;
                   tAm0x = 2, tAm0y = 2.6, tAz0x = 2, tAz0y = 3.6 ,tV0x = 2, tV0y = 4.6;
                   imgAx = 2, imgAy = 2.4, imgAzX = 2, imgAzY = 3.4, imgVx = 2, imgVy = 4.4;
 
                 }else if(i == 9){
                   nameAreasX = 3.9;
                   nameAreasY = 1.5;
-                  t0x = 4.69, t0y =2.1;
+                  t0x = 4.69, t0y =1;
                   tAm0x = 4.73, tAm0y = 2.6, tAz0x = 4.73, tAz0y = 3.6 ,tV0x = 4.73, tV0y = 4.6;
                   imgAx = 4.7, imgAy = 2.4, imgAzX = 4.7, imgAzY = 3.4, imgVx = 4.7, imgVy = 4.4;
                 }else if(i == 10){
                   nameAreasX = 6.4;
                   nameAreasY = 1.5;
-                  t0x = 6.68, t0y =2.1;
+                  t0x = 6.68, t0y =1;
                   tAm0x = 6.68, tAm0y = 2.6, tAz0x = 6.68, tAz0y = 3.6 ,tV0x = 6.68, tV0y = 4.6;
                   imgAx = 6.68, imgAy = 2.4, imgAzX = 6.68, imgAzY = 3.4, imgVx = 6.68, imgVy = 4.4;
                 }else if(i == 11){
                   nameAreasX = 7.72;
                   nameAreasY = 1.5;
-                  t0x = 8.2, t0y =2.1;
+                  t0x = 8.2, t0y =1;
                   tAm0x = 8.09, tAm0y = 2.6, tAz0x = 8.09, tAz0y = 3.6 ,tV0x = 8.09, tV0y = 4.6;
                   imgAx = 8.07, imgAy = 2.4, imgAzX = 8.07, imgAzY = 3.4, imgVx = 8.07, imgVy = 4.4;
                 }
                 slideArea3.addText(arrAreaAmarillo[i].nombre, {x:nameAreasX, y:nameAreasY, font_size:18, color:'363636'})
-                slideArea3.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
+                slideArea3.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
 
                 slideArea3.addImage({x:imgAx, y:imgAy, w:w, h:h,path: cAmarillo})
                 slideArea3.addText(arrAreaAmarillo[i].total, {x:tAm0x, y:tAm0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
@@ -2815,32 +2833,32 @@ slideEstadistica.addChart(
         if(i == 0){//las variables tienen que tomar los valores del arreglo en posicion 0
           nameAreasX = 1.6;
           nameAreasY = 1.5;
-          t0x = 2, t0y =2.1;
+          t0x = 2, t0y =1;
           tAm0x = 2, tAm0y = 2.6, tAz0x = 2, tAz0y = 3.6 ,tV0x = 2, tV0y = 4.6;
           imgAx = 2, imgAy = 2.4, imgAzX = 2, imgAzY = 3.4, imgVx = 2, imgVy = 4.4;
 
         }else if(i == 1){
           nameAreasX = 4.1;
           nameAreasY = 1.5;
-          t0x = 4.69, t0y =2.1;
+          t0x = 4.69, t0y =1;
           tAm0x = 4.73, tAm0y = 2.6, tAz0x = 4.73, tAz0y = 3.6 ,tV0x = 4.73, tV0y = 4.6;
           imgAx = 4.7, imgAy = 2.4, imgAzX = 4.7, imgAzY = 3.4, imgVx = 4.7, imgVy = 4.4;
         }else if(i == 2){
           nameAreasX = 6.4;
           nameAreasY = 1.5;
-          t0x = 6.68, t0y =2.1;
+          t0x = 6.68, t0y =1;
           tAm0x = 6.68, tAm0y = 2.6, tAz0x = 6.68, tAz0y = 3.6 ,tV0x = 6.68, tV0y = 4.6;
           imgAx = 6.68, imgAy = 2.4, imgAzX = 6.68, imgAzY = 3.4, imgVx = 6.68, imgVy = 4.4;
         }else if(i == 3){
           nameAreasX = 7.72;
           nameAreasY = 1.5;
-          t0x = 8.2, t0y =2.1;
+          t0x = 8.2, t0y =1;
           tAm0x = 8.09, tAm0y = 2.6, tAz0x = 8.09, tAz0y = 3.6 ,tV0x = 8.09, tV0y = 4.6;
           imgAx = 8.07, imgAy = 2.4, imgAzX = 8.07, imgAzY = 3.4, imgVx = 8.07, imgVy = 4.4;
         }
 
         slideArea.addText(arrAreaAmarillo[i].nombre, {x:nameAreasX, y:nameAreasY, font_size:18, color:'363636'})
-        slideArea.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
+        slideArea.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
 
         slideArea.addImage({x:imgAx, y:imgAy, w:w, h:h,path: cAmarillo})
         slideArea.addText(arrAreaAmarillo[i].total, {x:tAm0x, y:tAm0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
@@ -2857,31 +2875,31 @@ slideEstadistica.addChart(
                 if(i == 4){//las variables tienen que tomar los valores del arreglo en posicion 0
                   nameAreasX = 1.6;
                   nameAreasY = 1.5;
-                  t0x = 2, t0y =2.1;
+                  t0x = 2, t0y =1;
                   tAm0x = 2, tAm0y = 2.6, tAz0x = 2, tAz0y = 3.6 ,tV0x = 2, tV0y = 4.6;
                   imgAx = 2, imgAy = 2.4, imgAzX = 2, imgAzY = 3.4, imgVx = 2, imgVy = 4.4;
 
                 }else if(i == 5){
                   nameAreasX = 3.9;
                   nameAreasY = 1.5;
-                  t0x = 4.69, t0y =2.1;
+                  t0x = 4.69, t0y =1;
                   tAm0x = 4.73, tAm0y = 2.6, tAz0x = 4.73, tAz0y = 3.6 ,tV0x = 4.73, tV0y = 4.6;
                   imgAx = 4.7, imgAy = 2.4, imgAzX = 4.7, imgAzY = 3.4, imgVx = 4.7, imgVy = 4.4;
                 }else if(i == 6){
                   nameAreasX = 6.4;
                   nameAreasY = 1.5;
-                  t0x = 6.68, t0y =2.1;
+                  t0x = 6.68, t0y =1;
                   tAm0x = 6.68, tAm0y = 2.6, tAz0x = 6.68, tAz0y = 3.6 ,tV0x = 6.68, tV0y = 4.6;
                   imgAx = 6.68, imgAy = 2.4, imgAzX = 6.68, imgAzY = 3.4, imgVx = 6.68, imgVy = 4.4;
                 }else if(i == 7){
                   nameAreasX = 7.72;
                   nameAreasY = 1.5;
-                  t0x = 8.2, t0y =2.1;
+                  t0x = 8.2, t0y =1;
                   tAm0x = 8.09, tAm0y = 2.6, tAz0x = 8.09, tAz0y = 3.6 ,tV0x = 8.09, tV0y = 4.6;
                   imgAx = 8.07, imgAy = 2.4, imgAzX = 8.07, imgAzY = 3.4, imgVx = 8.07, imgVy = 4.4;
                 }
                 slideArea2.addText(arrAreaAmarillo[i].nombre, {x:nameAreasX, y:nameAreasY, font_size:18, color:'363636'})
-                slideArea2.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
+                slideArea2.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
 
                 slideArea2.addImage({x:imgAx, y:imgAy, w:w, h:h,path: cAmarillo})
                 slideArea2.addText(arrAreaAmarillo[i].total, {x:tAm0x, y:tAm0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
@@ -2898,31 +2916,31 @@ slideEstadistica.addChart(
                 if(i == 8){//las variables tienen que tomar los valores del arreglo en posicion 0
                   nameAreasX = 1.6;
                   nameAreasY = 1.5;
-                  t0x = 2, t0y =2.1;
+                  t0x = 2, t0y =1;
                   tAm0x = 2, tAm0y = 2.6, tAz0x = 2, tAz0y = 3.6 ,tV0x = 2, tV0y = 4.6;
                   imgAx = 2, imgAy = 2.4, imgAzX = 2, imgAzY = 3.4, imgVx = 2, imgVy = 4.4;
 
                 }else if(i == 9){
                   nameAreasX = 3.9;
                   nameAreasY = 1.5;
-                  t0x = 4.69, t0y =2.1;
+                  t0x = 4.69, t0y =1;
                   tAm0x = 4.73, tAm0y = 2.6, tAz0x = 4.73, tAz0y = 3.6 ,tV0x = 4.73, tV0y = 4.6;
                   imgAx = 4.7, imgAy = 2.4, imgAzX = 4.7, imgAzY = 3.4, imgVx = 4.7, imgVy = 4.4;
                 }else if(i == 10){
                   nameAreasX = 6.4;
                   nameAreasY = 1.5;
-                  t0x = 6.68, t0y =2.1;
+                  t0x = 6.68, t0y =1;
                   tAm0x = 6.68, tAm0y = 2.6, tAz0x = 6.68, tAz0y = 3.6 ,tV0x = 6.68, tV0y = 4.6;
                   imgAx = 6.68, imgAy = 2.4, imgAzX = 6.68, imgAzY = 3.4, imgVx = 6.68, imgVy = 4.4;
                 }else if(i == 11){
                   nameAreasX = 7.72;
                   nameAreasY = 1.5;
-                  t0x = 8.2, t0y =2.1;
+                  t0x = 8.2, t0y =1;
                   tAm0x = 8.09, tAm0y = 2.6, tAz0x = 8.09, tAz0y = 3.6 ,tV0x = 8.09, tV0y = 4.6;
                   imgAx = 8.07, imgAy = 2.4, imgAzX = 8.07, imgAzY = 3.4, imgVx = 8.07, imgVy = 4.4;
                 }
                 slideArea3.addText(arrAreaAmarillo[i].nombre, {x:nameAreasX, y:nameAreasY, font_size:18, color:'363636'})
-                slideArea3.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
+                slideArea3.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
 
                 slideArea3.addImage({x:imgAx, y:imgAy, w:w, h:h,path: cAmarillo})
                 slideArea3.addText(arrAreaAmarillo[i].total, {x:tAm0x, y:tAm0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
@@ -2938,32 +2956,32 @@ slideEstadistica.addChart(
                 if(i == 12){//las variables tienen que tomar los valores del arreglo en posicion 0
                   nameAreasX = 1.6;
                   nameAreasY = 1.5;
-                  t0x = 2, t0y =2.1;
+                  t0x = 2, t0y =1;
                   tAm0x = 2, tAm0y = 2.6, tAz0x = 2, tAz0y = 3.6 ,tV0x = 2, tV0y = 4.6;
                   imgAx = 2, imgAy = 2.4, imgAzX = 2, imgAzY = 3.4, imgVx = 2, imgVy = 4.4;
 
                 }else if(i == 13){
                   nameAreasX = 3.9;
                   nameAreasY = 1.5;
-                  t0x = 4.69, t0y =2.1;
+                  t0x = 4.69, t0y =1;
                   tAm0x = 4.73, tAm0y = 2.6, tAz0x = 4.73, tAz0y = 3.6 ,tV0x = 4.73, tV0y = 4.6;
                   imgAx = 4.7, imgAy = 2.4, imgAzX = 4.7, imgAzY = 3.4, imgVx = 4.7, imgVy = 4.4;
                 }else if(i == 14){
                   nameAreasX = 6.4;
                   nameAreasY = 1.5;
-                  t0x = 6.68, t0y =2.1;
+                  t0x = 6.68, t0y =1;
                   tAm0x = 6.68, tAm0y = 2.6, tAz0x = 6.68, tAz0y = 3.6 ,tV0x = 6.68, tV0y = 4.6;
                   imgAx = 6.68, imgAy = 2.4, imgAzX = 6.68, imgAzY = 3.4, imgVx = 6.68, imgVy = 4.4;
                 }else if(i == 15){
                   nameAreasX = 7.72;
                   nameAreasY = 1.5;
-                  t0x = 8.2, t0y =2.1;
+                  t0x = 8.2, t0y =1;
                   tAm0x = 8.09, tAm0y = 2.6, tAz0x = 8.09, tAz0y = 3.6 ,tV0x = 8.09, tV0y = 4.6;
                   imgAx = 8.07, imgAy = 2.4, imgAzX = 8.07, imgAzY = 3.4, imgVx = 8.07, imgVy = 4.4;
                 }
 
                 slideArea4.addText(arrAreaAmarillo[i].nombre, {x:nameAreasX, y:nameAreasY, font_size:18, color:'363636'})
-                slideArea4.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
+                slideArea4.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
 
                 slideArea4.addImage({x:imgAx, y:imgAy, w:w, h:h,path: cAmarillo})
                 slideArea4.addText(arrAreaAmarillo[i].total, {x:tAm0x, y:tAm0y  , font_size:18, font_face:'Arial Black', color:'FBC100'})
@@ -3007,12 +3025,12 @@ slideEstadistica.addChart(
     slideArea2.addText(arrAreaVerde[7].total, {x:7.4, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})*/
 
 
-    slideAnt.addText('ANTIGÜEDAD', { x:4.2, y:0.5, font_size:18, color:'363636' });
+    slideAnt.addText('Resultados por antigüedad', { x:1, y:0.5, font_size:18, color:'363636' });
+    slideAnt.addText(datosAnt[0].toFixed(1), {x:1.25, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
     slideAnt.addText(arrAntAmarillo[0].nombre, {x:0.8, y:1.5, font_size:18, color:'363636'})
-    slideAnt.addText('F', { x:0.5, y:2.6, font_size:18, color:'363636' })
-    slideAnt.addText('C', { x:0.5, y:3.6, font_size:18, color:'363636' })
-    slideAnt.addText('E', { x:0.5, y:4.6, font_size:18, color:'363636' })
-    slideAnt.addText(datosAnt[0].toFixed(1), {x:1.25, y:2.1  , font_size:18, font_face:'Arial Black', color:'FBC100'})
+    slideAnt.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
+    slideAnt.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
+    slideAnt.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
     slideAnt.addImage({x:1.2, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
     slideAnt.addText(arrAntAmarillo[0].total, {x:1.27, y:2.6  , font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideAnt.addImage({x:1.2, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
@@ -3020,9 +3038,8 @@ slideEstadistica.addChart(
     slideAnt.addImage({x:1.2, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
     slideAnt.addText(arrAntVerde[0].total, {x:1.27, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
-
+    slideAnt.addText(datosAnt[1].toFixed(1), {x:3.15, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
     slideAnt.addText(arrAntAmarillo[1].nombre, {x:2.7, y:1.5, font_size:18, color:'363636'})
-    slideAnt.addText(datosAnt[1].toFixed(1), {x:3.15, y:2.1  , font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideAnt.addImage({x:3.1, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
     slideAnt.addText(arrAntAmarillo[1].total, {x:3.13, y:2.6, font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideAnt.addImage({x:3.1, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
@@ -3030,9 +3047,8 @@ slideEstadistica.addChart(
     slideAnt.addImage({x:3.1, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
     slideAnt.addText(arrGenVerde[1].total, {x:3.17, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
-
+    slideAnt.addText(datosAnt[2].toFixed(1), {x:4.9, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
     slideAnt.addText(arrAntAmarillo[2].nombre, {x:4.5, y:1.5, font_size:18, color:'363636'})
-    slideAnt.addText(datosAnt[2].toFixed(1), {x:4.9, y:2.1  , font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideAnt.addImage({x:4.9, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
     slideAnt.addText(arrAntAmarillo[2].total, {x:4.95, y:2.6, font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideAnt.addImage({x:4.9, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
@@ -3041,8 +3057,8 @@ slideEstadistica.addChart(
     slideAnt.addText(arrAntVerde[2].total, {x:4.95, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
 
+    slideAnt.addText(datosAnt[3].toFixed(1), {x:6.57, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
     slideAnt.addText(arrAntAmarillo[3].nombre, {x:6.2, y:1.5, font_size:18, color:'363636'})
-    slideAnt.addText(datosAnt[3].toFixed(1), {x:6.57, y:2.1  , font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideAnt.addImage({x:6.6, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
     slideAnt.addText(arrAntAmarillo[3].total, {x:6.65, y:2.6, font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideAnt.addImage({x:6.6, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
