@@ -26,8 +26,7 @@
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "../node_modules/parse/dist/parse.min.js",
-        "../node_modules/html2canvas/dist/html2canvas.min.js",
-        "../node_modules/canvas2image/canvas2image.js"
+        "../node_modules/html2canvas/dist/html2canvas.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

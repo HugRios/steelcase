@@ -540,6 +540,7 @@ try {
         //termina creación areas con cliente
                     }
                     newLink.set("cliente", newCliente);
+                    newLink.set("areas", arrayCheckAreas);
                     newLink.set("link", link+"?Cliente="+newCliente.id+"&Industria="+newIndustria.id+"&Areas="+areasLink);
                     newLink.set("fechaLimite", date);
                     newLink.save();
@@ -573,6 +574,7 @@ try {
     //termina creación areas con cliente
                 }
                 newLink.set("cliente", newCliente);
+                newLink.set("areas", arrayCheckAreas);
                 newLink.set("link", link+"?Cliente="+newCliente.id+"&Industria="+res[0].id+"&Areas="+areasLink);
                 newLink.set("fechaLimite", date);
                 newLink.save();
@@ -658,7 +660,7 @@ try {
             datasets: [{
               backgroundColor: "rgba(253, 99, 68, 0.81)",
               borderColor: "rgba(253, 86, 53, 1)",
-              data: [fct, fcrt, fcr, fcrb, fcb, fclb, fcl, fclt, fceb]
+              data: [fct.toFixed(1), fcrt.toFixed(1), fcr.toFixed(1), fcrb.toFixed(1), fcb.toFixed(1), fclb.toFixed(1), fcl.toFixed(1), fclt.toFixed(1), fceb.toFixed(1)]
             }]
           },
           options: {
@@ -859,7 +861,7 @@ try {
               datasets: [{
                 backgroundColor: "rgba(253, 99, 68, 0.81)",
                 borderColor: "rgba(253, 86, 53, 1)",
-                data: [fct, fcrt, fcr, fcrb, fcb, fclb, fcl, fclt, fceb]
+                data: [fct.toFixed(1), fcrt.toFixed(1), fcr.toFixed(1), fcrb.toFixed(1), fcb.toFixed(1), fclb.toFixed(1), fcl.toFixed(1), fclt.toFixed(1), fceb.toFixed(1)]
               }]
             },
             options: {
