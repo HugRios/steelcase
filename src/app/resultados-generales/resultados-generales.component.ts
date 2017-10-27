@@ -259,7 +259,7 @@ $("#agregaArea").hide();
 $("#venPop").hide();
 $("#cuestionario").hide();
 $("#encWell").show();
-
+$("#noEmpleados").val("");
 
     if($("#popup").css('display')=="none")
     {
