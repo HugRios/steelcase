@@ -6,6 +6,7 @@ var arrayGeneracion = [];
 var arrGenAmarillo = [];
 var arrGenAzul = [];
 var arrGenVerde = [];
+var idCliente;
 
 
 @Component({
@@ -30,6 +31,13 @@ nameG5 = '';
   regresaHome(){
     this.router.navigate([''])
   }
+
+  getId(){
+    var url = window.location.pathname;
+    idCliente = url.substring(url.indexOf(":")+1, url.length);
+    console.log(idCliente);
+  }
+
   addGeneracion(){
     var promise = new Parse.Promise();
     var Generacion = Parse.Object.extend("genWell");
@@ -55,6 +63,12 @@ return promise;
         var generacion = new GenWell();
             generacion.id = response[i].id;
         var query  = new Parse.Query(Wellbeing);
+        if(idCliente != ''){
+          var Cliente = Parse.Object.extend('ClienteWell');
+          var cliente = new Cliente();
+              cliente.id = idCliente;
+          query.equalTo('cliente', cliente);
+        }
             query.equalTo("generacion", generacion);
             query.find({
               success: function(results){
@@ -119,6 +133,12 @@ return promise;
             var generacion = new GenWell();
                 generacion.id = arrayGeneracion[i].id;
             var query  = new Parse.Query(Wellbeing);
+            if(idCliente != ''){
+              var Cliente = Parse.Object.extend('ClienteWell');
+              var cliente = new Cliente();
+                  cliente.id = idCliente;
+              query.equalTo('cliente', cliente);
+            }
                 query.equalTo("generacion", generacion);
                 query.find({
                   success: function(results){
@@ -178,6 +198,12 @@ return promise;
         var generacion = new GenWell();
             generacion.id = arrayGeneracion[i].id;
         var query  = new Parse.Query(Wellbeing);
+        if(idCliente != ''){
+          var Cliente = Parse.Object.extend('ClienteWell');
+          var cliente = new Cliente();
+              cliente.id = idCliente;
+          query.equalTo('cliente', cliente);
+        }
             query.equalTo("generacion", generacion);
             query.find({
               success: function(results){
@@ -282,6 +308,7 @@ return promise;
 
 
   ngOnInit() {
+    this.getId();
     arrayGeneracion.length = 0;
     arrGenVerde.length = 0;
     arrGenAmarillo.length = 0;

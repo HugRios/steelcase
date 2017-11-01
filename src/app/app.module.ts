@@ -66,11 +66,11 @@ import { GeneracionTodosComponent } from './resultados-generales/generacion-todo
         component: ResultadosEmpresaComponent
       },
       {
-        path: 'generalGeneracion',
+        path: 'generalGeneracion/:id',
         component: GeneracionTodosComponent
       },
       {
-        path: 'generalAntiguedad',
+        path: 'generalAntiguedad/:id',
         component: AntiguedadTodosComponent
       }
     ])

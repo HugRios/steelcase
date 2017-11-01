@@ -7,6 +7,7 @@ var arrAntAmarillo = [];
 var arrAntAzul = [];
 var arrAntVerde = [];
 var arrayAnt = [];
+var idCliente;
 
 @Component({
   selector: 'app-antiguedad-todos',
@@ -22,6 +23,12 @@ export class AntiguedadTodosComponent implements OnInit {
 
   regresaHome(){
     this.router.navigate(['']);
+  }
+
+  getId(){
+    var url = window.location.pathname;
+    idCliente = url.substring(url.indexOf(":")+1, url.length);
+    console.log(idCliente);
   }
   addAntiguedad(){
   var promise = new Parse.Promise();
@@ -48,6 +55,12 @@ export class AntiguedadTodosComponent implements OnInit {
           var antiguedad = new AntWell();
               antiguedad.id = arrayAnt[i].id;
           var query  = new Parse.Query(Wellbeing);
+          if(idCliente != ''){
+            var Cliente = Parse.Object.extend('ClienteWell');
+            var cliente = new Cliente();
+                cliente.id = idCliente;
+            query.equalTo('cliente', cliente);
+          }
               query.equalTo("antiguedad", antiguedad);
               query.find({
                 success: function(results){
@@ -108,6 +121,12 @@ export class AntiguedadTodosComponent implements OnInit {
         var antiguedad = new AntWell();
             antiguedad.id = arrayAnt[i].id;
         var query  = new Parse.Query(Wellbeing);
+        if(idCliente != ''){
+          var Cliente = Parse.Object.extend('ClienteWell');
+          var cliente = new Cliente();
+              cliente.id = idCliente;
+          query.equalTo('cliente', cliente);
+        }
             query.equalTo("antiguedad", antiguedad);
             query.find({
               success: function(results){
@@ -166,6 +185,12 @@ export class AntiguedadTodosComponent implements OnInit {
         var antiguedad = new AntWell();
             antiguedad.id = arrayAnt[i].id;
         var query  = new Parse.Query(Wellbeing);
+        if(idCliente != ''){
+          var Cliente = Parse.Object.extend('ClienteWell');
+          var cliente = new Cliente();
+              cliente.id = idCliente;
+          query.equalTo('cliente', cliente);
+        }
             query.equalTo("antiguedad", antiguedad);
             query.find({
               success: function(results){
@@ -265,6 +290,7 @@ export class AntiguedadTodosComponent implements OnInit {
     })
   }
   ngOnInit() {
+    this.getId();
     $("#modalAlert").modal('toggle');
    arrAntAmarillo.length = 0;
    arrAntAzul.length = 0;

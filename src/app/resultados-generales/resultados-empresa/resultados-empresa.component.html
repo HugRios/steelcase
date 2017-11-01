@@ -27,7 +27,7 @@
                         <ul  style="list-style:none;color:#404041" id="areaWell" >
                           <li *ngFor = "let area of arregloAreas" (click)="filtroArea(area.id)">{{area.nombre}}</li>
                         </ul>
-
+                        <button hidden id="areabtn" type="button" name="button" (click)="muestraAnt()"style="width: 9.5em;margin-left: 1em;margin-bottom: 0.5em;background: #404041;border: none;">Todos</button>
                       </div>
                   </div>
               </a>
@@ -43,7 +43,7 @@
                                 <ul  style="list-style:none;color:#404041" id="antigWell" >
                                   <li *ngFor = "let antiguedad of arregloAntiguedad" (click)="filtroAntiguedad(antiguedad.id)">{{antiguedad.nombre}}</li>
                                 </ul>
-
+                                  <button hidden id ="antbtn" type="button" name="button" (click)="muestraAnt()"style="width: 9.5em;margin-left: 1em;margin-bottom: 0.5em;background: #404041;border: none;">Todos</button>
                               </div>
                           </div>
                       </a>
@@ -57,7 +57,7 @@
                                 <ul  style="list-style:none;color:#404041" id="genWell" >
                                   <li *ngFor = "let generacion of arregloGeneracion" (click)="filtroGeneracion(generacion.id)">{{generacion.nombre}}</li>
                                 </ul>
-
+                                  <button hidden id="genbtn" type="button" name="button" (click)="muestraGen()"style="width: 9.5em;margin-left: 1em;margin-bottom: 0.5em;background: #404041;border: none;">Todos</button>
                               </div>
                           </div>
                       </a>

@@ -212,9 +212,12 @@ export class ResultadosEmpresaComponent implements OnInit {
         allQuery.find({
           success: function(res){
             for (let i = 0; i < res.length; i++) {
-
               arrayAreas.push({nombre:res[i].get("Name"), id: res[i].id})
             }
+            $("#areabtn").show('fast');
+            $("#antbtn").show('fast');
+            $("#genbtn").show('fast');
+
           }
         })
 
@@ -592,6 +595,13 @@ export class ResultadosEmpresaComponent implements OnInit {
       })
     }
 
+    muestraGen(){
+      this.router.navigate(['/generalGeneracion/:'+empresaG])
+    }
+
+    muestraAnt(){
+      this.router.navigate(['/generalAntiguedad/:'+empresaG])
+    }
 
 
     ngOnInit() {

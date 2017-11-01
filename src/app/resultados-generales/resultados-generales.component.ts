@@ -1761,11 +1761,11 @@ sigPaso(){
   }
 
   muestraGen(){
-    this.router.navigate(['/generalGeneracion'])
+    this.router.navigate(['/generalGeneracion/:'+''])
   }
 
   muestraAnt(){
-    this.router.navigate(['/generalAntiguedad'])
+    this.router.navigate(['/generalAntiguedad/:'+''])
   }
 
   ngOnInit() {
