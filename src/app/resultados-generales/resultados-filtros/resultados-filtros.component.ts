@@ -96,7 +96,10 @@ goBack() {
               $("#tipo").html("BIENESTAR "+ nombre.toUpperCase());
             }
           })
-      $("#btnReporte").show();
+          $("#generaciones").show();
+          $("#antiguedades").show();
+          $("#areas").show();
+          $("#btnReporte").show();
     }
   }
 
@@ -126,87 +129,87 @@ goBack() {
      var pTotal: number = 0;
 
      var query = new Parse.Query("Wellbeing");
-
      if(vector[0].id == ""){
-       query.exists("cliente")
-     }else{
-       var id = vector[0].id ;
-       var Cliente = Parse.Object.extend("ClienteWell");
-       var cliente = new Cliente();
-           cliente.id = id;
-           var queryCliente = new Parse.Query(Cliente);
-                queryCliente.equalTo("objectId", id);
-                queryCliente.find({
-                  success: function(res){
-                    nombreCliente = res[0].get("nombre");
-                    $("#showClient").show('fast');
-                       $("#clienteName").val(nombreCliente);
-                  }
-                })
-       //$("#empresaPP").html('hjdhfdf')
-       query.equalTo("cliente", cliente);
-     }
+  query.exists("cliente")
+}else{
+  var id = vector[0].id ;
+  var Cliente = Parse.Object.extend("ClienteWell");
+  var cliente = new Cliente();
+      cliente.id = id;
+      var queryCliente = new Parse.Query(Cliente);
+           queryCliente.equalTo("objectId", id);
+           queryCliente.find({
+             success: function(res){
+               nombreCliente = res[0].get("nombre");
+               $("#showClient").show('fast');
+                  $("#clienteName").val(nombreCliente);
+             }
+           })
+  //$("#empresaPP").html('hjdhfdf')
+  query.equalTo("cliente", cliente);
+}
 
-     if(vector[1].id == ""){
-       query.exists("area")
-     }else{
-       var id = vector[1].id ;
-       var area = Parse.Object.extend("areaWell");
-       var area = new area();
-           area.id = id;
+if(vector[1].id == ""){
+  query.exists("area")
+}else{
+  var id = vector[1].id ;
+  var area = Parse.Object.extend("areaWell");
+  var area = new area();
+      area.id = id;
 
-           var queryArea = new Parse.Query(area);
-                queryArea.equalTo("objectId", id);
-                queryArea.find({
-                  success: function(res){
-                      $("#showArea").show('fast');
-                       $("#areaName").val(res[0].get("Name"));
-                  }
-                })
-       query.equalTo("area", area);
-     }
+      var queryArea = new Parse.Query(area);
+           queryArea.equalTo("objectId", id);
+           queryArea.find({
+             success: function(res){
+                 $("#showArea").show('fast');
+                  $("#areaName").val(res[0].get("Name"));
+             }
+           })
+  query.equalTo("area", area);
+}
 
-     if(vector[2].id == ""){
-       query.exists("generacion")
-     }else{
-       var id = vector[2].id ;
-       var Generacion = Parse.Object.extend("genWell");
-       var generacion = new Generacion();
-           generacion.id = id;
+if(vector[2].id == ""){
+  query.exists("generacion")
+}else{
+  var id = vector[2].id ;
+  var Generacion = Parse.Object.extend("genWell");
+  var generacion = new Generacion();
+      generacion.id = id;
 
-           var queryGen = new Parse.Query(Generacion);
-                queryGen.equalTo("objectId", id);
-                queryGen.find({
-                  success: function(res){
-                      $("#showGen").show('fast');
-                       $("#genName").val(res[0].get("Nombre"));
-                  }
-                })
+      var queryGen = new Parse.Query(Generacion);
+           queryGen.equalTo("objectId", id);
+           queryGen.find({
+             success: function(res){
+                 $("#showGen").show('fast');
+                  $("#genName").val(res[0].get("Nombre"));
+             }
+           })
 
-       query.equalTo("generacion", generacion);
-     }
+  query.equalTo("generacion", generacion);
+}
 
-     if(vector[3].id == ""){
+if(vector[3].id == ""){
 
-       query.exists("antiguedad")
-     }else{
-       var id = vector[3].id ;
-       var Antiguedad = Parse.Object.extend("Antiguedad");
-       var antiguedad = new Antiguedad();
-           antiguedad.id = id;
+  query.exists("antiguedad")
+}else{
+  var id = vector[3].id ;
+  var Antiguedad = Parse.Object.extend("Antiguedad");
+  var antiguedad = new Antiguedad();
+      antiguedad.id = id;
 
-           var queryaAntiguedad = new Parse.Query(Antiguedad);
-                queryaAntiguedad.equalTo("objectId", id);
-                queryaAntiguedad.find({
-                  success: function(res){
-                    $("#showAntig").show('fast')
-                       $("#antigName").val(res[0].get("nombre"));
-                  }
-                })
-       query.equalTo("antiguedad", antiguedad);
-     }
+      var queryaAntiguedad = new Parse.Query(Antiguedad);
+           queryaAntiguedad.equalTo("objectId", id);
+           queryaAntiguedad.find({
+             success: function(res){
+               $("#showAntig").show('fast')
+                  $("#antigName").val(res[0].get("nombre"));
+             }
+           })
+  query.equalTo("antiguedad", antiguedad);
+}
 
 
+console.log(query);
 
         query.find({
           success: function(results) {
@@ -269,7 +272,8 @@ goBack() {
                scale: {
                ticks: {
                    beginAtZero: true,
-                   max: 5
+                   max: 5,
+                   fontSize: 8
                }
            }
               }
@@ -309,46 +313,46 @@ goBack() {
        var Evaluacion = Parse.Object.extend("WellCognitivo");
        var query = new Parse.Query(Evaluacion);
 
-       if(vector[0].id == ""){
-         query.exists("cliente")
-       }else{
-         var id = vector[0].id ;
-         var Cliente = Parse.Object.extend("ClienteWell");
-         var cliente = new Cliente();
-             cliente.id = id;
-         query.equalTo("cliente", cliente);
-       }
 
-       if(vector[1].id == ""){
-         query.exists("area")
-       }else{
-         var id = vector[1].id ;
-         var area = Parse.Object.extend("areaWell");
-         var area = new area();
-             area.id = id;
-         query.equalTo("area", area);
-       }
+              if(vector[0].id == ""){
+                query.exists("cliente")
+              }else{
+                var id = vector[0].id ;
+                var Cliente = Parse.Object.extend("ClienteWell");
+                var cliente = new Cliente();
+                    cliente.id = id;
+                query.equalTo("cliente", cliente);
+              }
 
-       if(vector[2].id == ""){
-         query.exists("generacion")
-       }else{
-         var id = vector[2].id ;
-         var Generacion = Parse.Object.extend("genWell");
-         var generacion = new Generacion();
-             generacion.id = id;
-         query.equalTo("generacion", generacion);
-       }
+              if(vector[1].id == ""){
+                query.exists("area")
+              }else{
+                var id = vector[1].id ;
+                var area = Parse.Object.extend("areaWell");
+                var area = new area();
+                    area.id = id;
+                query.equalTo("area", area);
+              }
 
-       if(vector[3].id == ""){
-         query.exists("antiguedad")
-       }else{
-         var id = vector[3].id ;
-         var Antiguedad = Parse.Object.extend("Antiguedad");
-         var antiguedad = new Antiguedad();
-             antiguedad.id = id;
-         query.equalTo("antiguedad", antiguedad);
-       }
+              if(vector[2].id == ""){
+                query.exists("generacion")
+              }else{
+                var id = vector[2].id ;
+                var Generacion = Parse.Object.extend("genWell");
+                var generacion = new Generacion();
+                    generacion.id = id;
+                query.equalTo("generacion", generacion);
+              }
 
+              if(vector[3].id == ""){
+                query.exists("antiguedad")
+              }else{
+                var id = vector[3].id ;
+                var Antiguedad = Parse.Object.extend("Antiguedad");
+                var antiguedad = new Antiguedad();
+                    antiguedad.id = id;
+                query.equalTo("antiguedad", antiguedad);
+              }
 
 
        query.find({
@@ -415,7 +419,8 @@ goBack() {
               scale: {
             ticks: {
                 beginAtZero: true,
-                max: 5
+                max: 5,
+                fontSize: 8
             }
            }
              }
@@ -502,7 +507,7 @@ goBack() {
              antiguedad.id = id;
          query.equalTo("antiguedad", antiguedad);
        }
-
+       console.log(query);
        query.find({
          success: function(results) {
            var totalG = results.length;
@@ -568,7 +573,8 @@ goBack() {
               scale: {
             ticks: {
                 beginAtZero: true,
-                max: 5
+                max: 5,
+                fontSize: 8
             }
         }
              }
@@ -584,6 +590,8 @@ goBack() {
            var final = (t3 / 3).toFixed(1);
            totalGral = final;
            if (pTotal == 'NaN') {
+             $("#promedioTotal").html('NA');
+             $("#promedioTotalAzul").html('NA')
              $("#promedioTotalVerde").html('NA');
              $("#pgeneral").html('NA');
            } else {
@@ -1827,11 +1835,16 @@ excelAmarillo(): any{
   if(vector[0].id != '' && vector[1].id == '' && vector[2].id == '' && vector[3].id == '' && vector[4].id == ''){
     var t = 0, b = 0, l = 0, r = 0, lt = 0, lb = 0, rt = 0, rb = 0, eb = 0, promedio = 0;
     var pTotal: number = 0;
+    var optionsDate = {day:'2-digit', month: 'numeric', year: 'numeric'};
+    var ip_user, generacion, area, antiguedad;
     var id = vector[0].id ;
     var Cliente = Parse.Object.extend("ClienteWell");
     var cliente = new Cliente();
         cliente.id = id;
     var query = new Parse.Query("Wellbeing");
+        query.include('generacion');
+        query.include('area');
+        query.include('antiguedad');
         query.equalTo('cliente', cliente)
         query.find({
          success: function(results) {
@@ -1856,9 +1869,17 @@ excelAmarillo(): any{
 
              eb = object.get("contactoexterior");
 
+             ip_user = object.get('ip_user');
+
+             generacion =object.get('generacion').get('Nombre');
+             area = object.get('area').get('Name');
+             antiguedad = object.get('antiguedad').get('nombre');
+             var date = new Date(object.get("createdAt"));
+             var fecha = date.toLocaleString('es-MX', optionsDate);
              promedio = (t+ rt +r +rb +b + lb + l +lt+ eb)/9;
 
-             vecExcelAm.push({postura: t, movimiento: rt, temperatura: r, peso: rb,
+             vecExcelAm.push({encuestado: i+1, fecha: fecha, ipU: ip_user,generacion: generacion, area: area, antiguedad: antiguedad,
+                              postura: t, movimiento: rt, temperatura: r, peso: rb,
                               ergonomia: b, cargaTrabajo: lb, vitalidad: l, luz: lt,
                               contactoextrior: eb, promedio: promedio.toFixed(1)});
            }
@@ -1999,18 +2020,23 @@ getDatasExcel(){
                     showLabels: true
                   }
 
-    var head = ['Q1. Postura', 'Q2. Movimiento', 'Q3. Temperatura', 'Q4. Peso Saludable', 'Q5. Ergonomía', 'Q6. Carga de Trabajo', 'Q7. Vitalidad', 'Q8. Luz Natural', 'Q9. Contacto con el exterior', 'PROMEDIO',
+    var head = ['#Encuestado', 'Fecha','IP','Generación','Área', 'Antigüedad','Q1. Postura', 'Q2. Movimiento', 'Q3. Temperatura', 'Q4. Peso Saludable', 'Q5. Ergonomía', 'Q6. Carga de Trabajo', 'Q7. Vitalidad', 'Q8. Luz Natural', 'Q9. Contacto con el exterior', 'PROMEDIO',
     'Q1. Realización', 'Q2. Elección', 	'Q3. Estrés', 	'Q4. Anonimato estratégico', 	'Q5. Atención Plena', 	'Q6. Confidencialidad', 	'Q7. Bloqueo de estímulos', 	'Q8. Revitalización', 	'Q9. Creatividad', 	'Promedio',
-    'Q1. Sentirse Valorado',	'Q2. Conectarse con otros', 	'Q3. Calidad de las interacciones sociales',  	'Q4.  Confianza', 	'Q5. Sentido', 	'Q6. Optimismo', 	'Q7. Autenticidad', 	'Q8. Interacción con el líder', 	'Q9. Propósito', 	'Promedio'
+    'Q1. Sentirse Valorado',	'Q2. Conectarse con otros', 	'Q3. Calidad de las interacciones sociales',  	'Q4.  Confianza', 	'Q5. Sentido', 	'Q6. Optimismo', 	'Q7. Autenticidad', 	'Q8. Interacción con el líder', 	'Q9. Propósito', 	'Promedio', 'PGeneral'
     ]
 
     var aux = vecExcelAm.concat(vecExcelAz);
     var newArray = aux.concat(vecExcelVe);
-    console.log(newArray);
     for (let i = 0; i < vecExcelAm.length; i++) {
+      var ta = parseFloat(vecExcelAm[i].promedio)
+      var tAz = parseFloat(vecExcelAz[i].promedio)
+      var tV = parseFloat(vecExcelVe[i].promedio)
+      var total = (ta + tAz + tV)/3;
 
-
-      datas.push({postura:vecExcelAm[i].postura, movimiento:vecExcelAm[i].movimiento, temperatura: vecExcelAm[i].temperatura,
+      datas.push({encuestado:vecExcelAm[i].encuestado, fecha: vecExcelAm[i].fecha,
+          ip:vecExcelAm[i].ipU,generacion: vecExcelAm[i].generacion,
+          area: vecExcelAm[i].area, antiguedad : vecExcelAm[i].antiguedad,
+          postura:vecExcelAm[i].postura, movimiento:vecExcelAm[i].movimiento, temperatura: vecExcelAm[i].temperatura,
           peso: vecExcelAm[i].peso, ergonomia: vecExcelAm[i].ergonomia, cargaTrabajo: vecExcelAm[i].cargaTrabajo,
           vitalidad: vecExcelAm[i].vitalidad, luz: vecExcelAm[i].luz,
           contactoextrior: vecExcelAm[i].contactoextrior, promedio: vecExcelAm[i].promedio,
@@ -2024,7 +2050,8 @@ getDatasExcel(){
          sentValorado: vecExcelVe[i].sentValorado, conectarseOtros: vecExcelVe[i].conectarseOtros,
         interaccionSocial: vecExcelVe[i].interaccionSocial, confianza: vecExcelVe[i].confianza,
         sentido: vecExcelVe[i].sentido, optimismo: vecExcelVe[i].optimismo, autenticidad: vecExcelVe[i].autenticidad,
-        intLider: vecExcelVe[i].intLider, proposito: vecExcelVe[i].proposito, promedioVe: vecExcelVe[i].promedio
+        intLider: vecExcelVe[i].intLider, proposito: vecExcelVe[i].proposito,
+        promedioVe: vecExcelVe[i].promedio, promedioG: total.toFixed(1)
                         });
     }
     new Angular2Csv(datas, 'ReporteWellBeing'+nombreCliente, {headers: (head)});
@@ -2211,7 +2238,7 @@ function crearReporte(info: any){
     }else if(arrAreaAmarillo.length <= 8){
       var slideArea = pptx.addNewSlide();
       var slideArea2 = pptx.addNewSlide();
-      slideArea2.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636' });
+      slideArea2.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636',font_face:'Arial Black' });
       slideArea2.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
       slideArea2.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
       slideArea2.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
@@ -2219,12 +2246,12 @@ function crearReporte(info: any){
       var slideArea = pptx.addNewSlide();
       var slideArea2 = pptx.addNewSlide();
       var slideArea3 = pptx.addNewSlide();
-      slideArea2.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636' });
+      slideArea2.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636',font_face:'Arial Black' });
       slideArea2.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
       slideArea2.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
       slideArea2.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
 
-      slideArea3.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636' });
+      slideArea3.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636',font_face:'Arial Black' });
       slideArea3.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
       slideArea3.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
       slideArea3.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
@@ -2233,17 +2260,17 @@ function crearReporte(info: any){
       var slideArea2 = pptx.addNewSlide();
       var slideArea3 = pptx.addNewSlide();
       var slideArea4 = pptx.addNewSlide();
-      slideArea2.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636' });
+      slideArea2.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636',font_face:'Arial Black' });
       slideArea2.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
       slideArea2.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
       slideArea2.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
 
-      slideArea3.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636' });
+      slideArea3.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636',font_face:'Arial Black' });
       slideArea3.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
       slideArea3.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
       slideArea3.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
 
-      slideArea4.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636' });
+      slideArea4.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636',font_face:'Arial Black' });
       slideArea4.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
       slideArea4.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
       slideArea4.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
@@ -2349,7 +2376,7 @@ slideGrafico.addChart(pptx.charts.PIE, dataChartPieGen,
                 chartColors:['E9B200','FFC000','FFD243','FFE286'], dataLabelColor:'FFFFFF'
             });*/
 
-    slideTitulo.addText('Wellbeing Research',{x: 6, y:2, font_size:22, color:'363636' });
+    slideTitulo.addText('Wellbeing Research',{x: 6, y:2, font_size:22, color:'363636',font_face:'Arial Black' });
     slideTitulo.addText(nombreCliente, {x:6.8, y:2.5, font_size:18, color:'363636'});
     slideTitulo.addText(fechaReporte, {x:7.3, y:3, font_size:11, color:'363636'});
     //****agregar fecha de reporte
@@ -2379,7 +2406,7 @@ slideEstadistica.addChart(
     { x:5.3, y:2.9, w:3.5, h:2, barDir:'bar', catAxisLabelColor:'0000CC', catAxisLabelFontFace:'Arial' }
 );
 
-    slideEstadistica.addText('Estadisticas de la muestra',{x: 1, y:0.5, font_size:20, color:'363636' })
+    slideEstadistica.addText('Estadisticas de la muestra',{x: 1, y:0.5, font_size:20, color:'363636', font_face:'Arial Black' })
     slideEstadistica.addText('STATUS FINAL',{x: 1, y:0.9, font_size:9, color:'363636' })
     slideEstadistica.addText(statusFinal.toFixed(1),{x: 4, y:0.9, font_size:9, color:'8B1D9B' })
     slideEstadistica.addText('POBLACION TOTAL',{x: 1, y:1.3, font_size:9, color:'363636' })
@@ -2399,15 +2426,15 @@ slideEstadistica.addChart(
     }while(i<arrayEstadisticas.length)
 
 
-    slide.addText('ÍNDICE DE BIENESTAR GLOBAL '+nombreCliente.toUpperCase(), { x:1.0, y:0.5, font_size:18,font_face:'Arial Black', color:'363636' });
+    slide.addText('Índice de bienestar global de '+nombreCliente.toUpperCase(), { x:1.0, y:0.5, font_size:18,font_face:'Arial Black', color:'363636' });
     slide.addImage({x:1.5, y:1.3, w:3, h:3, path:'assets/img/gray_circle.svg'});
     slide.addText(totalGral,{x:2, y:2.6, font_size:105, font_face:'Calibri', color:'8B1D9B'})
     slide.addText('Media nacional: '+gralTotal,{x:4.7, y:2.3, font_size:20, font_face:'Helvetica Neue Light', color:'363636'});
     slide.addText('Media del sector '+tipoSector+": "+indTotal,{x:4.7, y:2.7, font_size:20, font_face:'Helvetica Neue Light', color:'363636'})
 
-    slideYellow.addText('Índice de bienestar físico',{x:1, y:0.5, font_size:28,font_face:'Arial', color:'363636'});
-    slideYellow.addImage({x:1.5, y:1.3, w:2.5, h:2.5, path: 'assets/img/yellowCircleSlim.svg'});
-    slideYellow.addImage({x:1.72, y:1.57, w:2, h:2, data:dataImageAm});
+    slideYellow.addText('Índice de bienestar físico',{x:1, y:0.5, font_size:18,font_face:'Arial Black', color:'363636'});
+    slideYellow.addImage({x:1.5, y:1.3, w:2.5, h:2.5, path: 'assets/img/yellow_circle.svg'});
+    slideYellow.addImage({x:1.88, y:1.69, w:1.7, h:1.7, data:dataImageAm});
     slideYellow.addText(amarillo.toFixed(1),{x:2.2, y:4, font_size:50, font_face:'Calibri', color:'FBC100'})
     slideYellow.addText('Media nacional: ',{x:2, y:4.5, font_size:11,font_face:'Arial', color:'363636'})
     slideYellow.addText(gralamarillo.toFixed(1), {x:3.3, y:4.48, font_size:15,font_face:'Arial', color:'FBC100'})
@@ -2435,9 +2462,9 @@ slideEstadistica.addChart(
     slideYellow.addText(promCategoriaAm[8], {x:9, y:3.4, font_size:8,font_face:'Arial', color:'363636'})
 
 
-    slideBlue.addText('Índice de bienestar cognitivo',{x:1, y:0.5, font_size:28,font_face:'Arial', color:'363636'});
-    slideBlue.addImage({x:1.5, y:1.3, w:2.5, h:2.5, path: 'assets/img/blueCircleSlim.svg'});
-    slideBlue.addImage({x:1.72, y:1.57,  w:2, h:2, data:dataImageAz});
+    slideBlue.addText('Índice de bienestar cognitivo',{x:1, y:0.5, font_size:18,font_face:'Arial Black', color:'363636'});
+    slideBlue.addImage({x:1.5, y:1.3, w:2.5, h:2.5, path: 'assets/img/blue_circle.svg'});
+    slideBlue.addImage({x:1.88, y:1.69,  w:1.7, h:1.7, data:dataImageAz});
     slideBlue.addText(azul,{x:2.2, y:4, font_size:50, font_face:'Calibri', color:'31AEF2'})
     slideBlue.addText('Media nacional: ',{x:2, y:4.5, font_size:11,font_face:'Arial', color:'363636'})
     slideBlue.addText(gralazul.toFixed(1), {x:3.3, y:4.48, font_size:15,font_face:'Arial', color:'31AEF2'})
@@ -2465,9 +2492,9 @@ slideEstadistica.addChart(
     slideBlue.addText(promCategoriaAz[8], {x:9, y:3.8, font_size:8,font_face:'Arial', color:'363636'})
 
 
-    slideGreen.addText('Índice de bienestar emocional',{x:1, y:0.5, font_size:28,font_face:'Arial', color:'363636'});
-    slideGreen.addImage({x:1.5, y:1.3, w:2.5, h:2.5, path: 'assets/img/greenCircleSlim.svg'});
-    slideGreen.addImage({x:1.72, y:1.57, w:2, h:2, data:dataImageVe});
+    slideGreen.addText('Índice de bienestar emocional',{x:1, y:0.5, font_size:18,font_face:'Arial Black', color:'363636'});
+    slideGreen.addImage({x:1.5, y:1.3, w:2.5, h:2.5, path: 'assets/img/green_circle.svg'});
+    slideGreen.addImage({x:1.88, y:1.69, w:1.7, h:1.7, data:dataImageVe});
     slideGreen.addText('Media nacional: ',{x:2, y:4.5, font_size:11,font_face:'Arial', color:'363636'})
     slideGreen.addText(gralverde.toFixed(1), {x:3.3, y:4.48, font_size:15,font_face:'Arial', color:'98CE3D'})
     slideGreen.addText('Media del sector '+tipoSector+":", {x:1.7, y:4.7, font_size:11,font_face:'Arial', color:'363636'})
@@ -2512,7 +2539,7 @@ slideEstadistica.addChart(
       x:7.6, y:3.5, w:1.5, h:1.5,
       path: 'assets/img/green_circle.svg'
     })*/
-    slideR.addText('Resultados por generación', { x:1, y:0.5, font_size:18, color:'363636' });
+    slideR.addText('Resultados por generación', { x:1, y:0.5, font_size:18, color:'363636',font_face:'Arial Black'});
     slideR.addText(datosGraf[0].toFixed(1), {x:1.27, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
     slideR.addText(arrGenAmarillo[0].nombre, {x:0.6, y:1.5, font_size:18, color:'363636'})
     slideR.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
@@ -2572,7 +2599,7 @@ slideEstadistica.addChart(
     var imgAx, imgAy, imgAzX, imgAzY, imgVx, imgVy;
 
 
-    slideArea.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636' });
+    slideArea.addText('Resultados por área', { x:1, y:0.5, font_size:18, color:'363636',font_face:'Arial Black' });
     slideArea.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
     slideArea.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
     slideArea.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
@@ -2649,7 +2676,7 @@ slideEstadistica.addChart(
                 imgAx = 8.07, imgAy = 2.4, imgAzX = 8.07, imgAzY = 3.4, imgVx = 8.07, imgVy = 4.4;
               }
 
-              slideArea.addText(arrAreaAmarillo[i].nombre, {x:nameAreasX, y:nameAreasY, font_size:18, color:'363636'})
+              slideArea.addText(arrAreaAmarillo[i].nombre, {x:nameAreasX, y:nameAreasY, font_size:18, color:'363636', })
               slideArea.addText(datosArea[i].toFixed(1), {x:t0x, y:t0y  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
 
               slideArea.addImage({x:imgAx, y:imgAy, w:w, h:h,path: cAmarillo})
@@ -3025,46 +3052,46 @@ slideEstadistica.addChart(
     slideArea2.addText(arrAreaVerde[7].total, {x:7.4, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})*/
 
 
-    slideAnt.addText('Resultados por antigüedad', { x:1, y:0.5, font_size:18, color:'363636' });
-    slideAnt.addText(datosAnt[0].toFixed(1), {x:1.25, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
-    slideAnt.addText(arrAntAmarillo[0].nombre, {x:0.8, y:1.5, font_size:18, color:'363636'})
-    slideAnt.addText('F', { x:0.5, y:2.6, font_size:18, color:'FBC100' })
-    slideAnt.addText('C', { x:0.5, y:3.6, font_size:18, color:'31AEF2' })
-    slideAnt.addText('E', { x:0.5, y:4.6, font_size:18, color:'98CE3D' })
-    slideAnt.addImage({x:1.2, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
-    slideAnt.addText(arrAntAmarillo[0].total, {x:1.27, y:2.6  , font_size:18, font_face:'Arial Black', color:'FBC100'})
-    slideAnt.addImage({x:1.2, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
-    slideAnt.addText(arrAntAzul[0].total, {x:1.27, y:3.6  , font_size:18, font_face:'Arial Black', color:'31AEF2'})
-    slideAnt.addImage({x:1.2, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
-    slideAnt.addText(arrAntVerde[0].total, {x:1.27, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
+    slideAnt.addText('Resultados por antigüedad', { x:1, y:0.5, font_size:18, color:'363636',font_face:'Arial Black' });
+    slideAnt.addText(datosAnt[0].toFixed(1), {x:2.25, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
+    slideAnt.addText(arrAntAmarillo[0].nombre, {x:1.8, y:1.5, font_size:18, color:'363636'})
+    slideAnt.addText('F', { x:1.5, y:2.6, font_size:18, color:'FBC100' })
+    slideAnt.addText('C', { x:1.5, y:3.6, font_size:18, color:'31AEF2' })
+    slideAnt.addText('E', { x:1.5, y:4.6, font_size:18, color:'98CE3D' })
+    slideAnt.addImage({x:2.2, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
+    slideAnt.addText(arrAntAmarillo[0].total, {x:2.27, y:2.6  , font_size:18, font_face:'Arial Black', color:'FBC100'})
+    slideAnt.addImage({x:2.2, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
+    slideAnt.addText(arrAntAzul[0].total, {x:2.27, y:3.6  , font_size:18, font_face:'Arial Black', color:'31AEF2'})
+    slideAnt.addImage({x:2.2, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
+    slideAnt.addText(arrAntVerde[0].total, {x:2.27, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
-    slideAnt.addText(datosAnt[1].toFixed(1), {x:3.15, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
-    slideAnt.addText(arrAntAmarillo[1].nombre, {x:2.7, y:1.5, font_size:18, color:'363636'})
-    slideAnt.addImage({x:3.1, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
-    slideAnt.addText(arrAntAmarillo[1].total, {x:3.13, y:2.6, font_size:18, font_face:'Arial Black', color:'FBC100'})
-    slideAnt.addImage({x:3.1, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
-    slideAnt.addText(arrGenAzul[1].total, {x:3.15, y:3.6  , font_size:18, font_face:'Arial Black', color:'31AEF2'})
-    slideAnt.addImage({x:3.1, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
-    slideAnt.addText(arrGenVerde[1].total, {x:3.17, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
+    slideAnt.addText(datosAnt[1].toFixed(1), {x:4.15, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
+    slideAnt.addText(arrAntAmarillo[1].nombre, {x:3.9, y:1.5, font_size:18, color:'363636'})
+    slideAnt.addImage({x:4.1, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
+    slideAnt.addText(arrAntAmarillo[1].total, {x:4.13, y:2.6, font_size:18, font_face:'Arial Black', color:'FBC100'})
+    slideAnt.addImage({x:4.1, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
+    slideAnt.addText(arrGenAzul[1].total, {x:4.15, y:3.6  , font_size:18, font_face:'Arial Black', color:'31AEF2'})
+    slideAnt.addImage({x:4.1, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
+    slideAnt.addText(arrGenVerde[1].total, {x:4.17, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
-    slideAnt.addText(datosAnt[2].toFixed(1), {x:4.9, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
-    slideAnt.addText(arrAntAmarillo[2].nombre, {x:4.5, y:1.5, font_size:18, color:'363636'})
-    slideAnt.addImage({x:4.9, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
-    slideAnt.addText(arrAntAmarillo[2].total, {x:4.95, y:2.6, font_size:18, font_face:'Arial Black', color:'FBC100'})
-    slideAnt.addImage({x:4.9, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
-    slideAnt.addText(arrAntAzul[2].total, {x:4.95, y:3.6  , font_size:18, font_face:'Arial Black', color:'31AEF2'})
-    slideAnt.addImage({x:4.9, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
-    slideAnt.addText(arrAntVerde[2].total, {x:4.95, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
+    slideAnt.addText(datosAnt[2].toFixed(1), {x:5.9, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
+    slideAnt.addText(arrAntAmarillo[2].nombre, {x:5.8, y:1.5, font_size:18, color:'363636'})
+    slideAnt.addImage({x:5.9, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
+    slideAnt.addText(arrAntAmarillo[2].total, {x:5.95, y:2.6, font_size:18, font_face:'Arial Black', color:'FBC100'})
+    slideAnt.addImage({x:5.9, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
+    slideAnt.addText(arrAntAzul[2].total, {x:5.95, y:3.6  , font_size:18, font_face:'Arial Black', color:'31AEF2'})
+    slideAnt.addImage({x:5.9, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
+    slideAnt.addText(arrAntVerde[2].total, {x:5.95, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
 
-    slideAnt.addText(datosAnt[3].toFixed(1), {x:6.57, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
-    slideAnt.addText(arrAntAmarillo[3].nombre, {x:6.2, y:1.5, font_size:18, color:'363636'})
-    slideAnt.addImage({x:6.6, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
-    slideAnt.addText(arrAntAmarillo[3].total, {x:6.65, y:2.6, font_size:18, font_face:'Arial Black', color:'FBC100'})
-    slideAnt.addImage({x:6.6, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
-    slideAnt.addText(arrAntAzul[3].total, {x:6.65, y:3.6  , font_size:18, font_face:'Arial Black', color:'31AEF2'})
-    slideAnt.addImage({x:6.6, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
-    slideAnt.addText(arrAntVerde[3].total, {x:6.65, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
+    slideAnt.addText(datosAnt[3].toFixed(1), {x:7.57, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
+    slideAnt.addText(arrAntAmarillo[3].nombre, {x:7.2, y:1.5, font_size:18, color:'363636'})
+    slideAnt.addImage({x:7.6, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
+    slideAnt.addText(arrAntAmarillo[3].total, {x:7.65, y:2.6, font_size:18, font_face:'Arial Black', color:'FBC100'})
+    slideAnt.addImage({x:7.6, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
+    slideAnt.addText(arrAntAzul[3].total, {x:7.65, y:3.6  , font_size:18, font_face:'Arial Black', color:'31AEF2'})
+    slideAnt.addImage({x:7.6, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
+    slideAnt.addText(arrAntVerde[3].total, {x:7.65, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
     slide.addText()
     pptx.save('Reporte Resultados '+nombreCliente);

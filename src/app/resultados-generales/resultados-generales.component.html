@@ -26,8 +26,8 @@
                         <p style="width: 100%;" id="empresaP" (click)="mostrarEmpresasRes()">EMPRESA</p>
                         <div id="triangle_right" style="margin: -12% 4% 0 0;" (click)="mostrarEmpresasRes()" ></div>
                         <div class="dropdown-content" id="empresaR" >
-                          <ul   style="list-style:none;color:#404041" id="empresasWell" >
-                            <li *ngFor="let item of arregloClientes" id="{{item.id}}" (click)="filtraCliente(item.id)">{{item.nombre}}</li>
+                          <ul   *ngFor="let item of arregloClientes" style="list-style:none;color:#404041;margin-left: -23px;" id="empresasWell" >
+                            <li  id="{{item.id}}" (click)="filtraCliente(item.id)"><span style="color:red" (click)="elimina(item.id)">X&nbsp;&nbsp;</span>{{item.nombre}}</li>
                           </ul>
                         </div>
                     </div>
@@ -59,6 +59,7 @@
                                           <ul  style="list-style:none;color:#404041" id="antigWell" >
                                             <li *ngFor = "let antiguedad of arregloAntiguedad" (click)="filtroAntiguedad(antiguedad.id)">{{antiguedad.nombre}}</li>
                                           </ul>
+                                          <button type="button" name="button" (click)="muestraAnt()"style="width: 9.5em;margin-left: 1em;margin-bottom: 0.5em;background: #404041;border: none;">Todos</button>
 
                                         </div>
                                     </div>
@@ -73,7 +74,7 @@
                                           <ul  style="list-style:none;color:#404041" id="genWell" >
                                             <li *ngFor = "let generacion of arregloGeneracion" (click)="filtroGeneracion(generacion.id)">{{generacion.nombre}}</li>
                                           </ul>
-
+                                          <button (click)="muestraGen();" type="button" name="button" style="width: 9.5em;margin-left: 1em;margin-bottom: 0.5em;background: #404041;border: none;">Todos</button>
                                         </div>
                                     </div>
                                 </a>
@@ -245,7 +246,7 @@
 
         <div class="content">
           <div class="col-md col-md-6" id ="green">
-            <img class="greenCir" src="assets/img/green_circle.png" alt="">
+            <img class="greenCir" src="assets/img/green_circle.svg" alt="">
             <div class="divGreen">
                   <canvas id="myChartGreen" width="300" height="300"></canvas>
             </div>
@@ -358,6 +359,20 @@
         <div class="modal-content">
           <div class="modal-body" style="text-align: center">
             <p>Tu reporte esta siendo creado, en un momento estará listo.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="modal" id="modalEliminar">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-body" style="text-align: center">
+            <p>Si elimina una empresa, se eliminara todos los datos de la misma. ¿Desea continuar?</p>
+            <button type="button" name="button" (click)="eliminaCliente()">Eliminar</button>
+            <button type="button" name="button" (click)=cancelaElim()>Cancelar</button>
           </div>
         </div>
 

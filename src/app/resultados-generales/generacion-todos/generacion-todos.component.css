@@ -1,0 +1,188 @@
+@font-face {
+  font-family: 'Avenir Next Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Avenir Next LT Pro Bold'), url('/assets/fonts/AvenirNextLTPro-Bold.woff') format('woff');
+}
+
+*{
+font-family:Avenir Next Bold;
+}
+
+
+.generaciones{
+  text-align: center;
+}
+
+.fila{
+  display: flex;
+}
+
+.amarillo{
+  color: #FBC100;
+}
+
+.azul{
+  color: #31AEF2;
+}
+
+.verde{
+  color: #98CE3D;
+}
+
+.promedios{
+  font-size: 2.5em;
+}
+
+.letras{
+  font-size: 2.5em;
+  margin-top: 1em;
+}
+/*
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+.fila_uno{
+  width: 33.3%;
+  text-align: center;
+}
+
+.filas{
+  width: 20%;
+  text-align: center;
+}
+
+.columnas{
+  width: 20%;
+  text-align: center;
+}
+
+.prom-c1{
+  position: absolute;
+  margin-top: -2.5em;
+  margin-left: .9em;
+  font-size: 2.5em;
+}
+
+.prom-c2{
+  position: absolute;
+  margin-top: -2.5em;
+  margin-left: 2.9em;
+  font-size: 2.5em;
+}
+
+.totales{
+  position: absolute;
+  margin-top: -2.5em;
+  margin-left: 4.9em;
+  font-size: 2.5em;
+}
+
+
+#pgeneral{
+  text-align: center;
+  font-size: 9em;
+}
+
+
+}
+
+/*
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .fila_uno{
+    width: 33.3%;
+    text-align: center;
+  }
+
+  .columnas{
+    width: 20%;
+    text-align: center;
+  }
+
+
+  .filas{
+    width: 20%;
+    text-align: center;
+  }
+
+  .prom-c1{
+    position: absolute;
+    margin-top: -2.5em;
+    margin-left: .9em;
+    font-size: 2.5em;
+  }
+
+  .prom-c2{
+    position: absolute;
+    margin-top: -2.5em;
+    margin-left: 2.9em;
+    font-size: 2.5em;
+  }
+
+  .totales{
+    position: absolute;
+    margin-top: -2.5em;
+    margin-left: 4.9em;
+    font-size: 2.5em;
+  }
+
+  #pgeneral{
+    text-align: center;
+    font-size: 9em;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .fila_uno{
+    width: 33.3%;
+    text-align: center;
+  }
+
+  .filas{
+    width: 20%;
+    text-align: center;
+  }
+
+  .columnas{
+    width: 20%;
+    text-align: center;
+  }
+
+  .columna_cuatro{
+    width: 25%;
+    text-align: center;
+  }
+
+  .prom-c1{
+    position: absolute;
+    margin-top: -2.5em;
+    margin-left: .9em;
+    font-size: 2.5em;
+  }
+
+  .prom-c2{
+    position: absolute;
+    margin-top: -2.5em;
+    margin-left: 2.3em;
+    font-size: 2.5em;
+  }
+
+  .totales{
+    position: absolute;
+    margin-top: -2.5em;
+    margin-left: 3.9em;
+    font-size: 2.5em;
+  }
+
+  #pgeneral{
+    text-align: center;
+    font-size: 9em;
+  }
+
+}

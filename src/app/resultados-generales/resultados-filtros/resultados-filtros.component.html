@@ -27,7 +27,49 @@
             </div>
 
 
-            <input Hidden type="text" id = "genName" name="" value="" class="filtros">
+      <!--      <a hidden id="areas" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
+            " >
+                <div class="btn66" >
+                    <p style="width: 100%;" id="areaP" (click)="mostrarAreasRes()">ÁREA</p>
+                    <div id="triangle_right" style="margin: -12% 4% 0 0;" (click)="mostrarAreasRes()" ></div>
+                    <div class="dropdown-content" id="areaR" >
+                      <ul  style="list-style:none;color:#404041" id="areaWell" >
+                        <li *ngFor = "let area of arregloAreas" (click)="filtroArea(area.id)">{{area.nombre}}</li>
+                      </ul>
+
+                    </div>
+                </div>
+            </a>
+
+                    <a hidden id="antiguedades" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
+                    " >
+                        <div class="btn66" >
+                            <p style="width: 100%;" id="antiguedadP" (click)="mostrarAntiguedadRes()">ANTIGüEDAD</p>
+                            <div id="triangle_right" style="margin: -12% 4% 0 0;"(click)="mostrarAntiguedadRes()" ></div>
+                            <div class="dropdown-content" id="antiguedadR" >
+                              <ul  style="list-style:none;color:#404041" id="antigWell" >
+                                <li *ngFor = "let antiguedad of arregloAntiguedad" (click)="filtroAntiguedad(antiguedad.id)">{{antiguedad.nombre}}</li>
+                              </ul>
+
+                            </div>
+                        </div>
+                    </a>
+
+                    <a hidden id="generaciones" style="margin-bottom:5%;color: #FFFFFF;width: 100%;height: 27px;margin-right: 0%;float: right;line-height: 1.8em;text-decoration: none;font-weight: 700;
+                    " >
+                        <div class="btn66" >
+                            <p style="width: 100%;" id="generacionP" (click)="mostrarGeneracionesRes()">GENERACIÓN</p>
+                            <div id="triangle_right" style="margin: -12% 4% 0 0;"(click)="mostrarGeneracionesRes()" ></div>
+                            <div class="dropdown-content" id="generacionR" >
+                              <ul  style="list-style:none;color:#404041" id="genWell" >
+                                <li *ngFor = "let generacion of arregloGeneracion" (click)="filtroGeneracion(generacion.id)">{{generacion.nombre}}</li>
+                              </ul>
+
+                            </div>
+                        </div>
+                    </a>-->
+
+
             <div hidden id="btnReporte" class="btn66" >
                 <p style="width: 100%;" (click)="sigPaso()">REPORTE</p>
                 <div class="dropdown-content">
@@ -123,7 +165,7 @@
 
         <div class="content">
           <div class="col-md col-md-6" id ="green">
-            <img class="greenCir" src="assets/img/green_circle.png" alt="">
+            <img class="greenCir" src="assets/img/green_circle.svg" alt="">
             <div class="divGreen">
                   <canvas id="myChartGreen" width="300" height="300"></canvas>
             </div>

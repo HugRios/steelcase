@@ -35,6 +35,7 @@ var arrAntVerde = [];
 var arrayIndustrias = [];
 var empresaG, areaG, antiguedadG, generacionG, industriaG;
 var amarillo = 0, azul= 0, verde = 0;
+var idEliminar;
 
 @Component({
   selector: 'app-resultados-generales',
@@ -148,9 +149,8 @@ la lista de industrías*/
 
 
   addEmpresa() {
-
     var query = new Parse.Query('ClienteWell');
-
+    query.ascending("nombre");
     query.find({
       success: function(results) {
         var list = document.createElement('li');
@@ -412,16 +412,90 @@ getIdAreas(){
 
 
 filtraCliente(ide: any){
-this.OcultarTodo();
-
+  this.OcultarTodo();
   empresaG = ide;
   var Cliente = Parse.Object.extend("ClienteWell");
   var cliente = new Cliente();
       cliente.id = ide;
       $("#empresaP").html(cliente.get("nombre"));
 
+}
 
-  //alert("pus si funciona")
+/* Funciones para eliminar a un cliente*/
+elimina(id){
+  idEliminar = id;
+  $('#modalEliminar').modal('toggle');
+}
+
+cancelaElim(){
+  idEliminar = '';
+  $('#modalEliminar').modal('hide');
+}
+
+eliminaCliente(){
+  console.log(idEliminar);
+  var arrayEliminar = [];
+  var Cliente = Parse.Object.extend('ClienteWell');
+  var cliente = new Cliente();
+      cliente.id = idEliminar;
+  var queryYellow = new Parse.Query('Wellbeing');
+      queryYellow.equalTo('cliente', cliente);
+      queryYellow.find({
+        success: function(resYellow){
+          for (let i = 0; i < resYellow.length; i++) {
+              resYellow[i].destroy({});
+              console.log('el objeto se destruyó')
+          }
+          var queryBlue = new Parse.Query('WellCognitivo');
+              queryBlue.equalTo('cliente', cliente);
+              queryBlue.find({
+                success: function(resBlue){
+                  for (let i = 0; i < resBlue.length; i++) {
+                      resBlue[i].destroy({});
+                      console.log('azul destruido')
+                  }
+                  var queryGreen = new Parse.Query('WellEmocional');
+                      queryGreen.equalTo('cliente', cliente);
+                      queryGreen.find({
+                        success: function(resGreen){
+                          for (let i = 0; i < resGreen.length; i++) {
+                              resGreen[i].destroy({});
+                              console.log('verde destruido')
+                          }
+                          var queryAreas = new Parse.Query('areaWell');
+                              queryAreas.equalTo('cliente', cliente);
+                              queryAreas.find({
+                                success: function(resAreas){
+                                  for (let i = 0; i < resAreas.length; i++) {
+                                      resAreas[i].destroy({});
+                                      console.log('areasDestruido')
+                                  }
+                                  var queryLink = new Parse.Query('LinksWell');
+                                      queryLink.equalTo('cliente', cliente);
+                                      queryLink.find({
+                                        success: function(resLink){
+                                          resLink[0].destroy({});
+                                          console.log('Link destruido');
+                                          var queryCliente = new Parse.Query('ClienteWell');
+                                              queryCliente.equalTo('objectId', idEliminar);
+                                              queryCliente.find({
+                                                success: function(resCliente){
+                                                  resCliente[0].destroy({});
+                                                  console.log('Cliente destruido');
+                                                }
+                                              })
+                                        }
+                                      })
+                                }
+                              })
+                        }
+                      })
+                }
+              })
+        }
+      })
+        $('#modalEliminar').modal('hide');
+        $('#'+idEliminar).remove();
 }
 
 /*filtroArea(ide: any){
@@ -456,7 +530,6 @@ filtroGeneracion(ide: any){
 }
 
 showResults(){
-  console.log(generacionG)
   var arreglo = this.enviaResultados();
   var industria = '';
   if(arreglo.length > 1){
@@ -477,10 +550,32 @@ showResults(){
 
 
 
+validaInd(){
+  var existe = false;
+  var newInd =  $("#newIndustria").val();
+  var industria = $("#industriasWellNew").val();
+  if(newInd != ''){
+    var queryInd = new Parse.Query('indWell');
+        queryInd.equalTo('Nombre', newInd);
+        queryInd.find({
+          success: function(resInd){
+            if(resInd.length != 0){
+              alert('La industria que desas crear ya existe.')
+            }else{
+                existe = true;
+            }
+          }
+        })
+  }else if(industria !='Otro'){
+    existe = true;
+  }
 
+      return existe;
+}
 
 generarWell(){ //genera link por cliente
 
+  var existe = this.validaInd();
   arrayCheckAreas = this.getAreas();
   var areasLink = "";
   var customerName =$("#newCliente").val();
@@ -488,109 +583,111 @@ generarWell(){ //genera link por cliente
   var noEmpleados = parseInt($("#noEmpleados").val());
   var industria = $("#industriasWellNew").val();
   var newInd =  $("#newIndustria").val();
-  console.log(industria);
   var fecha = fechaIngreso;
   var link = "https://steelcasemx-wellbeingsurvey.com";
   var date = new Date(fecha);
-  console.log(date);
   date.setHours(date.getHours()+23);
   date.setMinutes(date.getMinutes()+59);
-  console.log(date);
-try {
-  if(arrayCheckAreas.length != 0 && customerName != '' && industria !='' && auxEmpleados != '' ){
+
+if(existe == true){
+
+  try {
+    if(arrayCheckAreas.length != 0 && customerName != '' && industria !='' && auxEmpleados != '' ){
 
 
-    var cliente = Parse.Object.extend('ClienteWell');
-    var newCliente = new cliente();
+      var cliente = Parse.Object.extend('ClienteWell');
+      var newCliente = new cliente();
 
-    var Link = Parse.Object.extend("LinksWell");
-    var newLink = new Link();
+      var Link = Parse.Object.extend("LinksWell");
+      var newLink = new Link();
 
+      var Industria = Parse.Object.extend('indWell');
+      var newIndustria = new Industria();
+      var query = new Parse.Query(Industria);
+        query.equalTo("Nombre", industria);
+        query.find({
+          success: function(res){
+            if(res.length == 0){// si no encuentra resultados para la industria se debe agregar un nueva
+              newIndustria.set("Nombre", newInd);
+              newIndustria.save(null,{
+                success: function(newIndustria){
+                  newCliente.set("nombre",customerName);
+                  newCliente.set("noEmpleados", noEmpleados);
+                  newCliente.set("Industria", newIndustria);
+                  newCliente.save(null,{
+                    success: function(newCliente){
+                      for (var i = 0; i < arrayCheckAreas.length; i++) {
+                        if(arrayCheckAreas[i].id == 'none'){
+                          var areas = Parse.Object.extend('areaWell');
+                          var newAreas = new areas();
+                          newAreas.set('cliente', newCliente);
+                          newAreas.set('Name', arrayCheckAreas[i].nombre);
+                          newAreas.save(null,{
+                            success: function(newAreas){
+                              areasLink += newAreas.id+"-";
+                            }
+                          });
+                        }else{
+                              areasLink += arrayCheckAreas[i].id+"-";
+                        }
 
-    var Industria = Parse.Object.extend('indWell');
-    var newIndustria = new Industria();
-    var query = new Parse.Query(Industria);
-      query.equalTo("Nombre", industria);
-      query.find({
-        success: function(res){
-          if(res.length == 0){// si no encuentra resultados para la industria se debe agregar un nueva
-            newIndustria.set("Nombre", newInd);
-            newIndustria.save(null,{
-              success: function(newIndustria){
-                newCliente.set("nombre",customerName);
-                newCliente.set("noEmpleados", noEmpleados);
-                newCliente.set("Industria", newIndustria);
-                newCliente.save(null,{
-                  success: function(newCliente){
-                    for (var i = 0; i < arrayCheckAreas.length; i++) {
-                      if(arrayCheckAreas[i].id == 'none'){
-                        var areas = Parse.Object.extend('areaWell');
-                        var newAreas = new areas();
-                        newAreas.set('cliente', newCliente);
-                        newAreas.set('Name', arrayCheckAreas[i].nombre);
-                        newAreas.save(null,{
-                          success: function(newAreas){
-                            areasLink += newAreas.id+"-";
-                          }
-                        });
-                      }else{
-                            areasLink += arrayCheckAreas[i].id+"-";
+          //termina creación areas con cliente
                       }
-
-        //termina creación areas con cliente
-                    }
-                    newLink.set("cliente", newCliente);
-                    newLink.set("areas", arrayCheckAreas);
-                    newLink.set("link", link+"?Cliente="+newCliente.id+"&Industria="+newIndustria.id+"&Areas="+areasLink);
-                    newLink.set("fechaLimite", date);
-                    newLink.save();
-                    $("#link").val("https://steelcasemx-wellbeingsurvey.com"+"?Cliente="+newCliente.id+"&Industria="+newIndustria.id+"&Areas="+areasLink);
-                  }//
-                })//termina creación del cliente
-              }
-            })
-
-
-          }else{
-            newCliente.set("nombre",customerName);
-            newCliente.set("noEmpleados", noEmpleados);
-            newCliente.set("Industria", res[0]);
-            newCliente.save(null,{
-              success: function(newCliente){
-                for (var i = 0; i < arrayCheckAreas.length; i++) {
-                  if(arrayCheckAreas[i].id == 'none'){
-                    var areas = Parse.Object.extend('areaWell');
-                    var newAreas = new areas();
-                    newAreas.set('cliente', newCliente);
-                    newAreas.set('Name', arrayCheckAreas[i].nombre);
-                    newAreas.save(null,{
-                      success: function(newAreas){
-                        areasLink += newAreas.id+"-";
-                      }
-                    });
-                  }else{
-                        areasLink += arrayCheckAreas[i].id+"-";
-                  }
-    //termina creación areas con cliente
+                      newLink.set("cliente", newCliente);
+                      newLink.set("areas", arrayCheckAreas);
+                      newLink.set("link", link+"?Cliente="+newCliente.id+"&Industria="+newIndustria.id+"&Areas="+areasLink);
+                      newLink.set("fechaLimite", date);
+                      newLink.save();
+                      $("#link").val("https://steelcasemx-wellbeingsurvey.com"+"?Cliente="+newCliente.id+"&Industria="+newIndustria.id+"&Areas="+areasLink);
+                    }//
+                  })//termina creación del cliente
                 }
-                newLink.set("cliente", newCliente);
-                newLink.set("areas", arrayCheckAreas);
-                newLink.set("link", link+"?Cliente="+newCliente.id+"&Industria="+res[0].id+"&Areas="+areasLink);
-                newLink.set("fechaLimite", date);
-                newLink.save();
-                $("#link").val("https://steelcasemx-wellbeingsurvey.com"+"?Cliente="+newCliente.id+"&Industria="+res[0].id+"&Areas="+areasLink);
-              }//
-            })//termina creación del cliente
-          }
-        }
-      })
-  }else{
-    alert("Recuerda: debes selecionar industría, área y agregar un cliente para continuar")
-  }
+              })
 
-} catch (e) {
-  console.log("error"+e)
+
+            }else{
+
+              newCliente.set("nombre",customerName);
+              newCliente.set("noEmpleados", noEmpleados);
+              newCliente.set("Industria", res[0]);
+              newCliente.save(null,{
+                success: function(newCliente){
+                  for (var i = 0; i < arrayCheckAreas.length; i++) {
+                    if(arrayCheckAreas[i].id == 'none'){
+                      var areas = Parse.Object.extend('areaWell');
+                      var newAreas = new areas();
+                      newAreas.set('cliente', newCliente);
+                      newAreas.set('Name', arrayCheckAreas[i].nombre);
+                      newAreas.save(null,{
+                        success: function(newAreas){
+                          areasLink += newAreas.id+"-";
+                        }
+                      });
+                    }else{
+                          areasLink += arrayCheckAreas[i].id+"-";
+                    }
+      //termina creación areas con cliente
+                  }
+                  newLink.set("cliente", newCliente);
+                  newLink.set("areas", arrayCheckAreas);
+                  newLink.set("link", link+"?Cliente="+newCliente.id+"&Industria="+res[0].id+"&Areas="+areasLink);
+                  newLink.set("fechaLimite", date);
+                  newLink.save();
+                  $("#link").val("https://steelcasemx-wellbeingsurvey.com"+"?Cliente="+newCliente.id+"&Industria="+res[0].id+"&Areas="+areasLink);
+                }//
+              })//termina creación del cliente
+            }
+          }
+        })
+    }else{
+      alert("Recuerda: debes selecionar industría, área y agregar un cliente para continuar")
+    }
+
+  } catch (e) {
+    console.log("error"+e)
+  }
 }
+
 
 }
 
@@ -668,7 +765,8 @@ try {
            scale: {
            ticks: {
                beginAtZero: true,
-               max: 5
+               max: 5,
+               fontSize: 8
            }
        }
           }
@@ -765,7 +863,8 @@ try {
              scale: {
            ticks: {
                beginAtZero: true,
-               max: 5
+               max: 5,
+               fontSize: 8
            }
           }
             }
@@ -869,7 +968,8 @@ try {
              scale: {
            ticks: {
                beginAtZero: true,
-               max: 5
+               max: 5,
+               fontSize: 8
            }
        }
             }
@@ -1170,7 +1270,7 @@ reporteGenVerde(){
                   rb += object.get("anonEstrategico");
                   //b+=object.get("presence");
                   b += object.get("atencionPlena");//cambiar para nueva encuesta//atencion plena
-                  lb += object.get("confidencialidad");//cambiar para nueva encuesta//confidencialidad
+                   lb += object.get("confidencialidad");//cambiar para nueva encuesta//confidencialidad
                   //l+=object.get("privacy");
                   l += object.get("bloqueEst");
                   //lt+=object.get("cognitive");
@@ -1658,6 +1758,14 @@ sigPaso(){
   crearPptx(){
     this.sigPaso();
 
+  }
+
+  muestraGen(){
+    this.router.navigate(['/generalGeneracion'])
+  }
+
+  muestraAnt(){
+    this.router.navigate(['/generalAntiguedad'])
   }
 
   ngOnInit() {

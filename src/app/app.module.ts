@@ -15,6 +15,8 @@ import { ResultadosFiltrosComponent } from './resultados-generales/resultados-fi
 import { ResultadosEmpresaComponent } from './resultados-generales/resultados-empresa/resultados-empresa.component';
 import { ResultadoTresComponent } from '../app/compara-resultados/resultado-tres/resultado-tres.component';
 import { Servicios } from './services/service';
+import { AntiguedadTodosComponent } from './resultados-generales/antiguedad-todos/antiguedad-todos.component';
+import { GeneracionTodosComponent } from './resultados-generales/generacion-todos/generacion-todos.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { Servicios } from './services/service';
     ResultadosFiltrosComponent,
     ResultadosEmpresaComponent,
     ResultadoTresComponent,
+    AntiguedadTodosComponent,
+    GeneracionTodosComponent,
 
   ],
   imports: [
@@ -59,7 +63,15 @@ import { Servicios } from './services/service';
         component: ResultadosFiltrosComponent
       },{
         path: 'resultadosEmpresa',
-        component: ResultadosEmpresaComponent,
+        component: ResultadosEmpresaComponent
+      },
+      {
+        path: 'generalGeneracion',
+        component: GeneracionTodosComponent
+      },
+      {
+        path: 'generalAntiguedad',
+        component: AntiguedadTodosComponent
       }
     ])
   ],

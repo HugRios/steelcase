@@ -65,7 +65,6 @@ export class ResultadosEmpresaComponent implements OnInit {
   }
 
   regresaHome(){
-    console.log("si estoy");
     this.router.navigate([''])
   }
 
@@ -360,16 +359,13 @@ export class ResultadosEmpresaComponent implements OnInit {
 
           var number = pTotal;
           general += number;
-          $("#promedioTotal").html(pTotal.toFixed(1));
-          console.log(number);
+          //$("#promedioTotal").html(pTotal.toFixed(1));
           promise.resolve(number);
-
-          /*  if (pTotal == 'NaN'){
-             $("#promedioTotal").html(0);
-            }else{
-              $("#promedioTotal").html(pTotal);
-
-            }*/
+          if (pTotal.toString() == 'NaN') {
+            $("#promedioTotal").html("NA");
+          } else {
+            $("#promedioTotal").html(pTotal.toFixed(1));
+          }
         },
         error: function(error) {
           alert("Error: " + error.code + " " + error.message);
@@ -468,15 +464,12 @@ export class ResultadosEmpresaComponent implements OnInit {
             //var pTotal=((fct+fcrt+fcr+fcrb+fcb+fclb+fcl+fclt)/8).toFixed(1);
             var total2 = parseFloat(pTotal);
             var t2 = total2 + response;
-            $("#promedioTotalAzul").html(pTotal);
             promise.resolve(t2);
-
-            /*if (pTotal == 'NaN'){
-             $("#promedioTotalAzul").html(0);
-            }else{
-
-              $("#pgeneral").html(final);
-            }*/
+            if (pTotal == 'NaN') {
+              $("#promedioTotalAzul").html("NA");
+            } else {
+              $("#promedioTotalAzul").html(pTotal);
+            }
 
 
           },
@@ -581,9 +574,9 @@ export class ResultadosEmpresaComponent implements OnInit {
             var total3 = parseFloat(pTotal);
             var t3 = total3 + pAzul;
             var final = (t3 / 3).toFixed(1);
-            console.log(final);
             if (pTotal == 'NaN') {
-              $("#promedioTotalVerde").html(0);
+              $("#promedioTotalVerde").html("NA");
+              $("#pgeneral").html("NA");
             } else {
               $("#promedioTotalVerde").html(pTotal);
               $("#pgeneral").html(final);
