@@ -42,6 +42,7 @@ Total: any;
   getGET(){
     var loc = document.location.href;
     var getString = loc.substring(loc.lastIndexOf('-')+1);
+    console.log(getString);
     var auxString = getString.replace(/%26/g, "&");
     var newString = auxString.replace(/%3D/g, "=");
 
@@ -71,8 +72,8 @@ Total: any;
       idCliente = '';
     }else{
 
-      idCliente = url.substring(url.indexOf(':')+1,url.indexOf('F'));
-
+      idCliente = url.substring(url.indexOf(':')+1,url.indexOf('-'));
+      console.log(idCliente);
     }
 
   }

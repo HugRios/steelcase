@@ -2142,7 +2142,7 @@ muestraAnt(){
 
 muestraGen(){
   var vector = this.getGET();
-  this.router.navigate(['/generalGeneracion/:'+vector[0].id+'-F='+amarillo.toFixed(1)+"C="+azul.toFixed(1)+"V="+verde.toFixed(1)])
+  this.router.navigate(['/generalGeneracion/:'+vector[0].id+'-F='+amarillo.toFixed(1)+"&C="+azul.toFixed(1)+"&V="+verde.toFixed(1)])
 }
 
 
