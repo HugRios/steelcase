@@ -17,6 +17,7 @@ import { ResultadoTresComponent } from '../app/compara-resultados/resultado-tres
 import { Servicios } from './services/service';
 import { AntiguedadTodosComponent } from './resultados-generales/antiguedad-todos/antiguedad-todos.component';
 import { GeneracionTodosComponent } from './resultados-generales/generacion-todos/generacion-todos.component';
+import { AreasTodosComponent } from './resultados-generales/areas-todos/areas-todos.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { GeneracionTodosComponent } from './resultados-generales/generacion-todo
     ResultadoTresComponent,
     AntiguedadTodosComponent,
     GeneracionTodosComponent,
+    AreasTodosComponent,
 
   ],
   imports: [
@@ -72,6 +74,10 @@ import { GeneracionTodosComponent } from './resultados-generales/generacion-todo
       {
         path: 'generalAntiguedad/:id',
         component: AntiguedadTodosComponent
+      },
+      {
+        path: 'areasEmpresa/:id',
+        component: AreasTodosComponent
       }
     ])
   ],

@@ -1,0 +1,638 @@
+<div class="container" id='columnaUno'>
+  <div class="row">
+    <a id="regresa" ><img src="assets/img/regresa.png" (click)="goBack()" alt="" title="Regresa a resultados generales" style="margin-left: 7%;margin-bottom: -8%;"></a>
+    <p id="pgeneral">{{Total}}</p>
+  </div>
+  <div class="row fila">
+    <div class="fila_uno" style="position:relative;">
+        <img src="assets/img/yellow_circle.svg" alt="" style="width:9em">
+        <div class="totales">
+          <p>{{tAm}}</p>
+        </div>
+    </div>
+    <div class="fila_uno" style="position:relative;">
+      <img src="assets/img/blue_circle.svg" alt="" style="width:9em">
+      <div class="totales">
+        <p>{{tAz}}</p>
+      </div>
+    </div>
+    <div class="fila_uno" style="position:relative;">
+      <img src="assets/img/green_circle.svg" alt="" style="width:9em">
+      <div class="totales">
+        <p>{{tVe}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="generaciones">
+    <div class="row">
+      <h3>Generación</h3>
+    </div>
+    <div class="row" style="display:flex">
+      <div class="filas">
+        <p id="tit1" style="margin-left: 5em;"></p>
+      </div>
+      <div class="filas">
+        <p id="tit2"></p>
+      </div>
+      <div class="filas">
+        <p id="tit3"></p>
+      </div>
+      <div class="filas">
+        <p id="tit4"></p>
+      </div>
+      <div class="filas">
+        <p id="tit5"></p>
+      </div>
+    </div>
+
+    <div hidden class="row promedios" style="display:flex">
+      <div class="filas" id="prom1">
+        <p id="t1" style="margin-left: 2em;">promedio</p>
+      </div>
+      <div hidden class="filas" id="prom2">
+        <p id="t2">promedio</p>
+      </div>
+      <div hidden class="filas" id="prom3">
+        <p id="t3">promedio</p>
+      </div>
+      <div hidden class="filas" id="prom4">
+        <p id="t4">promedio</p>
+      </div>
+      <div hidden class="filas" id="prom5">
+        <p id="t5">promedio</p>
+      </div>
+    </div>
+
+    <div class="row" style="display:flex">
+      <div class="columnas">
+        <div class="row" style="display:flex">
+          <div class="">
+          <p class="amarillo letras">F</p>
+          </div>
+          <div class="" style="margin-left: 27%; position:relative;">
+            <img src="assets/img/yellow_circle.svg" alt="" style="width:9em">
+            <div class="prom-c1">
+              <p class="amarillo" id="pAm1"></p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row" style="display:flex">
+          <div class="">
+          <p class="azul letras">C</p>
+          </div>
+          <div class="" style="margin-left: 27%; position:relative;">
+            <img src="assets/img/blue_circle.svg" alt="" style="width:9em">
+            <div class="prom-c1">
+              <p class="azul" id="pAz1"></p>
+            </div>
+          </div>
+        </div>
+
+      <div class="row" style="display:flex">
+        <div class="">
+        <p class="verde letras">E</p>
+        </div>
+        <div class="" style="margin-left: 27%; position:relative;">
+          <img src="assets/img/green_circle.svg" alt="" style="width:9em">
+          <div class="prom-c1">
+            <p class="verde" id="pv1"></p>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div hidden class="columnas" id="col2">
+        <div class="row">
+          <div class="">
+            <img src="assets/img/yellow_circle.svg" alt="" style="width:9em;position:relative;">
+            <div class="prom-c2">
+              <p class="amarillo" id="pAm2"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="">
+            <img src="assets/img/blue_circle.svg" alt="" style="width:9em;position:relative;">
+            <div class="prom-c2">
+              <p class="azul" id="pAz2"></p>
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="">
+          <img src="assets/img/green_circle.svg" alt="" style="width:9em;position:relative;">
+          <div class="prom-c2">
+            <p class="verde" id="pv2"></p>
+          </div>
+        </div>
+      </div>
+    </div><!-- Termina segunda columna-->
+
+      <div hidden class="columnas" id="col3"><!-- Inicia tercera columna-->
+        <div class="row">
+          <div class="" style="position:relative">
+            <img src="assets/img/yellow_circle.svg" alt="" style="width:9em">
+            <div class="prom-c2">
+              <p class="amarillo" id="pAm3"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class=""style="position:relative">
+            <img src="assets/img/blue_circle.svg" alt="" style="width:9em">
+            <div class="prom-c2">
+              <p class="azul" id="pAz3"></p>
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class=""style="position:relative">
+          <img src="assets/img/green_circle.svg" alt="" style="width:9em">
+          <div class="prom-c2">
+            <p class="verde" id="pv3"></p>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div hidden class="columnas" id="col4">
+        <div class="row">
+          <div class="" style="position:realtive;">
+            <img src="assets/img/yellow_circle.svg" alt="" style="width:9em;">
+            <div class="prom-c2">
+              <p class="amarillo" id="pAm4"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="" style="position:realtive;">
+            <img src="assets/img/blue_circle.svg" alt="" style="width:9em">
+            <div class="prom-c2">
+              <p class="azul" id="pAz4"></p>
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class=""style="position:realtive;" >
+          <img src="assets/img/green_circle.svg" alt="" style="width:9em">
+          <div class="prom-c2">
+            <p class="verde" id="pv4"></p>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div hidden class="columnas" id="col5">
+        <div class="row">
+          <div class="" style="position:realtive;">
+            <img src="assets/img/yellow_circle.svg" alt="" style="width:9em;">
+            <div class="prom-c2">
+              <p class="amarillo" id="pAm5"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="" style="position:realtive;">
+            <img src="assets/img/blue_circle.svg" alt="" style="width:9em">
+            <div class="prom-c2">
+              <p class="azul" id="pAz5"></p>
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class=""style="position:realtive;" >
+          <img src="assets/img/green_circle.svg" alt="" style="width:9em">
+          <div class="prom-c2">
+            <p class="verde" id="pv5"></p>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    </div>
+    </div>
+  </div>
+
+<div hidden class="container_d" id='columnaDos' style="padding-left: 8%;padding-right: 7%;">
+  <div class="generaciones">
+    <div class="row">
+      <h3>Generación</h3>
+    </div>
+    <div class="row" style="display:flex">
+      <div class="filas">
+        <p id="tit6" style="margin-left: 5em;"></p>
+      </div>
+      <div class="filas">
+        <p id="tit7"></p>
+      </div>
+      <div class="filas">
+        <p id="tit8"></p>
+      </div>
+      <div class="filas">
+        <p id="tit9"></p>
+      </div>
+      <div class="filas">
+        <p id="tit10"></p>
+      </div>
+    </div>
+
+    <div class="row promedios" style="display:flex">
+      <div hidden class="filas" id="prom6">
+        <p id="t6" style="margin-left: 2em;">promedio</p>
+      </div>
+      <div hidden class="filas" id="prom7">
+        <p id="t7">promedio</p>
+      </div>
+      <div hidden class="filas" id="prom8">
+        <p id="t8">promedio</p>
+      </div>
+      <div hidden class="filas" id="prom9">
+        <p id="t9">promedio</p>
+      </div>
+      <div hidden class="filas" id="prom10">
+        <p id="t10">promedio</p>
+      </div>
+    </div>
+
+    <div class="row" style="display:flex">
+      <div class="columnas">
+        <div class="row" style="display:flex">
+          <div class="">
+          <p class="amarillo letras">F</p>
+          </div>
+          <div class="" style="margin-left: 27%; position:relative;">
+            <img src="assets/img/yellow_circle.svg" alt="" style="width:9em">
+            <div class="prom-c1">
+              <p class="amarillo" id="pAm6"></p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row" style="display:flex">
+          <div class="">
+          <p class="azul letras">C</p>
+          </div>
+          <div class="" style="margin-left: 27%; position:relative;">
+            <img src="assets/img/blue_circle.svg" alt="" style="width:9em">
+            <div class="prom-c1">
+              <p class="azul" id="pAz6"></p>
+            </div>
+          </div>
+        </div>
+
+      <div class="row" style="display:flex">
+        <div class="">
+        <p class="verde letras">E</p>
+        </div>
+        <div class="" style="margin-left: 27%; position:relative;">
+          <img src="assets/img/green_circle.svg" alt="" style="width:9em">
+          <div class="prom-c1">
+            <p class="verde" id="pv6"></p>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div hidden class="columnas" id="col7">
+        <div class="row">
+          <div class="">
+            <img src="assets/img/yellow_circle.svg" alt="" style="width:9em;position:relative;">
+            <div class="prom-c2">
+              <p class="amarillo" id="pAm7"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="">
+            <img src="assets/img/blue_circle.svg" alt="" style="width:9em;position:relative;">
+            <div class="prom-c2">
+              <p class="azul" id="pAz7"></p>
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="">
+          <img src="assets/img/green_circle.svg" alt="" style="width:9em;position:relative;">
+          <div class="prom-c2">
+            <p class="verde" id="pv7"></p>
+          </div>
+        </div>
+      </div>
+    </div><!-- Termina segunda columna-->
+
+      <div hidden class="columnas" id="col8"><!-- Inicia tercera columna-->
+        <div class="row">
+          <div class="" style="position:relative">
+            <img src="assets/img/yellow_circle.svg" alt="" style="width:9em">
+            <div class="prom-c2">
+              <p class="amarillo" id="pAm8"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class=""style="position:relative">
+            <img src="assets/img/blue_circle.svg" alt="" style="width:9em">
+            <div class="prom-c2">
+              <p class="azul" id="pAz8"></p>
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class=""style="position:relative">
+          <img src="assets/img/green_circle.svg" alt="" style="width:9em">
+          <div class="prom-c2">
+            <p class="verde" id="pv8"></p>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div hidden class="columnas" id="col9">
+        <div class="row">
+          <div class="" style="position:realtive;">
+            <img src="assets/img/yellow_circle.svg" alt="" style="width:9em;">
+            <div class="prom-c2">
+              <p class="amarillo" id="pAm9"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="" style="position:realtive;">
+            <img src="assets/img/blue_circle.svg" alt="" style="width:9em">
+            <div class="prom-c2">
+              <p class="azul" id="pAz9"></p>
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class=""style="position:realtive;" >
+          <img src="assets/img/green_circle.svg" alt="" style="width:9em">
+          <div class="prom-c2">
+            <p class="verde" id="pv9"></p>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div hidden class="columnas" id="col10">
+        <div class="row">
+          <div class="" style="position:realtive;">
+            <img src="assets/img/yellow_circle.svg" alt="" style="width:9em;">
+            <div class="prom-c2">
+              <p class="amarillo" id="pAm10"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="" style="position:realtive;">
+            <img src="assets/img/blue_circle.svg" alt="" style="width:9em">
+            <div class="prom-c2">
+              <p class="azul" id="pAz10"></p>
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class=""style="position:realtive;" >
+          <img src="assets/img/green_circle.svg" alt="" style="width:9em">
+          <div class="prom-c2">
+            <p class="verde" id="pv10"></p>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    </div>
+    </div>
+</div>
+
+
+<div hidden class="container_t" id='columnaTres' style="padding-left: 8%;padding-right: 7%;">
+  <div class="generaciones">
+    <div class="row">
+      <h3>Generación</h3>
+    </div>
+    <div class="row" style="display:flex">
+      <div class="filas">
+        <p id="tit11" style="margin-left: 5em;"></p>
+      </div>
+      <div class="filas">
+        <p id="tit12"></p>
+      </div>
+      <div class="filas">
+        <p id="tit13"></p>
+      </div>
+      <div class="filas">
+        <p id="tit14"></p>
+      </div>
+      <div class="filas">
+        <p id="tit15"></p>
+      </div>
+    </div>
+
+    <div class="row promedios" style="display:flex">
+      <div hidden class="filas" id="pro11">
+        <p id="t11" style="margin-left: 2em;">promedio</p>
+      </div>
+      <div hidden class="filas" id="prom12">
+        <p id="t12">promedio</p>
+      </div>
+      <div hidden class="filas" id="prom13">
+        <p id="t13">promedio</p>
+      </div>
+      <div hidden class="filas" id="prom14">
+        <p id="t14">promedio</p>
+      </div>
+      <div hidden class="filas" id="prom15">
+        <p id="t15">promedio</p>
+      </div>
+    </div>
+
+    <div class="row" style="display:flex">
+      <div class="columnas">
+        <div class="row" style="display:flex">
+          <div class="">
+          <p class="amarillo letras">F</p>
+          </div>
+          <div class="" style="margin-left: 27%; position:relative;">
+            <img src="assets/img/yellow_circle.svg" alt="" style="width:9em">
+            <div class="prom-c1">
+              <p class="amarillo" id="pAm11"></p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row" style="display:flex">
+          <div class="">
+          <p class="azul letras">C</p>
+          </div>
+          <div class="" style="margin-left: 27%; position:relative;">
+            <img src="assets/img/blue_circle.svg" alt="" style="width:9em">
+            <div class="prom-c1">
+              <p class="azul" id="pAz11"></p>
+            </div>
+          </div>
+        </div>
+
+      <div class="row" style="display:flex">
+        <div class="">
+        <p class="verde letras">E</p>
+        </div>
+        <div class="" style="margin-left: 27%; position:relative;">
+          <img src="assets/img/green_circle.svg" alt="" style="width:9em">
+          <div class="prom-c1">
+            <p class="verde" id="pv11"></p>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div hidden class="columnas" id="col12">
+        <div class="row">
+          <div class="">
+            <img src="assets/img/yellow_circle.svg" alt="" style="width:9em;position:relative;">
+            <div class="prom-c2">
+              <p class="amarillo" id="pAm12"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="">
+            <img src="assets/img/blue_circle.svg" alt="" style="width:9em;position:relative;">
+            <div class="prom-c2">
+              <p class="azul" id="pAz12"></p>
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="">
+          <img src="assets/img/green_circle.svg" alt="" style="width:9em;position:relative;">
+          <div class="prom-c2">
+            <p class="verde" id="pv12"></p>
+          </div>
+        </div>
+      </div>
+    </div><!-- Termina segunda columna-->
+
+      <div hidden class="columnas" id="col13"><!-- Inicia tercera columna-->
+        <div class="row">
+          <div class="" style="position:relative">
+            <img src="assets/img/yellow_circle.svg" alt="" style="width:9em">
+            <div class="prom-c2">
+              <p class="amarillo" id="pAm13"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class=""style="position:relative">
+            <img src="assets/img/blue_circle.svg" alt="" style="width:9em">
+            <div class="prom-c2">
+              <p class="azul" id="pAz13"></p>
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class=""style="position:relative">
+          <img src="assets/img/green_circle.svg" alt="" style="width:9em">
+          <div class="prom-c2">
+            <p class="verde" id="pv13"></p>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div hidden class="columnas" id="col14">
+        <div class="row">
+          <div class="" style="position:realtive;">
+            <img src="assets/img/yellow_circle.svg" alt="" style="width:9em;">
+            <div class="prom-c2">
+              <p class="amarillo" id="pAm14"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="" style="position:realtive;">
+            <img src="assets/img/blue_circle.svg" alt="" style="width:9em">
+            <div class="prom-c2">
+              <p class="azul" id="pAz14"></p>
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class=""style="position:realtive;" >
+          <img src="assets/img/green_circle.svg" alt="" style="width:9em">
+          <div class="prom-c2">
+            <p class="verde" id="pv14"></p>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div hidden class="columnas" id="col15">
+        <div class="row">
+          <div class="" style="position:realtive;">
+            <img src="assets/img/yellow_circle.svg" alt="" style="width:9em;">
+            <div class="prom-c2">
+              <p class="amarillo" id="pAm15"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="" style="position:realtive;">
+            <img src="assets/img/blue_circle.svg" alt="" style="width:9em">
+            <div class="prom-c2">
+              <p class="azul" id="pAz15"></p>
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class=""style="position:realtive;" >
+          <img src="assets/img/green_circle.svg" alt="" style="width:9em">
+          <div class="prom-c2">
+            <p class="verde" id="pv15"></p>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    </div>
+    </div>
+</div>
+
+<div class="modal" id="modalAlert">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body" style="text-align:center">
+        <p>La información esta siendo procesada, espere un momento por favor</p>
+      </div>
+    </div>
+  </div>
+</div>

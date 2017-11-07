@@ -1,25 +1,25 @@
 <div class="container">
   <div class="row">
-    <a id="regresa" ><img src="assets/img/regresa.png" (click)="regresaHome()" alt="" title="Regresa a resultados generales" style="margin-left: 7%;margin-bottom: -8%;"></a>
-    <p id="pgeneral">3.4</p>
+    <a id="regresa" ><img src="assets/img/regresa.png" (click)="goBack()" alt="" title="Regresa a resultados generales" style="margin-left: 7%;margin-bottom: -8%;"></a>
+    <p id="pgeneral">{{Total}}</p>
   </div>
   <div class="row fila">
     <div class="fila_uno" style="position:relative;">
         <img src="assets/img/yellow_circle.svg" alt="" style="width:9em">
         <div class="totales">
-          <p id="total1"></p>
+          <p>{{tAm}}</p>
         </div>
     </div>
     <div class="fila_uno" style="position:relative;">
       <img src="assets/img/blue_circle.svg" alt="" style="width:9em">
       <div class="totales">
-        <p id="total2"></p>
+        <p>{{tAz}}</p>
       </div>
     </div>
     <div class="fila_uno" style="position:relative;">
       <img src="assets/img/green_circle.svg" alt="" style="width:9em">
       <div class="totales">
-        <p id="total3"></p>
+        <p>{{tVe}}</p>
       </div>
     </div>
   </div>

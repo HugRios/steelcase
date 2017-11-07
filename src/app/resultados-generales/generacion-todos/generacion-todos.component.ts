@@ -21,21 +21,60 @@ nameG2='';
 nameG3 = '';
 nameG4 = '';
 nameG5 = '';
+tAm : any;
+tAz : any;
+tVe : any;
+Total: any;
 
   constructor(private router: Router) {
     Parse.initialize("steelcaseCirclesAppId");
     Parse.serverURL = 'https://steelcase-circles.herokuapp.com/parse';
    }
 
+   goBack() {
+       window.history.back();
+   }
 
   regresaHome(){
     this.router.navigate([''])
   }
 
+  getGET(){
+    var loc = document.location.href;
+    var getString = loc.substring(loc.lastIndexOf('-')+1);
+    var auxString = getString.replace(/%26/g, "&");
+    var newString = auxString.replace(/%3D/g, "=");
+
+    var GET = newString.split('&');
+    var get = [];
+
+    for (let i = 0; i < GET.length; i++) {
+        var tmp = GET[i].split('=');
+          get.push({nombre:tmp[0], number:tmp[1]})
+    }
+    return get;
+  }
+
+  getSumas(){
+    var vector = this.getGET();
+    this.tAm = vector[0].number;
+    this.tAz = vector[1].number;
+    this.tVe = vector[2].number;
+    this.Total = ((parseFloat(this.tAm)+parseFloat(this.tAz)+parseFloat(this.tVe))/3).toFixed(1);
+  }
+
   getId(){
     var url = window.location.pathname;
-    idCliente = url.substring(url.indexOf(":")+1, url.length);
-    console.log(idCliente);
+    var aux = url.indexOf("F");
+    console.log(aux);
+    if(aux == 21){
+      idCliente = '';
+    }else{
+
+      idCliente = url.substring(url.indexOf(':')+1,url.indexOf('F'));
+
+    }
+
   }
 
   addGeneracion(){
@@ -290,14 +329,6 @@ return promise;
             $("#t"+(i+1)).html(datosGraf[i].toFixed(1));
         }
 
-        var t1 = (totalAm/k);
-        var t2 = (totalAz/k);
-        var t3 =  (totalV/k);
-        var general = (t1+t2+t3)/3;
-        $("#total1").html((totalAm/k).toFixed(1));
-        $("#total2").html((totalAz/k).toFixed(1))
-        $("#total3").html((totalV/k).toFixed(1))
-        $("#pgeneral").html(general.toFixed(1));
         $("#modalAlert").modal('hide');
       }, 5000);
 
@@ -309,6 +340,7 @@ return promise;
 
   ngOnInit() {
     this.getId();
+    this.getSumas();
     arrayGeneracion.length = 0;
     arrGenVerde.length = 0;
     arrGenAmarillo.length = 0;

@@ -204,29 +204,36 @@ export class ResultadosEmpresaComponent implements OnInit {
         cliente.id = ide;
         $("#empresaP").html(cliente.get("nombre"));
     var queryArea = new Parse.Query("areaWell");
-        queryArea.doesNotExist("cliente")
+        queryArea.equalTo('cliente', cliente);
+        queryArea.find({
+          success: function(resAreas){
 
-    var queryCliente = new Parse.Query("areaWell");
-        queryCliente.equalTo("cliente", cliente);
-        var allQuery = Parse.Query.or(queryCliente, queryArea)
-        allQuery.find({
-          success: function(res){
-            for (let i = 0; i < res.length; i++) {
-              arrayAreas.push({nombre:res[i].get("Name"), id: res[i].id})
+            for (let i = 0; i < resAreas.length; i++) {
+              arrayAreas.push({nombre:resAreas[i].get("Name"), id: resAreas[i].id})
             }
-            $("#areabtn").show('fast');
-            $("#antbtn").show('fast');
-            $("#genbtn").show('fast');
+            var queryCliente = new Parse.Query("LinksWell");
+                queryCliente.equalTo("cliente", cliente);
+                queryCliente.find({
+                  success: function(resArC){
+                      var array = resArC[0].get('areas');
+                      console.log(array);
+                      for (let i = 0; i < array.length; i++) {
+                        arrayAreas.push({nombre:array[i].nombre, id: array[i].id})
 
+                      }
+                  }
+                })
           }
         })
 
+            $("#areabtn").show('fast');
+            $("#antbtn").show('fast');
+            $("#genbtn").show('fast');
     //alert("pus si funciona")
   }
 
   filtroArea(ide: any){
     areaG = ide;
-    console.log(ide)
     this.OcultarTodo();
     var Area = Parse.Object.extend("areaWell");
     var area = new Area();
@@ -603,8 +610,13 @@ export class ResultadosEmpresaComponent implements OnInit {
       this.router.navigate(['/generalAntiguedad/:'+empresaG])
     }
 
+    muestraArea(){
+      this.router.navigate(['/areasEmpresa/:'+empresaG])
+    }
+
 
     ngOnInit() {
+      arrayAreas.length = 0;
       arrayClientes.length = 0;
       arrayGeneracion.length = 0;
       arrayAnt.length = 0;

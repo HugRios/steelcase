@@ -50,6 +50,7 @@ var gralamarillo = 0, gralazul= 0, gralverde = 0, gralTotal;
 var indamarillo = 0, indazul= 0, indverde = 0, indTotal;
 var indId= '';
 var tipoSector='';
+var areaG, antiguedadG, generacionG, industriaG;
 @Component({
   selector: 'app-resultados-filtros',
   templateUrl: './resultados-filtros.component.html',
@@ -58,10 +59,15 @@ var tipoSector='';
 export class ResultadosFiltrosComponent implements OnInit {
 
   filtros : boolean = true;
-
+  arregloAreas = [];
+  arregloAntiguedad : any;
+  arregloGeneracion : any;
   constructor(private router: Router){
     Parse.initialize("steelcaseCirclesAppId");
     Parse.serverURL = 'https://steelcase-circles.herokuapp.com/parse';
+    this.arregloAreas = arrayAreasWell;
+    this.arregloAntiguedad = arrayAnt;
+    this.arregloGeneracion = arrayGeneracion;
     totalEncuestas = 0;
     nombreCliente = '';
 
@@ -96,6 +102,7 @@ goBack() {
               $("#tipo").html("BIENESTAR "+ nombre.toUpperCase());
             }
           })
+
           $("#generaciones").show();
           $("#antiguedades").show();
           $("#areas").show();
@@ -2062,8 +2069,138 @@ getDatasExcel(){
 }
 
 
+areasCliente(){
+  arrayAreasWell.length = 0;
+    var vector = this.getGET();
+  var ide = vector[0].id;
+  var promise = new Parse.Promise();
+  var Cliente = Parse.Object.extend("ClienteWell");
+  var cliente = new Cliente();
+      cliente.id = ide;
+  var queryArea = new Parse.Query("areaWell");
+      queryArea.equalTo('cliente', cliente);
+      queryArea.find({
+        success: function(resAreas){
+          for (let i = 0; i < resAreas.length; i++) {
+            arrayAreasWell.push({nombre:resAreas[i].get("Name"), id: resAreas[i].id})
+          }
+          var queryCliente = new Parse.Query("LinksWell");
+              queryCliente.equalTo("cliente", cliente);
+              queryCliente.find({
+                success: function(resArC){
+                    var array = resArC[0].get('areas');
+                    for (let i = 0; i < array.length; i++) {
+                      arrayAreasWell.push({nombre:array[i].nombre, id: array[i].id})
+                    }
+                    promise.resolve(arrayAreasWell);
+                }
+              })
+        }
+      })
+      return promise;
+}
+
+mostrarAreasRes(){
+    if($("#areaR").css('display')=="none")
+    {
+        $("#areaR").css('display','block');
+    }
+    else{
+        $("#areaR").css('display','none');
+    }
+}
+
+mostrarAntiguedadRes(){
+    if($("#antiguedadR").css('display')=="none")
+    {
+        $("#antiguedadR").css('display','block');
+    }
+    else{
+        $("#antiguedadR").css('display','none');
+    }
+}
+
+mostrarGeneracionesRes(){
+    if($("#generacionR").css('display')=="none")
+    {
+        $("#generacionR").css('display','block');
+    }
+    else{
+        $("#generacionR").css('display','none');
+    }
+}
+
+muestraArea(){
+  var vector = this.getGET();
+  this.router.navigate(['/areasEmpresa/:'+vector[0].id+'-F='+amarillo.toFixed(1)+"&C="+azul.toFixed(1)+"&V="+verde.toFixed(1)])
+}
+
+muestraAnt(){
+  var vector = this.getGET();
+  this.router.navigate(['/generalAntiguedad/:'+vector[0].id+'-F='+amarillo.toFixed(1)+"&C="+azul.toFixed(1)+"&V="+verde.toFixed(1)])
+}
+
+muestraGen(){
+  var vector = this.getGET();
+  this.router.navigate(['/generalGeneracion/:'+vector[0].id+'-F='+amarillo.toFixed(1)+"C="+azul.toFixed(1)+"V="+verde.toFixed(1)])
+}
+
+
+filtroArea(ide: any){
+  areaG = ide;
+  console.log(ide);
+  this.OcultarTodo();
+  var Area = Parse.Object.extend("areaWell");
+  var area = new Area();
+      area.id = ide;
+      $("#areaP").html(area.get("Name"));
+}
+
+filtroAntiguedad(ide: any){
+  antiguedadG = ide;
+  this.OcultarTodo();
+  var Antiguedad = Parse.Object.extend("Antiguedad");
+  var antiguedad = new Antiguedad();
+      antiguedad.id = ide;
+      $("#antiguedadP").html(antiguedad.get("nombre"));
+}
+
+filtroGeneracion(ide: any){
+  generacionG = ide;
+  this.OcultarTodo();
+  var Generacion = Parse.Object.extend("genWell");
+  var generacion = new Generacion();
+      generacion.id = ide;
+      $("#generacionP").html(generacion.get("Nombre"));
+}
+
+showResults(){
+  var vector = this.getGET();
+  this.router.navigate(['/resultadosFiltro/:'+"Empresa="+vector[0].id+"&"+"Area="+areaG+"&"+"Generacion="+generacionG+"&"+"Antiguedad="+antiguedadG+"&Industria="+industriaG]);
+  this.ngOnInit();
+}
+
+OcultarTodo(){
+    $("#industriaDD").css('display','none');
+    $("#clienteDD").css('display','none');
+    $("#periodoDD").css('display','none');
+    $("#areaDD").css('display','none');
+    $("#generacionDD").css('display','none');
+    $("#options").css('display','none');
+    $("#antiguedad").css('display','none');
+    $("#areaD").css('display','none');
+    $("#generacionD").css('display','none');
+    $("#industriaD").css('display','none');
+      $("#results").css('display','none');
+      $("#industriaR").css('display','none');
+      $("#empresaR").css('display','none');
+      $("#areaR").css('display','none');
+      $("#antiguedadR").css('display','none');
+      $('#generacionR').css('display','none')
+}
 
   ngOnInit() {
+    this.areasCliente();
     this.IndVerde();
     this.circuloVerdeGeneral()
     this.limpiaarrayEst();
