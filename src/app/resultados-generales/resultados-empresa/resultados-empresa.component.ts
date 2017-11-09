@@ -18,7 +18,7 @@ var arrayGeneracion = [];
 var fechaIngreso;
 var arrayCheckAreas = [];
 var empresaG, areaG, antiguedadG, generacionG, industriaG;
-
+var vector = [];
 
 
 @Component({
@@ -51,7 +51,7 @@ export class ResultadosEmpresaComponent implements OnInit {
       antiguedadG="";
       generacionG="";
       industriaG="";
-
+      vector = this.getGET();
 
     }
 
@@ -69,11 +69,10 @@ export class ResultadosEmpresaComponent implements OnInit {
   }
 
   nombreInd(){
-    var url = window.location.pathname;
-    industriaG = url.substring(url.indexOf(":")+1, url.length-1);
+
     var Industria = Parse.Object.extend("indWell");
     var query = new Parse.Query(Industria);
-        query.equalTo('objectId', industriaG);
+        query.equalTo('objectId', vector[0].id);
         query.find({
           success: function(res){
             var nombre = res[0].get("Nombre");
@@ -91,12 +90,10 @@ export class ResultadosEmpresaComponent implements OnInit {
 
 
     addEmpresa() {
-      var url = window.location.pathname;
-      var id = url.substring(url.indexOf(":")+1, url.length-1);
 
       var Industria = Parse.Object.extend("indWell");
       var industria = new Industria();
-          industria.id = id;
+          industria.id = vector[0].id;
       var query = new Parse.Query('ClienteWell');
       query.equalTo("Industria", industria);
       query.find({
@@ -285,15 +282,14 @@ export class ResultadosEmpresaComponent implements OnInit {
 
 
     circuloAmarillo(): any {
-      var url = window.location.pathname;
-      var id = url.substring(url.indexOf(":")+1, url.length-1);
+
       var promise = new Parse.Promise();
       var t = 0, b = 0, l = 0, r = 0, lt = 0, lb = 0, rt = 0, rb = 0, eb = 0;
       var pTotal: number = 0;
 
       var Industria = Parse.Object.extend("indWell");
       var industria = new Industria();
-          industria.id = id;
+          industria.id = vector[0].id;
 
     	var Evaluacion = Parse.Object.extend("Wellbeing");
       var query = new Parse.Query(Evaluacion);
@@ -389,12 +385,10 @@ export class ResultadosEmpresaComponent implements OnInit {
     circuloAzul(): any {
       var promise = new Parse.Promise();
       this.circuloAmarillo().then((response: any) => {
-        var url = window.location.pathname;
-        var id = url.substring(url.indexOf(":")+1, url.length-1)
         //var t=0,b=0,l=0,r=0,lt=0,lb=0,rt=0,rb=0,eb=0;
         var Industria = Parse.Object.extend("indWell");
         var industria = new Industria();
-            industria.id = id;
+            industria.id = vector[0].id;
         //comprobarUsuario();
           var Evaluacion = Parse.Object.extend("WellCognitivo");
           var query = new Parse.Query(Evaluacion);
@@ -494,13 +488,9 @@ export class ResultadosEmpresaComponent implements OnInit {
     circuloVerde() {
       var promise = new Parse.Promise();
       this.circuloAzul().then((pAzul: any) => {
-
-        var url = window.location.pathname;
-        var id = url.substring(url.indexOf(":")+1, url.length-1)
-
         var Industria = Parse.Object.extend("indWell");
         var industria = new Industria();
-            industria.id = id;
+            industria.id = vector[0].id;
           var Evaluacion = Parse.Object.extend("WellEmocional");
           var query = new Parse.Query(Evaluacion);
         query.equalTo('industria', industria);
@@ -612,6 +602,22 @@ export class ResultadosEmpresaComponent implements OnInit {
 
     muestraArea(){
       this.router.navigate(['/areasEmpresa/:'+empresaG])
+    }
+
+    getGET(){
+      var loc = window.location.pathname;
+      var getString = loc.substring(loc.lastIndexOf(':')+1);
+      var auxString = getString.replace(/%26/g, "&");
+      var newString = auxString.replace(/%3D/g, "=");
+
+      var GET = newString.split('&');
+      var get = [];
+
+      for (let i = 0; i < GET.length; i++) {
+          var tmp = GET[i].split('=');
+            get.push({nombre:tmp[0], id:tmp[1]})
+      }
+      return get;
     }
 
 

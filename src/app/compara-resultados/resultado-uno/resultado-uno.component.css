@@ -1772,10 +1772,8 @@ display: flex;
 
 .totales{
   text-align: center;
-  font-size: 26px;
-  margin-right: 17%;
+  font-size: 17px;
   font-family: Avenir Next Bold;
-
 }
 
 
@@ -1817,16 +1815,17 @@ width: 9em;
 }
 
 .blueCir{
-    width: 9.5em;
+  width: 8.5em;
+  margin-left: .8em;
 }
 
 .yellowCir{
-  width: 9em;
+  width: 8.5em;
   margin-left: 1.5em;
 }
 
 .greenCir{
-  width: 9.5em;
+  width: 8.5em;
 }
 
 

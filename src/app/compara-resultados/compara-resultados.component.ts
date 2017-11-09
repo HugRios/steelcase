@@ -10,6 +10,8 @@ export class ComparaResultadosComponent implements OnInit {
 empresa: boolean = false;
 uno : boolean = false;
 dos : boolean = false;
+aviso1: boolean = false;
+aviso2: boolean = false;
 tres : boolean = false;
 clase: any;
   constructor() {
@@ -28,27 +30,51 @@ clase: any;
     return vecAux;
 
   }
+
+  getGET(){
+    var loc = window.location.pathname;
+    var getString = loc.substring(loc.lastIndexOf(':')+1);
+    console.log(getString);
+    var auxString = getString.replace(/%26/g, "&");
+    var newString = auxString.replace(/%3D/g, "=");
+
+    var GET = newString.split('&');
+    var get = [];
+
+    for (let i = 0; i < GET.length; i++) {
+        var tmp = GET[i].split('=');
+          get.push({nombre:tmp[0], id:tmp[1]})
+    }
+    return get;
+  }
+
+
 //retrasar aparicion 2do
   muestraComponentes(){
-    var noComponentes = this.cuentaResultados();
-    console.log(noComponentes.length);
-    if(noComponentes.length == 1){
+    var vec = this.getGET();
+    console.log(vec);
+    if(vec[0].id != '' && vec[1].id == ''){
       this.empresa=true
-    }else if(noComponentes.length == 2){
+    }else if(vec[0].id != '' && vec[1].id != '' && vec[2].id==''){
       this.clase = "col-md col-md-6"
       this.uno=true
       this.dos = true;
-    }/*else if(noComponentes.length == 3){
+    }else if(vec[0].id != '' && vec[1].id != '' && vec[2].id !=''){
       this.clase = "col-md col-md-4"
       this.uno=true
       this.dos = true;
       this.tres = true;
-    }*/
+    }
   }
 
 
+showAviso(event): void{
+  this.aviso1 = event;
+}
 
-
+showAviso2(event): void{
+  this.aviso2 = event;
+}
 
 
   ngOnInit() {

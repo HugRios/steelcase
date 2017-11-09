@@ -3,13 +3,13 @@
 
   <div class="row">
     <div [className]="clase">
-      <app-resultado-uno *ngIf="uno"></app-resultado-uno>
+      <app-resultado-uno *ngIf="uno" (avisoTermine1) = "showAviso($event)"></app-resultado-uno>
     </div>
     <div [className]="clase">
-      <app-resultado-dos *ngIf="dos"></app-resultado-dos>
+      <app-resultado-dos *ngIf="aviso1 && dos" (avisoTermine2) = "showAviso2($event)"></app-resultado-dos>
     </div>
-    <!--<div [className]="clase">
-      <app-resultado-tres *ngIf="tres"></app-resultado-tres>
-    </div>-->
+    <div [className]="clase">
+      <app-resultado-tres *ngIf="aviso2 && tres" ></app-resultado-tres>
+    </div>
   </div>
 </div>

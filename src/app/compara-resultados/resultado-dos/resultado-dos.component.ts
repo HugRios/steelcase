@@ -1,53 +1,37 @@
-import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
-import { Servicios } from '../../services/service';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 declare var Parse: any;
 declare var $: any;
 import Chart from 'chart.js';
 
-var general2 = 0;
-var grlIndustria2;
-var totalEncuestas2 = 0;
-var arrayClientes2 = [];
+var general = 0;
+var grlIndustria;
+var totalEncuestas = 0;
+var arrayClientes = [];
 var arrayAreas = [];
 var arrayAnt = [];
 var arrayGeneracion = [];
 var fechaIngreso;
 var arrayCheckAreas = [];
 var empresaG, areaG, antiguedadG, generacionG, industriaG;
-var arrayTotales = [];
-var nombreInd;
-var TotalesVerde = [];
+
 @Component({
   selector: 'app-resultado-dos',
   templateUrl: './resultado-dos.component.html',
   styleUrls: ['./resultado-dos.component.css']
 })
 export class ResultadoDosComponent implements OnInit {
-//@Output() termine = new EventEmitter();
+
+@Output() avisoTermine2 = new EventEmitter();
+
+public termine2: boolean = false;
   industria : string = "Nueva";
-  arregloClientes: any;
-  arregloAreas : any;
-  arregloAntiguedad: any;
-  arregloGeneracion: any;
-  termine: boolean = false;
-  promTotal = 0;
-  totalAmarillo = 0;
-  totalVerde = 0;
-  totalAzul = 0;
-  totalEnc : any ;
-  industriaName : string = 'rtrtrt';
-  constructor(private router : Router, private servicios : Servicios) {
+  constructor(private router : Router) {
     Parse.initialize("steelcaseCirclesAppId");
     Parse.serverURL = 'https://steelcase-circles.herokuapp.com/parse';
 
-    this.arregloClientes = arrayClientes2;
-    this.arregloAreas;
-    this.arregloAntiguedad = arrayAnt;
-    this.arregloGeneracion = arrayGeneracion;
-    this.arregloAreas = arrayAreas;
-    this.industriaName = nombreInd;
-    totalEncuestas2 = 0;
+
+    totalEncuestas = 0;
 
     empresaG ="";
     areaG="";
@@ -57,38 +41,38 @@ export class ResultadoDosComponent implements OnInit {
 
   }
 
-
-muestraMensaje(){
-  var msj = this.servicios.tengoId('husdhfuashfr');
-  console.log(msj);
-}
-
-  addIndustrias() {
-
-    Parse.initialize("steelcaseCirclesAppId");
-    Parse.serverURL = 'https://steelcase-circles.herokuapp.com/parse';
-
-}
-
 regresaHome(){
   console.log("si estoy");
-  this.router.navigate(['/home'])
+  this.router.navigate([''])
+}
+
+nombreIndS(){
+  var vector = this.getGET();
+  var Industria = Parse.Object.extend("indWell");
+  var query = new Parse.Query(Industria);
+      query.equalTo('objectId',vector[1].id)
+      query.find({
+        success: function(res){
+          var nombre = res[0].get("Nombre");
+          var aux = nombre.toUpperCase();
+        $("#nameInd2").html("BIENESTAR IND. "+ aux)
+        }
+      })
+
+
 }
 
 
-
-
-
-  circuloAmarilloDos(): any {
-    var url = window.location.pathname;
-    var id = url.substring(url.indexOf(",")+1, url.length-1);
+  circuloAmarilloS(): any {
+    var vector = this.getGET();
+    console.log(vector);
     var promise = new Parse.Promise();
-    var t = 0, b = 0, l = 0, r = 0, lt = 0, lb = 0, rt = 0, rb = 0, eb = 0;
-    var pTotal: number = 0;
+    var t2 = 0, b2 = 0, l2 = 0, r2 = 0, lt2 = 0, lb2 = 0, rt2 = 0, rb2 = 0, eb2 = 0;
+    var pTotal2: number = 0;
 
     var Industria = Parse.Object.extend("indWell");
     var industria = new Industria();
-        industria.id = id;
+        industria.id = vector[1].id;
 
   	var Evaluacion = Parse.Object.extend("Wellbeing");
     var query = new Parse.Query(Evaluacion);
@@ -101,46 +85,46 @@ regresaHome(){
           var object = results[i];
 
                     //t+=object.get("physical");
-                    t += object.get("postura");
+                    t2 += object.get("postura");
                     //rt+=object.get("choice");
-                    rt += object.get("movimiento");
+                    rt2 += object.get("movimiento");
                     //r+=object.get("posture");
-                    r += object.get("temperatura");
+                    r2 += object.get("temperatura");
                     //rb+=object.get("control");
-                    rb += object.get("peso");
+                    rb2 += object.get("peso");
                     //b+=object.get("presence");
-                    b += object.get("ergonomia");
-                    lb += object.get("cargaTrabajo");//cambiar nueva encuesta carga de trabajo
+                    b2 += object.get("ergonomia");
+                    lb2 += object.get("cargaTrabajo");//cambiar nueva encuesta carga de trabajo
                     //l+=object.get("privacy");
-                    l += object.get("vitalidad");//cambiar nueva encuesta vitalidad
+                    l2 += object.get("vitalidad");//cambiar nueva encuesta vitalidad
                     //lt+=object.get("cognitive");
-                    lt += object.get("luz");
+                    lt2 += object.get("luz");
 
-                    eb += object.get("contactoexterior");
+                    eb2 += object.get("contactoexterior");
         }
 
-        var fct = t / results.length;
-        var fcrt = rt / results.length;
-        var fcr = r / results.length;
-        var fcrb = rb / results.length;
-        var fcb = b / results.length;
-        var fclb = lb / results.length;
-        var fcl = l / results.length;
-        var fclt = lt / results.length;
-        var fceb = eb / results.length;
-        pTotal = ((fct + fcrt + fcr + fcrb + fcb + fclb + fcl + fclt + fceb) / 9);
-        fct = (t / results.length);
-        fcrt = (rt / results.length);
-        fcr = (r / results.length);
-        fcrb = (rb / results.length);
-        fcb = (b / results.length);
-        fclb = (lb / results.length);
-        fcl = (l / results.length);
-        fclt = (lt / results.length);
-        fceb = (eb / results.length);
+        var fct2 = t2 / results.length;
+        var fcrt2 = rt2 / results.length;
+        var fcr2 = r2 / results.length;
+        var fcrb2 = rb2 / results.length;
+        var fcb2 = b2 / results.length;
+        var fclb2 = lb2 / results.length;
+        var fcl2 = l2 / results.length;
+        var fclt2 = lt2 / results.length;
+        var fceb2 = eb2 / results.length;
+        pTotal2 = ((fct2 + fcrt2 + fcr2 + fcrb2 + fcb2 + fclb2 + fcl2 + fclt2 + fceb2) / 9);
+        fct2 = (t2 / results.length);
+        fcrt2 = (rt2 / results.length);
+        fcr2 = (r2 / results.length);
+        fcrb2 = (rb2 / results.length);
+        fcb2 = (b2 / results.length);
+        fclb2 = (lb2 / results.length);
+        fcl2 = (l2 / results.length);
+        fclt2 = (lt2 / results.length);
+        fceb2 = (eb2 / results.length);
 
 
-      /*  var ctx = document.getElementById("myChartYellow");
+        /*var ctx = document.getElementById("myChartYellow");
         var myChart = new Chart(ctx, {
           type: 'radar',
           data: {
@@ -162,10 +146,13 @@ regresaHome(){
           }
         });*/
 
-        var number = pTotal;
-        general2 += number;
-        arrayTotales.push(pTotal.toFixed(1));
-        //$("#promedioTotal").html(pTotal.toFixed(1));
+        var number = pTotal2;
+        general += number;
+        if (pTotal2.toString() == 'NaN') {
+          $("#promedioTotal2").html('NA');
+        } else {
+          $("#promedioTotal2").html(pTotal2.toFixed(1));
+        }
         promise.resolve(number);
 
         /*  if (pTotal == 'NaN'){
@@ -183,17 +170,14 @@ regresaHome(){
     return promise;
   }
 
-
-  circuloAzulDos(): any {
+  circuloAzulS(): any {
     var promise = new Parse.Promise();
-    this.circuloAmarilloDos().then((response: any) => {
-      var url = window.location.pathname;
-      var id = url.substring(url.indexOf(",")+1, url.length-1);
-      console.log(id);
+    this.circuloAmarilloS().then((response: any) => {
+      var vector = this.getGET();
       //var t=0,b=0,l=0,r=0,lt=0,lb=0,rt=0,rb=0,eb=0;
       var Industria = Parse.Object.extend("indWell");
       var industria = new Industria();
-          industria.id = id;
+          industria.id = vector[1].id;
       //comprobarUsuario();
         var Evaluacion = Parse.Object.extend("WellCognitivo");
         var query = new Parse.Query(Evaluacion);
@@ -246,7 +230,7 @@ regresaHome(){
           fceb = (eb / results.length);
 
 
-      /*    var ctx = document.getElementById("myChart");
+          /*var ctx = document.getElementById("myChart");
           var myChart = new Chart(ctx, {
             type: 'radar',
             data: {
@@ -272,8 +256,13 @@ regresaHome(){
           //var pTotal=((fct+fcrt+fcr+fcrb+fcb+fclb+fcl+fclt)/8).toFixed(1);
           var total2 = parseFloat(pTotal);
           var t2 = total2 + response;
-          arrayTotales.push(pTotal);
-          //$("#promedioTotalAzul").html(pTotal);
+
+          if (pTotal == 'NaN') {
+            $("#promedioTotalAzul2").html('NA');
+          } else {
+            $("#promedioTotalAzul2").html(pTotal);
+
+          }
           promise.resolve(t2);
 
           /*if (pTotal == 'NaN'){
@@ -293,17 +282,13 @@ regresaHome(){
     return promise
   }
 
-  circuloVerdeDos() {
+  circuloVerdeS() {
     var promise = new Parse.Promise();
-
-    this.circuloAzulDos().then((pAzul: any) => {
-
-      var url = window.location.pathname;
-      var id = url.substring(url.indexOf(",")+1, url.length-1);
-
+    this.circuloAzulS().then((pAzul: any) => {
+      var vector = this.getGET();
       var Industria = Parse.Object.extend("indWell");
       var industria = new Industria();
-          industria.id = id;
+          industria.id = vector[1].id;
         var Evaluacion = Parse.Object.extend("WellEmocional");
         var query = new Parse.Query(Evaluacion);
       query.equalTo('industria', industria);
@@ -358,7 +343,7 @@ regresaHome(){
 
 
 
-        /*  var ctx = document.getElementById("myChartGreen");
+          /*var ctx = document.getElementById("myChartGreen");
           var myChart = new Chart(ctx, {
             type: 'radar',
             data: {
@@ -381,25 +366,19 @@ regresaHome(){
           });*/
 
 
-          totalEncuestas2 += totalG;
-        //  $("#encuestas").html("Total de encuestas: " + totalEncuestas2);
+          totalEncuestas += totalG;
+          $("#encuestas2").html("Total de encuestas: " + totalEncuestas);
           //var pTotal=((fct+fcrt+fcr+fcrb+fcb+fclb+fcl+fclt)/8).toFixed(1);
           var total3 = parseFloat(pTotal);
           var t3 = total3 + pAzul;
           var final = (t3 / 3).toFixed(1);
-
+          promise.resolve('Done');
           if (pTotal == 'NaN') {
-            //$("#promedioTotalVerde").html(0);
-            TotalesVerde.push({total: 'NA', totalF: final, encuestas: totalEncuestas2});
-            promise.resolve(TotalesVerde);
+            $("#promedioTotalVerde2").html('NA');
           } else {
-              TotalesVerde.push({total: pTotal, totalF: final, encuestas: totalEncuestas2});
-              promise.resolve(TotalesVerde);
-            //$("#promedioTotalVerde").html(pTotal);
-            //$("#pgeneralDos").html(final);
+            $("#promedioTotalVerde2").html(pTotal);
+            $("#pgeneral2").html(final);
           }
-
-
         },
         error: function(error) {
           alert("Error: " + error.code + " " + error.message);
@@ -407,53 +386,40 @@ regresaHome(){
       });
 
     })
-    return promise
+    return promise;
   }
 
 
-  nombreIndDos(){
-    var promise = new Parse.Promise();
-      this.circuloVerdeDos().then((response: any) =>{
-        var url = window.location.pathname;
-        var id = url.substring(url.indexOf(",")+1, url.length-1);
-        var Industria = Parse.Object.extend("indWell");
-        var query = new Parse.Query(Industria);
-            query.equalTo('objectId',id )
-            query.find({
-              success: function(res){
-                var nombre = res[0].get("Nombre");
-                var aux = nombre.toUpperCase();
-                console.log(aux)
-              nombreInd = "BIENESTAR IND. "+ aux;
-              promise.resolve(nombreInd);
-              }
-            })
-      })
-      return promise
+getDatas(){
+  this.circuloVerdeS().then((response: any) =>{
+    this.termine2 = true;
+    this.eventoPrueba();
+  })
+}
+
+eventoPrueba(){
+  this.avisoTermine2.emit(this.termine2);
+}
+
+getGET(){
+  var loc = window.location.pathname;
+  var getString = loc.substring(loc.lastIndexOf(':')+1);
+  var auxString = getString.replace(/%26/g, "&");
+  var newString = auxString.replace(/%3D/g, "=");
+
+  var GET = newString.split('&');
+  var get = [];
+
+  for (let i = 0; i < GET.length; i++) {
+      var tmp = GET[i].split('=');
+        get.push({nombre:tmp[0], id:tmp[1]})
   }
-
-
+  return get;
+}
 
   ngOnInit() {
-    arrayTotales.length = 0;
-    arrayClientes2.length = 0;
-    arrayGeneracion.length = 0;
-    arrayAnt.length = 0;
-    this.muestraMensaje();
-this.nombreIndDos().then((response: any) =>{
-          console.log(response[0].total);
-          this.totalAmarillo = arrayTotales[0];
-          this.totalAzul  = arrayTotales[1];
-          this.totalVerde = TotalesVerde[0].total;//response[0].total;
-          this.promTotal = TotalesVerde[0].totalF;//response[0].totalF;
-          this.totalEnc = TotalesVerde[0].encuestas;
-          //this.addIndustrias();
-          this.nombreIndDos()
-          this.industriaName = response;
-          this.termine = true;
-        })
-
-
+    this.getDatas();
+    this.nombreIndS()
   }
 
 }

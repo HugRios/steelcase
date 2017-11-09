@@ -1,20 +1,18 @@
-<div class="row"  *ngIf="done" style="margin-top: 3.2em;">
-
+<div class="row" style="margin-top: 3.5em;" >
 <div class="row">
   <div class="col-md col-md-12">
-    <a id="regresa" ><img hidden src="assets/img/regresa.png" (click)="regresaHome()" alt="" title="Regresa a resultados generales" style="margin-left: 8%;"></a>
     <div class="row" style="text-align: center;">
       <div  id="totalGlobal">
         <p>ÍNDICE DE</p>
-        <p >{{industriaName}}</p>
+        <p id="nameInd3"></p>
       </div>
     </div>
     <div class="row" style="text-align:center;margin-bottom: 6em;">
-      <img class="grayCircle" src="/assets/img/gray_circle.svg" alt="">
-      <p id ="pgeneral" style="color:#767676;margin-top: -3.1em;">{{promTotal}}</p>
+      <img class="grayCircle" src="assets/img/gray_circle.svg" alt="">
+      <p id="pgeneral3" style="color:#767676;margin-top: -3.1em;">NA</p>
     </div>
     <div class="row">
-      <p id="encuestas" style="margin-left: 3em;">Total de encuestas: {{totalEnc}}</p>
+      <p id="encuestas3" style="margin-left: 3em;"></p>
     </div>
   </div>
 
@@ -23,20 +21,20 @@
 <div class="col-md col-md-4">
   <div class="totales" style="color: #FBC100;">
     <p>Físico</p>
-    <p  style="margin-top: -15%;">{{totalAmarillo}}</p>
+    <p id="promedioTotal3">0</p>
   </div>
   <img class="yellowCir" src="assets/img/yellow_circle.svg" alt="">
-  <div class="divYellow">
+  <div hidden class="divYellow">
         <canvas id="myChartYellow" width="300" height="300"></canvas>
   </div>
 </div>
 <div class="col-md col-md-4">
-  <div class="totales" style="margin-top: -4%;color:#31AEF2;">
+  <div class="totales" style="color:#31AEF2;">
     <p>Cognitivo</p>
-    <p style="margin-top: -13%;">{{totalAzul}}</p>
+    <p id="promedioTotalAzul3">0</p>
   </div>
   <img class="blueCir" src="assets/img/blue_circle.svg" alt="">
-  <div class="divBlue" >
+  <div hidden class="divBlue" >
 
         <canvas id="myChart" width="300" height="300"></canvas>
   </div>
@@ -44,10 +42,10 @@
 <div class="col-md col-md-4">
   <div class="totales" style="color:#98CE3D">
     <p>Emocional</p>
-    <p style="margin-top: -12%">{{totalVerde}}</p>
+    <p id="promedioTotalVerde3"></p>
   </div>
   <img class="greenCir" src="assets/img/green_circle.svg" alt="">
-  <div class="divGreen">
+  <div hidden class="divGreen">
         <canvas id="myChartGreen" width="300" height="300"></canvas>
   </div>
 </div>

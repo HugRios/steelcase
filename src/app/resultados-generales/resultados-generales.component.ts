@@ -107,9 +107,9 @@ return array;
   a ese componente.*/
 muestraRes(){
   var arregloInd = this.enviaResultados();
-  var industrias ="";
+  var industrias ="C0=";
   for (var i = 0; i < arregloInd.length; i++) {
-    industrias+=arregloInd[i]+",";
+    industrias+=arregloInd[i]+"&C"+(i+1)+"=";
   }
 this.router.navigate(['/resultados/:'+industrias]);
 }
