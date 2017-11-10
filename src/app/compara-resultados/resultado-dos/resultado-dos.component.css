@@ -1777,6 +1777,12 @@ display: flex;
   font-family: Avenir Next Bold;
 }
 
+.tresComp{
+  font-size: 17px;
+  font-family: Avenir Next Bold;
+  margin-left: 27%;
+}
+
 
 .divYellow{
 width: 9em;
@@ -2028,7 +2034,7 @@ width: 9em;
 
   .yellowCir{
     width: 9em;
-    margin-left: 1.5em;
+    margin-left: 2.5em;
     margin-top: .5em;
   }
 

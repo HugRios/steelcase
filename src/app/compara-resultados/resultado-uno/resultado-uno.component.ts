@@ -29,6 +29,7 @@ export class ResultadoUnoComponent implements OnInit {
   arregloAreas : any;
   arregloAntiguedad: any;
   arregloGeneracion: any;
+  classe: any;
   constructor(private router : Router) {
     Parse.initialize("steelcaseCirclesAppId");
     Parse.serverURL = 'https://steelcase-circles.herokuapp.com/parse';
@@ -425,10 +426,20 @@ nombreInd(){
     return get;
   }
 
+  getClase(){
+    var array = this.getGET();
+    if(array.length == 3){
+      this.classe = 'totales';
+    }else if(array.length == 4){
+      this.classe = 'tresComp';
+    }
+  }
+
   ngOnInit() {
     arrayClientes.length = 0;
     arrayGeneracion.length = 0;
     arrayAnt.length = 0;
+    this.getClase();
     this.getDatas();
     this.nombreInd()
   }

@@ -23,7 +23,7 @@ var empresaG, areaG, antiguedadG, generacionG, industriaG;
 export class ResultadoDosComponent implements OnInit {
 
 @Output() avisoTermine2 = new EventEmitter();
-
+classe2: any;
 public termine2: boolean = false;
   industria : string = "Nueva";
   constructor(private router : Router) {
@@ -417,7 +417,17 @@ getGET(){
   return get;
 }
 
+getClase(){
+  var array = this.getGET();
+  if(array.length == 3){
+    this.classe2 = 'totales';
+  }else if(array.length == 4){
+    this.classe2 = 'tresComp';
+  }
+}
+
   ngOnInit() {
+    this.getClase();
     this.getDatas();
     this.nombreIndS()
   }
