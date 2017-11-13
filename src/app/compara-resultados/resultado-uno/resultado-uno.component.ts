@@ -151,7 +151,8 @@ nombreInd(){
            scale: {
            ticks: {
                beginAtZero: true,
-               max: 5
+               max: 5,
+               fontSize: 7
            }
        }
           }
@@ -257,11 +258,12 @@ nombreInd(){
             options: {
              legend: { display: false },
              scale: {
-           ticks: {
-               beginAtZero: true,
-               max: 5
-           }
-          }
+             ticks: {
+                 beginAtZero: true,
+                 max: 5,
+                 fontSize: 7
+             }
+         }
             }
           });
 
@@ -365,11 +367,12 @@ nombreInd(){
             options: {
              legend: { display: false },
              scale: {
-           ticks: {
-               beginAtZero: true,
-               max: 5
-           }
-       }
+             ticks: {
+                 beginAtZero: true,
+                 max: 5,
+                 fontSize: 7
+             }
+         }
             }
           });
 

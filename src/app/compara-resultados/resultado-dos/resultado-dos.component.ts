@@ -144,7 +144,8 @@ nombreIndS(){
            scale: {
            ticks: {
                beginAtZero: true,
-               max: 5
+               max: 5,
+               fontSize: 7
            }
        }
           }
@@ -248,11 +249,12 @@ nombreIndS(){
             options: {
              legend: { display: false },
              scale: {
-           ticks: {
-               beginAtZero: true,
-               max: 5
-           }
-          }
+             ticks: {
+                 beginAtZero: true,
+                 max: 5,
+                 fontSize: 7
+             }
+         }
             }
           });
 
@@ -361,11 +363,12 @@ nombreIndS(){
             options: {
              legend: { display: false },
              scale: {
-           ticks: {
-               beginAtZero: true,
-               max: 5
-           }
-       }
+             ticks: {
+                 beginAtZero: true,
+                 max: 5,
+                 fontSize: 7
+             }
+         }
             }
           });
 

@@ -23,6 +23,11 @@ var empresaG, areaG, antiguedadG, generacionG, industriaG;
 export class ResultadoTresComponent implements OnInit {
 
   industria : string = "Nueva";
+  classe3: any;
+  amarillo3: any;
+  azul3: any;
+  verde3: any;
+
   constructor(private router : Router) {
     Parse.initialize("steelcaseCirclesAppId");
     Parse.serverURL = 'https://steelcase-circles.herokuapp.com/parse';
@@ -119,7 +124,7 @@ nombreIndT(){
         fceb = (eb / results.length);
 
 
-        /*var ctx = document.getElementById("myChartYellow");
+        var ctx = document.getElementById("myChartYellow3");
         var myChart = new Chart(ctx, {
           type: 'radar',
           data: {
@@ -135,11 +140,12 @@ nombreIndT(){
            scale: {
            ticks: {
                beginAtZero: true,
-               max: 5
+               max: 5,
+               fontSize: 7
            }
        }
           }
-        });*/
+        });
 
         var number = pTotal3;
         general += number;
@@ -226,7 +232,7 @@ nombreIndT(){
             fceb = (eb / results.length);
 
 
-            /*var ctx = document.getElementById("myChart");
+            var ctx = document.getElementById("myChart3");
             var myChart = new Chart(ctx, {
               type: 'radar',
               data: {
@@ -240,13 +246,14 @@ nombreIndT(){
               options: {
                legend: { display: false },
                scale: {
-             ticks: {
-                 beginAtZero: true,
-                 max: 5
-             }
-            }
+               ticks: {
+                   beginAtZero: true,
+                   max: 5,
+                   fontSize: 7
+               }
+           }
               }
-            });*/
+            });
 
 
             //var pTotal=((fct+fcrt+fcr+fcrb+fcb+fclb+fcl+fclt)/8).toFixed(1);
@@ -338,7 +345,7 @@ nombreIndT(){
 
 
 
-            /*var ctx = document.getElementById("myChartGreen");
+            var ctx = document.getElementById("myChartGreen3");
             var myChart = new Chart(ctx, {
               type: 'radar',
               data: {
@@ -352,13 +359,14 @@ nombreIndT(){
               options: {
                legend: { display: false },
                scale: {
-             ticks: {
-                 beginAtZero: true,
-                 max: 5
-             }
-         }
+               ticks: {
+                   beginAtZero: true,
+                   max: 5,
+                   fontSize: 7
+               }
+           }
               }
-            });*/
+            });
 
 
             totalEncuestas += totalG;
@@ -402,7 +410,23 @@ nombreIndT(){
     return get;
   }
 
+  getClase(){
+    var array = this.getGET();
+    if(array.length == 3){
+      this.classe3 = 'totales';
+      this.amarillo3 = 'chartYellow';
+      this.azul3 = 'chartBlue';
+      this.verde3 = 'chartGreen';
+    }else if(array.length == 4){
+      this.classe3 = 'tresComp';
+      this.amarillo3 = 'chartY3'
+      this.azul3 = 'chartB3';
+      this.verde3 = 'chartG3'
+    }
+  }
+
   ngOnInit() {
+    this.getClase();
     this.circuloVerdeT();
     this.nombreIndT()
   }
