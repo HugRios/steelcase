@@ -75,7 +75,7 @@ export class AntiguedadTodosComponent implements OnInit {
       query.find({
         success: function(res){
           for (var i = 0; i < res.length; i++) {
-            arrayAnt.push({nombre: res[i].get("nombre"), id: res[i].id});
+            arrayAnt.push({nombre: res[i].get("nombre"), id: res[i].id, orden: res[i].get('orden')});
               //$("#antigWell").append('<li id='+res[i].id+'>'+res[i].get("nombre")+'</li>');
           }
           promise.resolve(arrayAnt)
@@ -137,11 +137,11 @@ export class AntiguedadTodosComponent implements OnInit {
                       var fceb = eb / results.length;
                       pTotal = ((fct + fcrt + fcr + fcrb + fcb + fclb + fcl + fclt + fceb) / 9);
                       arrAntAmarillo.push({nombre: arrayAnt[i].nombre,
-                                          total: pTotal.toFixed(1)})
+                                          total: pTotal.toFixed(1), orden:arrayAnt[i].orden})
                   }else{
-                    arrAntAmarillo.push({nombre: arrayAnt[i].nombre, total: 'NA'})
+                    arrAntAmarillo.push({nombre: arrayAnt[i].nombre, total: 'NA', orden:arrayAnt[i].orden})
                   }
-                  promise.resolve(arrAntAmarillo.sort(compararNombre))
+                  promise.resolve(arrAntAmarillo.sort(comparar))
                 }
               })
 
@@ -202,11 +202,11 @@ export class AntiguedadTodosComponent implements OnInit {
                   var fceb = eb / results.length;
                   pTotal = ((fct + fcrt + fcr + fcrb + fcb + fclb + fcl + fclt + fceb) / 9);
                   arrAntAzul.push({nombre: arrayAnt[i].nombre,
-                                  total: pTotal.toFixed(1)})
+                                  total: pTotal.toFixed(1),orden:arrayAnt[i].orden})
                 }else{
-                  arrAntAzul.push({nombre: arrayAnt[i].nombre, total: 'NA'})
+                  arrAntAzul.push({nombre: arrayAnt[i].nombre, total: 'NA',orden:arrayAnt[i].orden})
                 }
-                promise.resolve(arrAntAzul.sort(compararNombre))
+                promise.resolve(arrAntAzul.sort(comparar))
               }
             })
       }//termina for primer arreglo
@@ -266,11 +266,11 @@ export class AntiguedadTodosComponent implements OnInit {
                   var fceb = eb / results.length;
                   pTotal = ((fct + fcrt + fcr + fcrb + fcb + fclb + fcl + fclt + fceb) / 9);
                   arrAntVerde.push({nombre: arrayAnt[i].nombre,
-                                    total: pTotal.toFixed(1)})
+                                    total: pTotal.toFixed(1), orden:arrayAnt[i].orden})
                 }else{
-                  arrAntVerde.push({nombre: arrayAnt[i].nombre, total: 'NA'})
+                  arrAntVerde.push({nombre: arrayAnt[i].nombre, total: 'NA', orden:arrayAnt[i].orden})
                 }
-                  promise.resolve(arrAntVerde.sort(compararNombre))
+                  promise.resolve(arrAntVerde.sort(comparar))
               }
             })
       }//termina for primer arreglo
@@ -333,9 +333,9 @@ export class AntiguedadTodosComponent implements OnInit {
 
 }
 
-function compararNombre(a, b) {
-  var x = a.nombre;
-  var y = b.nombre;
+function comparar(a, b) {
+  var x = a.orden;
+var y = b.orden;
 return x < y ? -1 : x > y ? 1 : 0;
 }
 

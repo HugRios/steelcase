@@ -1124,9 +1124,7 @@ margin: 0;
   .divYellow{
 width: 7em;
   }
-  #myChartYellow{
-    margin-left: 3em;
-  }
+
 }
 
 @media screen and (min-width: 1335px){
@@ -1139,13 +1137,6 @@ width: 7em;
 
   .divGreen{
     width: 9em;
-  }
-  #myChartYellow{
-    margin-left: 4em;
-    margin-top: -11.1em;
-    margin-bottom: 3.6em;
-
-
   }
 }
 
@@ -1783,35 +1774,55 @@ display: flex;
 }
 
 .divYellow{
-width: 9em;
+width: 7em;
 }
 
 .divBlue{
-  width: 9em;
+  width: 7em;
 }
 
 .divGreen{
-  width: 9em;
+  width: 7em;
 }
 
-#myChartYellow{
+.chartYellow{
+  margin-left: 3.1em;
+  margin-top: -7.8em;
+  margin-bottom: 3.6em;
+
+}
+
+.chartY3{
+  margin-left: 2.2em;
+  margin-top: -7.8em;
+  margin-bottom: 2.6em;
+}
+
+.chartBlue{
+  margin-left: 2.8em;
+  margin-top: -7.9em;
+  margin-bottom: 3.6em;
+}
+
+.chartB3{
+  margin-left: 1.6em;
+  margin-top: -7.8em;
+  margin-bottom: 2.6em;
+}
+
+.chartGreen{
   margin-left: 2.5em;
-  margin-top: -11.1em;
-  margin-bottom: 3.6em;
-
-}
-#myChartGreen{
-  margin-left: 2.0em;
-  margin-top: -11.1em;
-  margin-bottom: 3.6em;
-
-}
-
-#myChart{
-  margin-left: 2.5em;
-  margin-top: -12.1em;
+  margin-top: -7.8em;
   margin-bottom: 3.6em;
 }
+
+.chartG3{
+  margin-left: 0.8em;
+  margin-top: -7.7em;
+  margin-bottom: 2.6em;
+}
+
+
 
 
 
@@ -1989,34 +2000,55 @@ width: 9em;
   }
 
   .divYellow{
-  width: 6em;
+  width: 8em;
   }
 
   .divBlue{
-    width: 6em;
+    width: 8em;
   }
 
   .divGreen{
-    width: 6em;
+    width: 8em;
   }
 
-  #myChartYellow{
-    margin-left: 2.98em;
-    margin-top: -7.7em;
+  .chartYellow{
+    margin-left: 4.9em;
+    margin-top: -8.5em;
     margin-bottom: 2.6em;
 
   }
-  #myChartGreen{
-    margin-left: 3em;
-    margin-top: -7.6em;
+
+  .chartY3{
+    margin-left: 2.9em;
+    margin-top: -8.5em;
     margin-bottom: 2.6em;
   }
 
-  #myChart{
-    margin-left: 3.2em;
-    margin-top: -7.8em;
+  .chartBlue{
+      margin-left: 4.2em;
+      margin-top: -8.8em;
+      margin-bottom: 2.9em;
+    }
+
+  .chartB3{
+    margin-left: 2.2em;
+    margin-top: -8.8em;
     margin-bottom: 2.9em;
   }
+
+  .chartGreen{
+    margin-left: 4em;
+    margin-top: -8.6em;
+    margin-bottom: 2.6em;
+  }
+
+  .chartG3{
+    margin-left: 2em;
+    margin-top: -8.6em;
+    margin-bottom: 2.6em;
+  }
+
+
 
   .grayCircle{
     width: 13.5em;

@@ -30,6 +30,9 @@ export class ResultadoUnoComponent implements OnInit {
   arregloAntiguedad: any;
   arregloGeneracion: any;
   classe: any;
+  amarillo: any;
+  azul: any;
+  verde: any;
   constructor(private router : Router) {
     Parse.initialize("steelcaseCirclesAppId");
     Parse.serverURL = 'https://steelcase-circles.herokuapp.com/parse';
@@ -132,7 +135,7 @@ nombreInd(){
         fceb = (eb / results.length);
 
 
-        /*var ctx = document.getElementById("myChartYellow");
+        var ctx = document.getElementById("myChartYellow");
         var myChart = new Chart(ctx, {
           type: 'radar',
           data: {
@@ -152,7 +155,7 @@ nombreInd(){
            }
        }
           }
-        });*/
+        });
 
         var number = pTotal;
         general += number;
@@ -240,7 +243,7 @@ nombreInd(){
           fceb = (eb / results.length);
 
 
-          /*var ctx = document.getElementById("myChart");
+          var ctx = document.getElementById("myChart");
           var myChart = new Chart(ctx, {
             type: 'radar',
             data: {
@@ -260,7 +263,7 @@ nombreInd(){
            }
           }
             }
-          });*/
+          });
 
 
           //var pTotal=((fct+fcrt+fcr+fcrb+fcb+fclb+fcl+fclt)/8).toFixed(1);
@@ -348,12 +351,7 @@ nombreInd(){
           fclt = (lt / results.length);
           fceb = (eb / results.length);
 
-
-
-
-
-
-          /*var ctx = document.getElementById("myChartGreen");
+          var ctx = document.getElementById("myChartGreen");
           var myChart = new Chart(ctx, {
             type: 'radar',
             data: {
@@ -373,7 +371,7 @@ nombreInd(){
            }
        }
             }
-          });*/
+          });
 
 
           totalEncuestas += totalG;
@@ -430,8 +428,14 @@ nombreInd(){
     var array = this.getGET();
     if(array.length == 3){
       this.classe = 'totales';
+      this.amarillo = 'chartYellow';
+      this.azul = 'chartBlue';
+      this.verde = 'chartGreen';
     }else if(array.length == 4){
       this.classe = 'tresComp';
+      this.amarillo = 'chartY3'
+      this.azul = 'chartB3';
+      this.verde = 'chartG3'
     }
   }
 

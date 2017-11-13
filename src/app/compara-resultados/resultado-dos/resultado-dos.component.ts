@@ -24,6 +24,10 @@ export class ResultadoDosComponent implements OnInit {
 
 @Output() avisoTermine2 = new EventEmitter();
 classe2: any;
+amarillo2: any;
+azul2: any;
+verde2: any;
+
 public termine2: boolean = false;
   industria : string = "Nueva";
   constructor(private router : Router) {
@@ -124,7 +128,7 @@ nombreIndS(){
         fceb2 = (eb2 / results.length);
 
 
-        /*var ctx = document.getElementById("myChartYellow");
+        var ctx = document.getElementById("myChartYellow2");
         var myChart = new Chart(ctx, {
           type: 'radar',
           data: {
@@ -132,7 +136,7 @@ nombreIndS(){
             datasets: [{
               backgroundColor: "rgba(253, 99, 68, 0.81)",
               borderColor: "rgba(253, 86, 53, 1)",
-              data: [fct, fcrt, fcr, fcrb, fcb, fclb, fcl, fclt, fceb]
+              data: [fct2, fcrt2, fcr2, fcrb2, fcb2, fclb2, fcl2, fclt2, fceb2]
             }]
           },
           options: {
@@ -144,7 +148,7 @@ nombreIndS(){
            }
        }
           }
-        });*/
+        });
 
         var number = pTotal2;
         general += number;
@@ -230,7 +234,7 @@ nombreIndS(){
           fceb = (eb / results.length);
 
 
-          /*var ctx = document.getElementById("myChart");
+          var ctx = document.getElementById("myChart2");
           var myChart = new Chart(ctx, {
             type: 'radar',
             data: {
@@ -250,7 +254,7 @@ nombreIndS(){
            }
           }
             }
-          });*/
+          });
 
 
           //var pTotal=((fct+fcrt+fcr+fcrb+fcb+fclb+fcl+fclt)/8).toFixed(1);
@@ -343,7 +347,7 @@ nombreIndS(){
 
 
 
-          /*var ctx = document.getElementById("myChartGreen");
+          var ctx = document.getElementById("myChartGreen2");
           var myChart = new Chart(ctx, {
             type: 'radar',
             data: {
@@ -363,7 +367,7 @@ nombreIndS(){
            }
        }
             }
-          });*/
+          });
 
 
           totalEncuestas += totalG;
@@ -421,8 +425,14 @@ getClase(){
   var array = this.getGET();
   if(array.length == 3){
     this.classe2 = 'totales';
+    this.amarillo2 = 'chartYellow';
+    this.azul2 = 'chartBlue';
+    this.verde2 = 'chartGreen';
   }else if(array.length == 4){
     this.classe2 = 'tresComp';
+    this.amarillo2 = 'chartY3'
+    this.azul2 = 'chartB3';
+    this.verde2 = 'chartG3'
   }
 }
 
