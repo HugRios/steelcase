@@ -282,6 +282,9 @@ export class AntiguedadTodosComponent implements OnInit {
   getInfo(){
     this.reporteAntVerde().then((response: any) =>{
       setTimeout(function(){
+        console.log(arrAntAmarillo);
+        console.log(arrAntAzul);
+        console.log(arrAntVerde);
         var totalAm = 0;
         var totalAz = 0;
         var totalV = 0;

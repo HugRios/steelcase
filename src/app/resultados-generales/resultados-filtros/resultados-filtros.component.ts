@@ -707,7 +707,7 @@ console.log(query);
        query.find({
          success: function(res){
            for (var i = 0; i < res.length; i++) {
-             arrayAnt.push({nombre: res[i].get("nombre"), id: res[i].id});
+             arrayAnt.push({nombre: res[i].get("nombre"), id: res[i].id, orden: res[i].get('orden')});
                //$("#antigWell").append('<li id='+res[i].id+'>'+res[i].get("nombre")+'</li>');
            }
          }
@@ -1153,11 +1153,11 @@ console.log(query);
                            var fceb = eb / results.length;
                            pTotal = ((fct + fcrt + fcr + fcrb + fcb + fclb + fcl + fclt + fceb) / 9);
                            arrAntAmarillo.push({nombre: arrayAnt[i].nombre,
-                                               total: pTotal.toFixed(1)})
+                                               total: pTotal.toFixed(1), orden: arrayAnt[i].orden})
                        }else{
-                         arrAntAmarillo.push({nombre: arrayAnt[i].nombre, total: 'NA'})
+                         arrAntAmarillo.push({nombre: arrayAnt[i].nombre, total: 'NA', orden: arrayAnt[i].orden})
                        }
-                       promise.resolve(arrAntAmarillo.sort(compararNombre))
+                       promise.resolve(arrAntAmarillo.sort(comparar))
                      }
                    })
 
@@ -1216,11 +1216,11 @@ console.log(query);
                        var fceb = eb / results.length;
                        pTotal = ((fct + fcrt + fcr + fcrb + fcb + fclb + fcl + fclt + fceb) / 9);
                        arrAntAzul.push({nombre: arrayAnt[i].nombre,
-                                       total: pTotal.toFixed(1)})
+                                       total: pTotal.toFixed(1), orden: arrayAnt[i].orden})
                      }else{
-                       arrAntAzul.push({nombre: arrayAnt[i].nombre, total: 'NA'})
+                       arrAntAzul.push({nombre: arrayAnt[i].nombre, total: 'NA', orden: arrayAnt[i].orden})
                      }
-                     promise.resolve(arrAntAzul.sort(compararNombre))
+                     promise.resolve(arrAntAzul.sort(comparar))
                    }
                  })
            }//termina for primer arreglo
@@ -1278,11 +1278,11 @@ console.log(query);
                        var fceb = eb / results.length;
                        pTotal = ((fct + fcrt + fcr + fcrb + fcb + fclb + fcl + fclt + fceb) / 9);
                        arrAntVerde.push({nombre: arrayAnt[i].nombre,
-                                         total: pTotal.toFixed(1)})
+                                         total: pTotal.toFixed(1), orden: arrayAnt[i].orden})
                      }else{
-                       arrAntVerde.push({nombre: arrayAnt[i].nombre, total: 'NA'})
+                       arrAntVerde.push({nombre: arrayAnt[i].nombre, total: 'NA', orden: arrayAnt[i].orden})
                      }
-                       promise.resolve(arrAntVerde.sort(compararNombre))
+                       promise.resolve(arrAntVerde.sort(comparar))
                    }
                  })
            }//termina for primer arreglo
@@ -1294,6 +1294,9 @@ console.log(query);
        sigPaso(){
          $("#modalAlert").modal('toggle');
          this.reporteAntVerde().then((results: any) =>{
+           console.log(arrAntAmarillo);
+           console.log(arrAntAzul);
+           console.log(arrAntVerde);
            /*console.log(arrGenAmarillo[0].nombre);
            console.log(arrGenAzul);
            console.log(arrGenVerde)
@@ -3207,9 +3210,9 @@ slideEstadistica.addChart(
     slideAnt.addImage({x:4.1, y:2.4, w:0.7, h:0.7,path: 'assets/img/yellow_circle.svg'})
     slideAnt.addText(arrAntAmarillo[1].total, {x:4.13, y:2.6, font_size:18, font_face:'Arial Black', color:'FBC100'})
     slideAnt.addImage({x:4.1, y:3.4, w:0.7, h:0.7,path: 'assets/img/blue_circle.svg'})
-    slideAnt.addText(arrGenAzul[1].total, {x:4.15, y:3.6  , font_size:18, font_face:'Arial Black', color:'31AEF2'})
+    slideAnt.addText(arrAntAzul[1].total, {x:4.15, y:3.6  , font_size:18, font_face:'Arial Black', color:'31AEF2'})
     slideAnt.addImage({x:4.1, y:4.4, w:0.7, h:0.7,path: 'assets/img/green_circle.svg'})
-    slideAnt.addText(arrGenVerde[1].total, {x:4.17, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
+    slideAnt.addText(arrAntVerde[1].total, {x:4.17, y:4.6  , font_size:18, font_face:'Arial Black', color:'98CE3D'})
 
     slideAnt.addText(datosAnt[2].toFixed(1), {x:5.9, y:1  , font_size:18, font_face:'Arial Black', color:'8B1D9B'})
     slideAnt.addText(arrAntAmarillo[2].nombre, {x:5.8, y:1.5, font_size:18, color:'363636'})
