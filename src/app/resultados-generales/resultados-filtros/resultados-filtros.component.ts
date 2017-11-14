@@ -772,9 +772,11 @@ console.log(query);
                          pTotal = ((fct + fcrt + fcr + fcrb + fcb + fclb + fcl + fclt + fceb) / 9);
                          arrGenAmarillo.push({nombre: arrayGeneracion[i].nombre,
                                              total: pTotal.toFixed(1),
-                                             orden: arrayGeneracion[i].orden})
+                                             orden: arrayGeneracion[i].orden,
+                                             numenc: results.length })
                      }else{
-                       arrGenAmarillo.push({nombre: arrayGeneracion[i].nombre, total: 'NA',orden: arrayGeneracion[i].orden})
+                       arrGenAmarillo.push({nombre: arrayGeneracion[i].nombre, total: 'NA',
+                        orden: arrayGeneracion[i].orden, numenc: results.length})
                      }
 
                      promise.resolve(arrGenAmarillo.sort(comparar))
@@ -1153,9 +1155,10 @@ console.log(query);
                            var fceb = eb / results.length;
                            pTotal = ((fct + fcrt + fcr + fcrb + fcb + fclb + fcl + fclt + fceb) / 9);
                            arrAntAmarillo.push({nombre: arrayAnt[i].nombre,
-                                               total: pTotal.toFixed(1), orden: arrayAnt[i].orden})
+                                               total: pTotal.toFixed(1), orden: arrayAnt[i].orden, numenc: results.length})
                        }else{
-                         arrAntAmarillo.push({nombre: arrayAnt[i].nombre, total: 'NA', orden: arrayAnt[i].orden})
+                         arrAntAmarillo.push({nombre: arrayAnt[i].nombre, total: 'NA',
+                                              orden: arrayAnt[i].orden, numenc:results.length})
                        }
                        promise.resolve(arrAntAmarillo.sort(comparar))
                      }
@@ -2432,7 +2435,7 @@ function crearReporte(info: any){
     var datosInd = [];
 
 
-
+    console.log(arrAntAmarillo);
     for (let i = 0; i < arrGenAmarillo.length; i++) {
       var total = (parseFloat(arrGenAmarillo[i].total) + parseFloat(arrGenAzul[i].total) + parseFloat(arrGenVerde[i].total))/3;
       if( total.toString() == 'NaN'){
@@ -2440,7 +2443,7 @@ function crearReporte(info: any){
         datosGraf.push(total);
         datosGrafPorcentaje.push(total)
       }else{
-        var porcentaje = (total * 100)/5;
+        var porcentaje = (arrGenAmarillo[i].numenc * 100)/numRespuestas;
         datosGraf.push(total);
         datosGrafPorcentaje.push(porcentaje)
       }
@@ -2458,14 +2461,13 @@ function crearReporte(info: any){
     }
 
     for (let i = 0; i < arrAntAmarillo.length; i++) {
-
       var total = (parseFloat(arrAntAmarillo[i].total) + parseFloat(arrAntAzul[i].total) + parseFloat(arrAntVerde[i].total))/3;
       if( total.toString() == 'NaN'){
         total = 0;
         datosAnt.push(total)
         datosAntPorcentaje.push(total)
       }else{
-        var porcentaje = (total * 100)/5;
+        var porcentaje = (arrAntAmarillo[i].numenc * 100)/numRespuestas;
         datosAnt.push(total)
         datosAntPorcentaje.push(porcentaje)
       }
