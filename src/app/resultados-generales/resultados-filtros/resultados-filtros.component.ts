@@ -214,10 +214,6 @@ if(vector[3].id == ""){
            })
   query.equalTo("antiguedad", antiguedad);
 }
-
-
-console.log(query);
-
         query.find({
           success: function(results) {
             var totalA = results.length;
@@ -271,7 +267,7 @@ console.log(query);
                 datasets: [{
                   backgroundColor: "rgba(253, 99, 68, 0.81)",
                   borderColor: "rgba(253, 86, 53, 1)",
-                  data: [fct, fcrt, fcr, fcrb, fcb, fclb, fcl, fclt, fceb]
+                  data: [fct.toFixed(1), fcrt.toFixed(1), fcr.toFixed(1), fcrb.toFixed(1), fcb.toFixed(1), fclb.toFixed(1), fcl.toFixed(1), fclt.toFixed(1), fceb.toFixed(1)]
                 }]
               },
               options: {
@@ -418,7 +414,7 @@ console.log(query);
                datasets: [{
                  backgroundColor: "rgba(253, 99, 68, 0.81)",
                  borderColor: "rgba(253, 86, 53, 1)",
-                 data: [fct, fcrt, fcr, fcrb, fcb, fclb, fcl, fclt, fceb]
+                 data: [fct.toFixed(1), fcrt.toFixed(1), fcr.toFixed(1), fcrb.toFixed(1), fcb.toFixed(1), fclb.toFixed(1), fcl.toFixed(1), fclt.toFixed(1), fceb.toFixed(1)]
                }]
              },
              options: {
@@ -445,14 +441,6 @@ console.log(query);
            }
 
            promise.resolve(t2);
-
-           /*if (pTotal == 'NaN'){
-            $("#promedioTotalAzul").html(0);
-           }else{
-
-             $("#pgeneral").html(final);
-           }*/
-
 
          },
          error: function(error) {
@@ -514,7 +502,6 @@ console.log(query);
              antiguedad.id = id;
          query.equalTo("antiguedad", antiguedad);
        }
-       console.log(query);
        query.find({
          success: function(results) {
            var totalG = results.length;
@@ -572,7 +559,7 @@ console.log(query);
                datasets: [{
                  backgroundColor: "rgba(253, 99, 68, 0.81)",
                  borderColor: "rgba(253, 86, 53, 1)",
-                 data: [fct, fcrt, fcr, fcrb, fcb, fclb, fcl, fclt, fceb]
+                 data: [fct.toFixed(1), fcrt.toFixed(1), fcr.toFixed(1), fcrb.toFixed(1), fcb.toFixed(1), fclb.toFixed(1), fcl.toFixed(1), fclt.toFixed(1), fceb.toFixed(1)]
                }]
              },
              options: {
